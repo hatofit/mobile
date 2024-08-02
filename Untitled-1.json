@@ -1,0 +1,29 @@
+{
+  "userId": "65cffb85f2f967d7c5113e5b",
+  "exerciseId": "Walking",
+  "startTime": 1712256137854390,
+  "endTime": 1712256168870206,
+  "mood": "good",
+  "timelines": [],
+  "data": [
+    {
+      "second": 0,
+      "timeStamp": 1712256137854390,
+      "devices": [
+        {
+          "type": "CommonDataType.hr",
+          "identifier": "C3:D2:E6:80:46:65",
+          "brand": "MAGENE TECHNOLOGY",
+          "model": "7463-1",
+          "value": [
+            {
+              "timeStamp": 1712256137854390,
+              "hr": 97,
+              "rrsMs": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
