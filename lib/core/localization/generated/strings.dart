@@ -609,6 +609,12 @@ abstract class Strings {
   /// **'No activity found'**
   String get noActivityFound;
 
+  /// No description provided for @noCompanyFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No company found'**
+  String get noCompanyFound;
+
   /// No description provided for @noExerciseDataToday.
   ///
   /// In en, this message translates to:
@@ -950,12 +956,6 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Zone'**
   String get zone;
-
-  /// No description provided for @noCompanyFound.
-  ///
-  /// In en, this message translates to:
-  /// **'No company found'**
-  String get noCompanyFound;
 }
 
 class _StringsDelegate extends LocalizationsDelegate<Strings> {

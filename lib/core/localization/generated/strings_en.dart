@@ -263,6 +263,9 @@ class StringsEn extends Strings {
   String get noActivityFound => 'No activity found';
 
   @override
+  String get noCompanyFound => 'No company found';
+
+  @override
   String get noExerciseDataToday => 'No exercise data today';
 
   @override
@@ -432,7 +435,4 @@ class StringsEn extends Strings {
 
   @override
   String get zone => 'Zone';
-
-  @override
-  String get noCompanyFound => 'No company found';
 }

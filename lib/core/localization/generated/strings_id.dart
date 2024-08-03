@@ -263,6 +263,9 @@ class StringsId extends Strings {
   String get noActivityFound => 'Tidak ada aktivitas yang ditemukan';
 
   @override
+  String get noCompanyFound => 'Tidak ada perusahaan yang ditemukan';
+
+  @override
   String get noExerciseDataToday => 'Tidak ada data latihan hari ini';
 
   @override
@@ -432,7 +435,4 @@ class StringsId extends Strings {
 
   @override
   String get zone => 'Zona';
-
-  @override
-  String get noCompanyFound => 'Tidak ada perusahaan yang ditemukan';
 }

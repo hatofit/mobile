@@ -214,7 +214,7 @@ class _StartCompanyWorkoutViewState extends State<StartCompanyWorkoutView> {
                               )
                             ],
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Row(
                             children: [
                               Icon(
@@ -225,7 +225,7 @@ class _StartCompanyWorkoutViewState extends State<StartCompanyWorkoutView> {
                               ),
                               const SizedBox(width: 8),
                               Text(
-                                '${ses.calories.round()} ${energyUnit}',
+                                '${ses.calories.round()} $energyUnit',
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyLarge

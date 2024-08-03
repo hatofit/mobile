@@ -86,6 +86,7 @@
   "next": "Next",
   "no": "No",
   "noActivityFound": "No activity found",
+  "noCompanyFound": "No company found",
   "noExerciseDataToday": "No exercise data today",
   "normal": "Normal",
   "november": "November",
@@ -142,6 +143,5 @@
   "workout": "Workout",
   "yearsOld": "years old",
   "yes": "Yes",
-  "zone": "Zone",
-  "noCompanyFound": "No company found"
+  "zone": "Zone"
 }

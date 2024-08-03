@@ -3,26 +3,26 @@ class APIConstant {
 
   static APIConstant get = APIConstant._();
 
-  // String baseUrl = "https:/.hatofit.com";
-  String baseUrl = "http://192.168.38.13:3001";
+  String baseUrl = "https://api.hatofit.com";
+  // String baseUrl = "http://192.168.38.13:3001";
 
-  String authRegister = "/auth/register";
-  String authLogin = "/auth/login";
-  String authMe = "/auth/me";
-  String authUpdate = "/auth/update";
-  String forgotPassword = "/auth/forgot-password";
-  String resetPassword = "/auth/reset-password";
-  String verifyCode = "/auth/verify-code";
+  String authRegister = "/api/auth/register";
+  String authLogin = "/api/auth/login";
+  String authMe = "/api/auth/me";
+  String authUpdate = "/api/auth/update";
+  String forgotPassword = "/api/auth/forgot-password";
+  String resetPassword = "/api/auth/reset-password";
+  String verifyCode = "/api/auth/verify-code";
 
-  String exercise = "/exercise";
+  String exercise = "/api/exercise";
 
-  String report = "/report";
-  String reportShare = "/report/share";
+  String report = "/api/report";
+  String reportShare = "/api/report/share";
 
-  String session = "/session";
-  String sessionShared = "/session/shared";
+  String session = "/api/session";
+  String sessionShared = "/api/session/shared";
 
-  String image = "/image";
+  String image = "/api/image";
 
-  String company = "/company";
+  String company = "/api/company";
 }
