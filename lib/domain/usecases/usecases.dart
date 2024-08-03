@@ -5,5 +5,6 @@ export 'exercise/exercise.dart';
 export 'firebase/firebase.dart';
 export 'image/image.dart';
 export 'report/report.dart';
+export 'company/company.dart';
 export 'session/session.dart';
 export 'user/user.dart';

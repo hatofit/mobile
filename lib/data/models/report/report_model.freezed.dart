@@ -646,7 +646,7 @@ ReportDataValueModel _$ReportDataValueModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ReportDataValueModel {
   String? get device => throw _privateConstructorUsedError;
-  List<List<dynamic>>? get value => throw _privateConstructorUsedError;
+  List<List<int>>? get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -660,7 +660,7 @@ abstract class $ReportDataValueModelCopyWith<$Res> {
           $Res Function(ReportDataValueModel) then) =
       _$ReportDataValueModelCopyWithImpl<$Res, ReportDataValueModel>;
   @useResult
-  $Res call({String? device, List<List<dynamic>>? value});
+  $Res call({String? device, List<List<int>>? value});
 }
 
 /// @nodoc
@@ -688,7 +688,7 @@ class _$ReportDataValueModelCopyWithImpl<$Res,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as List<List<dynamic>>?,
+              as List<List<int>>?,
     ) as $Val);
   }
 }
@@ -701,7 +701,7 @@ abstract class _$$ReportDataValueModelImplCopyWith<$Res>
       __$$ReportDataValueModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? device, List<List<dynamic>>? value});
+  $Res call({String? device, List<List<int>>? value});
 }
 
 /// @nodoc
@@ -726,7 +726,7 @@ class __$$ReportDataValueModelImplCopyWithImpl<$Res>
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as List<List<dynamic>>?,
+              as List<List<int>>?,
     ));
   }
 }
@@ -742,7 +742,7 @@ class _$ReportDataValueModelImpl extends _ReportDataValueModel {
   @override
   final String? device;
   @override
-  final List<List<dynamic>>? value;
+  final List<List<int>>? value;
 
   @override
   String toString() {
@@ -782,7 +782,7 @@ class _$ReportDataValueModelImpl extends _ReportDataValueModel {
 abstract class _ReportDataValueModel extends ReportDataValueModel {
   const factory _ReportDataValueModel(
       {final String? device,
-      final List<List<dynamic>>? value}) = _$ReportDataValueModelImpl;
+      final List<List<int>>? value}) = _$ReportDataValueModelImpl;
   const _ReportDataValueModel._() : super._();
 
   factory _ReportDataValueModel.fromJson(Map<String, dynamic> json) =
@@ -791,7 +791,7 @@ abstract class _ReportDataValueModel extends ReportDataValueModel {
   @override
   String? get device;
   @override
-  List<List<dynamic>>? get value;
+  List<List<int>>? get value;
   @override
   @JsonKey(ignore: true)
   _$$ReportDataValueModelImplCopyWith<_$ReportDataValueModelImpl>

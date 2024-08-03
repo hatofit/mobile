@@ -314,6 +314,8 @@ mixin _$ReportDeviceEntity {
   String? get name => throw _privateConstructorUsedError;
   @HiveField(1)
   String? get identifier => throw _privateConstructorUsedError;
+  @HiveField(3)
+  String? get brand => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReportDeviceEntityCopyWith<ReportDeviceEntity> get copyWith =>
@@ -326,7 +328,10 @@ abstract class $ReportDeviceEntityCopyWith<$Res> {
           ReportDeviceEntity value, $Res Function(ReportDeviceEntity) then) =
       _$ReportDeviceEntityCopyWithImpl<$Res, ReportDeviceEntity>;
   @useResult
-  $Res call({@HiveField(0) String? name, @HiveField(1) String? identifier});
+  $Res call(
+      {@HiveField(0) String? name,
+      @HiveField(1) String? identifier,
+      @HiveField(3) String? brand});
 }
 
 /// @nodoc
@@ -344,6 +349,7 @@ class _$ReportDeviceEntityCopyWithImpl<$Res, $Val extends ReportDeviceEntity>
   $Res call({
     Object? name = freezed,
     Object? identifier = freezed,
+    Object? brand = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -353,6 +359,10 @@ class _$ReportDeviceEntityCopyWithImpl<$Res, $Val extends ReportDeviceEntity>
       identifier: freezed == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
   }
@@ -366,7 +376,10 @@ abstract class _$$ReportDeviceEntityImplCopyWith<$Res>
       __$$ReportDeviceEntityImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({@HiveField(0) String? name, @HiveField(1) String? identifier});
+  $Res call(
+      {@HiveField(0) String? name,
+      @HiveField(1) String? identifier,
+      @HiveField(3) String? brand});
 }
 
 /// @nodoc
@@ -382,6 +395,7 @@ class __$$ReportDeviceEntityImplCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? identifier = freezed,
+    Object? brand = freezed,
   }) {
     return _then(_$ReportDeviceEntityImpl(
       name: freezed == name
@@ -391,6 +405,10 @@ class __$$ReportDeviceEntityImplCopyWithImpl<$Res>
       identifier: freezed == identifier
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
+              as String?,
+      brand: freezed == brand
+          ? _value.brand
+          : brand // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
   }
@@ -403,7 +421,9 @@ class __$$ReportDeviceEntityImplCopyWithImpl<$Res>
     adapterName: BoxTypeId.reportDeviceEntityAdapterName)
 class _$ReportDeviceEntityImpl implements _ReportDeviceEntity {
   const _$ReportDeviceEntityImpl(
-      {@HiveField(0) this.name, @HiveField(1) this.identifier});
+      {@HiveField(0) this.name,
+      @HiveField(1) this.identifier,
+      @HiveField(3) this.brand});
 
   @override
   @HiveField(0)
@@ -411,10 +431,13 @@ class _$ReportDeviceEntityImpl implements _ReportDeviceEntity {
   @override
   @HiveField(1)
   final String? identifier;
+  @override
+  @HiveField(3)
+  final String? brand;
 
   @override
   String toString() {
-    return 'ReportDeviceEntity(name: $name, identifier: $identifier)';
+    return 'ReportDeviceEntity(name: $name, identifier: $identifier, brand: $brand)';
   }
 
   @override
@@ -424,11 +447,12 @@ class _$ReportDeviceEntityImpl implements _ReportDeviceEntity {
             other is _$ReportDeviceEntityImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.identifier, identifier) ||
-                other.identifier == identifier));
+                other.identifier == identifier) &&
+            (identical(other.brand, brand) || other.brand == brand));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name, identifier);
+  int get hashCode => Object.hash(runtimeType, name, identifier, brand);
 
   @JsonKey(ignore: true)
   @override
@@ -441,7 +465,8 @@ class _$ReportDeviceEntityImpl implements _ReportDeviceEntity {
 abstract class _ReportDeviceEntity implements ReportDeviceEntity {
   const factory _ReportDeviceEntity(
       {@HiveField(0) final String? name,
-      @HiveField(1) final String? identifier}) = _$ReportDeviceEntityImpl;
+      @HiveField(1) final String? identifier,
+      @HiveField(3) final String? brand}) = _$ReportDeviceEntityImpl;
 
   @override
   @HiveField(0)
@@ -449,6 +474,9 @@ abstract class _ReportDeviceEntity implements ReportDeviceEntity {
   @override
   @HiveField(1)
   String? get identifier;
+  @override
+  @HiveField(3)
+  String? get brand;
   @override
   @JsonKey(ignore: true)
   _$$ReportDeviceEntityImplCopyWith<_$ReportDeviceEntityImpl> get copyWith =>
@@ -621,7 +649,7 @@ mixin _$ReportDataValueEntity {
   @HiveField(0)
   String? get device => throw _privateConstructorUsedError;
   @HiveField(1)
-  List<List<dynamic>>? get value => throw _privateConstructorUsedError;
+  List<List<int>>? get value => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReportDataValueEntityCopyWith<ReportDataValueEntity> get copyWith =>
@@ -635,7 +663,7 @@ abstract class $ReportDataValueEntityCopyWith<$Res> {
       _$ReportDataValueEntityCopyWithImpl<$Res, ReportDataValueEntity>;
   @useResult
   $Res call(
-      {@HiveField(0) String? device, @HiveField(1) List<List<dynamic>>? value});
+      {@HiveField(0) String? device, @HiveField(1) List<List<int>>? value});
 }
 
 /// @nodoc
@@ -663,7 +691,7 @@ class _$ReportDataValueEntityCopyWithImpl<$Res,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as List<List<dynamic>>?,
+              as List<List<int>>?,
     ) as $Val);
   }
 }
@@ -678,7 +706,7 @@ abstract class _$$ReportDataValueEntityImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@HiveField(0) String? device, @HiveField(1) List<List<dynamic>>? value});
+      {@HiveField(0) String? device, @HiveField(1) List<List<int>>? value});
 }
 
 /// @nodoc
@@ -704,7 +732,7 @@ class __$$ReportDataValueEntityImplCopyWithImpl<$Res>
       value: freezed == value
           ? _value._value
           : value // ignore: cast_nullable_to_non_nullable
-              as List<List<dynamic>>?,
+              as List<List<int>>?,
     ));
   }
 }
@@ -716,17 +744,16 @@ class __$$ReportDataValueEntityImplCopyWithImpl<$Res>
     adapterName: BoxTypeId.reportDataValueEntityAdapterName)
 class _$ReportDataValueEntityImpl implements _ReportDataValueEntity {
   const _$ReportDataValueEntityImpl(
-      {@HiveField(0) this.device,
-      @HiveField(1) final List<List<dynamic>>? value})
+      {@HiveField(0) this.device, @HiveField(1) final List<List<int>>? value})
       : _value = value;
 
   @override
   @HiveField(0)
   final String? device;
-  final List<List<dynamic>>? _value;
+  final List<List<int>>? _value;
   @override
   @HiveField(1)
-  List<List<dynamic>>? get value {
+  List<List<int>>? get value {
     final value = _value;
     if (value == null) return null;
     if (_value is EqualUnmodifiableListView) return _value;
@@ -763,7 +790,7 @@ class _$ReportDataValueEntityImpl implements _ReportDataValueEntity {
 abstract class _ReportDataValueEntity implements ReportDataValueEntity {
   const factory _ReportDataValueEntity(
           {@HiveField(0) final String? device,
-          @HiveField(1) final List<List<dynamic>>? value}) =
+          @HiveField(1) final List<List<int>>? value}) =
       _$ReportDataValueEntityImpl;
 
   @override
@@ -771,7 +798,7 @@ abstract class _ReportDataValueEntity implements ReportDataValueEntity {
   String? get device;
   @override
   @HiveField(1)
-  List<List<dynamic>>? get value;
+  List<List<int>>? get value;
   @override
   @JsonKey(ignore: true)
   _$$ReportDataValueEntityImplCopyWith<_$ReportDataValueEntityImpl>

@@ -59,12 +59,14 @@ class FreeWorkoutView extends StatelessWidget {
                     .failedToStartWorkout
                     .toToastError(context, textAlign: TextAlign.center);
               } else if (wCubit.user != null && nCubit.state.cDevice != null) {
-                context.pushNamed(Routes.startWorkout.name,
+                context.pushNamed(Routes.startFreeWorkout.name,
                     extra: StartExerciseParams(
-                        isFreeWorkout: true,
-                        exercise: exercises[index],
-                        user: wCubit.user ?? const UserEntity(),
-                        device: nCubit.state.cDevice));
+                      isFreeWorkout: true,
+                      exercise: exercises[index],
+                      user: wCubit.user ?? const UserEntity(),
+                      device: nCubit.state.cDevice,
+                      companyExerciseId: null,
+                    ));
               }
             },
             child: Container(

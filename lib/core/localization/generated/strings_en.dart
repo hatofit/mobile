@@ -32,6 +32,9 @@ class StringsEn extends Strings {
   String get august => 'August';
 
   @override
+  String get avgHR => 'Average Heart Rate';
+
+  @override
   String get awful => 'Awful 😞';
 
   @override
@@ -42,15 +45,6 @@ class StringsEn extends Strings {
 
   @override
   String get brand => 'Brand';
-
-  @override
-  String get ofMaxHeartRate => 'of Max Heart Rate';
-
-  @override
-  String get now => 'Now';
-
-  @override
-  String get fiveMinutesPassedWithZeroHeartRate => 'Five minutes passed with zero heart rate';
 
   @override
   String get caloriesBurn => 'Calories Burn';
@@ -68,13 +62,13 @@ class StringsEn extends Strings {
   String get chooseLanguage => 'Choose language';
 
   @override
-  String get deviceDisconnected => 'Device disconnected';
-
-  @override
   String get chooseTheme => 'Choose Theme';
 
   @override
   String get chooseYourProfilePhoto => 'Choose your profile photo';
+
+  @override
+  String get company => 'Company';
 
   @override
   String get confirmPassword => 'Confirm Password';
@@ -99,6 +93,9 @@ class StringsEn extends Strings {
 
   @override
   String get device => 'Device';
+
+  @override
+  String get deviceDisconnected => 'Device disconnected';
 
   @override
   String get deviceIntegration => 'Device Integration';
@@ -155,9 +152,6 @@ class StringsEn extends Strings {
   String get exerciseName => 'Exercise Name';
 
   @override
-  String get avgHR => 'Average Heart Rate';
-
-  @override
   String get exerciseNow => 'Exercise Now';
 
   @override
@@ -170,7 +164,7 @@ class StringsEn extends Strings {
   String get failedConnectToServer => 'Failed connect to server. Using offline mode';
 
   @override
-  String get failedToStartWorkout => 'Failed to start training, to start training, complete your profile';
+  String get failedToStartWorkout => 'Failed to start training, make sure your device is connected';
 
   @override
   String get february => 'February';
@@ -183,6 +177,9 @@ class StringsEn extends Strings {
 
   @override
   String get firstNameCannotBeEmpty => 'First name cannot be empty';
+
+  @override
+  String get fiveMinutesPassedWithZeroHeartRate => 'Five minutes passed with zero heart rate';
 
   @override
   String get forgotPassword => 'Forgot password';
@@ -242,6 +239,9 @@ class StringsEn extends Strings {
   String get march => 'March';
 
   @override
+  String get maxHeartRateReached => 'Maximum heart rate reached, please take a break';
+
+  @override
   String get may => 'May';
 
   @override
@@ -272,6 +272,9 @@ class StringsEn extends Strings {
   String get november => 'November';
 
   @override
+  String get now => 'Now';
+
+  @override
   String get noWorkoutMenuFound => 'No workout menu found';
 
   @override
@@ -279,6 +282,9 @@ class StringsEn extends Strings {
 
   @override
   String get october => 'October';
+
+  @override
+  String get ofMaxHeartRate => 'of Max Heart Rate';
 
   @override
   String get orSignInWith => 'or sign in with';
@@ -395,9 +401,6 @@ class StringsEn extends Strings {
   String get underweight => 'Kurus';
 
   @override
-  String get maxHeartRateReached => 'Maximum heart rate reached, please take a break';
-
-  @override
   String get unknown => 'Unknown';
 
   @override
@@ -429,4 +432,7 @@ class StringsEn extends Strings {
 
   @override
   String get zone => 'Zone';
+
+  @override
+  String get noCompanyFound => 'No company found';
 }

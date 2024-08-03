@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hatofit/core/core.dart';
-import 'package:hatofit/data/models/report/report_model.dart';
+import 'package:hatofit/domain/domain.dart';
 import 'package:hatofit/utils/ext/ext.dart';
 
 class SessionDeviceCard extends StatelessWidget {
-  final List<ReportDeviceModel>? devices;
+  final List<ReportDeviceEntity>? devices;
   const SessionDeviceCard({super.key, this.devices});
 
   @override

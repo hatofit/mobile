@@ -6,7 +6,11 @@ import 'package:hatofit/ui/navigation/cubit/navigation_cubit.dart';
 import 'package:hatofit/utils/utils.dart';
 
 class DeviceDiscover extends StatefulWidget {
-  const DeviceDiscover({super.key});
+  final bool shouldPop;
+  const DeviceDiscover({
+    super.key,
+    this.shouldPop = true,
+  });
 
   @override
   State<DeviceDiscover> createState() => _DeviceDiscoverState();
@@ -19,8 +23,10 @@ class _DeviceDiscoverState extends State<DeviceDiscover> {
       padding: EdgeInsets.symmetric(horizontal: Dimens.width8),
       child: BlocBuilder<NavigationCubit, NavigationState>(
         builder: (context, state) {
-          return state.fDevices != null
-              ? const FoundDevices()
+          return state.fDevices.isNotEmpty
+              ? FoundDevices(
+                  shouldPop: widget.shouldPop,
+                )
               : const Center(
                   child: NoDevice(),
                 );
@@ -31,8 +37,10 @@ class _DeviceDiscoverState extends State<DeviceDiscover> {
 }
 
 class FoundDevices extends StatelessWidget {
+  final bool shouldPop;
   const FoundDevices({
     super.key,
+    this.shouldPop = true,
   });
 
   void onConnectPressed(
@@ -50,7 +58,9 @@ class FoundDevices extends StatelessWidget {
       listener: (context, state) {
         if (state.cDevice != null) {
           context.dismiss();
-          context.pop();
+          if (shouldPop) {
+            context.pop();
+          }
           Strings.of(context)!.successConnectToDevice.toToastSuccess(context);
         } else {
           context.dismiss();
@@ -154,14 +164,13 @@ class FoundDevices extends StatelessWidget {
                                   children: [
                                     Icon(
                                       Icons.bluetooth,
-                                      color:
-                                          state.fDevices[index].isConnectable
-                                              ? Theme.of(context)
-                                                  .extension<AppColors>()!
-                                                  .green
-                                              : Theme.of(context)
-                                                  .extension<AppColors>()!
-                                                  .red,
+                                      color: state.fDevices[index].isConnectable
+                                          ? Theme.of(context)
+                                              .extension<AppColors>()!
+                                              .green
+                                          : Theme.of(context)
+                                              .extension<AppColors>()!
+                                              .red,
                                       size: Dimens.width12,
                                     ),
                                     Text(
@@ -181,8 +190,7 @@ class FoundDevices extends StatelessWidget {
                                   state.cDevice?.address
                               ? ElevatedButton(
                                   onPressed: state.cDevice == null &&
-                                          state
-                                              .fDevices[index].isConnectable &&
+                                          state.fDevices[index].isConnectable &&
                                           !state.isLoading
                                       ? () => onConnectPressed(
                                           context, index, state)

@@ -8,6 +8,7 @@ abstract class UserRepo {
   );
   Future<Either<Failure, UserEntity>> upsertUser(
     RegisterParams params,
+    bool forLocal,
   );
   Future<Either<Failure, void>> deleteUser();
 

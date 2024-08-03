@@ -115,7 +115,7 @@ class ConnectedDevice extends StatelessWidget {
                               ),
                               SizedBox(height: Dimens.height4),
                               Text(
-                                nState.hrSample!.hr.toString(),
+                                nState.hrSample?.hr.toString() ?? '0',
                                 style: thm.textTheme.headlineMedium!.copyWith(
                                   fontWeight: FontWeight.w600,
                                 ),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:hatofit/core/core.dart';
 import 'package:hatofit/utils/utils.dart';
 import 'package:oktoast/oktoast.dart';
+import 'package:youtube_explode_dart/youtube_explode_dart.dart';
 
 extension StringExt on String {
   bool isValidEmail() {
@@ -132,8 +133,40 @@ extension StringExt on String {
     return this;
   }
 
-  // base64 to image
   Uint8List toImage() {
     return base64Decode(this);
   }
+
+  Future<YtVideo> videoURL() async {
+    final yt = YoutubeExplode();
+    var video = await yt.videos.get(this);
+    log.e('video: $video');
+    final manifest = await yt.videos.streamsClient.getManifest(this);
+    log.e('manifest: $manifest');
+    final filter = manifest.muxed.where(
+      (e) => e.container == StreamContainer.mp4,
+    );
+    yt.close();
+
+    return YtVideo(
+      videoInfo: filter.toList(),
+      imageUrl: video.thumbnails.highResUrl,
+      title: video.title,
+      author: video.author,
+    );
+  }
+}
+
+class YtVideo {
+  final List<MuxedStreamInfo> videoInfo;
+  final String imageUrl;
+  final String title;
+  final String author;
+
+  YtVideo({
+    required this.videoInfo,
+    required this.imageUrl,
+    required this.title,
+    required this.author,
+  });
 }

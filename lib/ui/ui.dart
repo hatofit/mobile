@@ -5,4 +5,5 @@ export 'intro/intro.dart';
 export 'navigation/navigation.dart';
 export 'settings/settings.dart';
 export 'splash/splash.dart';
+export 'company/company.dart';
 export 'workout/workout.dart';

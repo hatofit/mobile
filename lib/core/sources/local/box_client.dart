@@ -9,6 +9,7 @@ enum BoxKeys {
   exercise,
   session,
   report,
+  company,
 }
 
 class BoxClient with FirebaseCrashLogger {
@@ -17,6 +18,7 @@ class BoxClient with FirebaseCrashLogger {
   static late Box<ExerciseEntity> _exerciseBox;
   static late Box<SessionEntity> _sessionBox;
   static late Box<ReportEntity> _reportBox;
+  static late Box<CompanyEntity> _companyBox;
 
   static void registAdapter() {
     regisTheme();
@@ -24,6 +26,7 @@ class BoxClient with FirebaseCrashLogger {
     regisExercise();
     regisSession();
     regisReport();
+    regisCompany();
   }
 
   static Future<void> initHive() async {
@@ -45,6 +48,9 @@ class BoxClient with FirebaseCrashLogger {
     if (!Hive.isBoxOpen(BoxKeys.report.name)) {
       _reportBox = await Hive.openBox(BoxKeys.report.name);
     }
+    if (!Hive.isBoxOpen(BoxKeys.company.name)) {
+      _companyBox = await Hive.openBox(BoxKeys.company.name);
+    }
   }
 
   BoxClient() {
@@ -64,5 +70,6 @@ class BoxClient with FirebaseCrashLogger {
   Box<ReportEntity> get reportBox => _reportBox;
 
   Box get appConfigBox => _appConfigBox;
- 
+
+  Box<CompanyEntity> get companyBox => _companyBox;
 }

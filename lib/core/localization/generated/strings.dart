@@ -147,6 +147,12 @@ abstract class Strings {
   /// **'August'**
   String get august;
 
+  /// No description provided for @avgHR.
+  ///
+  /// In en, this message translates to:
+  /// **'Average Heart Rate'**
+  String get avgHR;
+
   /// No description provided for @awful.
   ///
   /// In en, this message translates to:
@@ -170,24 +176,6 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Brand'**
   String get brand;
-
-  /// No description provided for @ofMaxHeartRate.
-  ///
-  /// In en, this message translates to:
-  /// **'of Max Heart Rate'**
-  String get ofMaxHeartRate;
-
-  /// No description provided for @now.
-  ///
-  /// In en, this message translates to:
-  /// **'Now'**
-  String get now;
-
-  /// No description provided for @fiveMinutesPassedWithZeroHeartRate.
-  ///
-  /// In en, this message translates to:
-  /// **'Five minutes passed with zero heart rate'**
-  String get fiveMinutesPassedWithZeroHeartRate;
 
   /// No description provided for @caloriesBurn.
   ///
@@ -219,12 +207,6 @@ abstract class Strings {
   /// **'Choose language'**
   String get chooseLanguage;
 
-  /// No description provided for @deviceDisconnected.
-  ///
-  /// In en, this message translates to:
-  /// **'Device disconnected'**
-  String get deviceDisconnected;
-
   /// No description provided for @chooseTheme.
   ///
   /// In en, this message translates to:
@@ -236,6 +218,12 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Choose your profile photo'**
   String get chooseYourProfilePhoto;
+
+  /// No description provided for @company.
+  ///
+  /// In en, this message translates to:
+  /// **'Company'**
+  String get company;
 
   /// No description provided for @confirmPassword.
   ///
@@ -284,6 +272,12 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Device'**
   String get device;
+
+  /// No description provided for @deviceDisconnected.
+  ///
+  /// In en, this message translates to:
+  /// **'Device disconnected'**
+  String get deviceDisconnected;
 
   /// No description provided for @deviceIntegration.
   ///
@@ -393,12 +387,6 @@ abstract class Strings {
   /// **'Exercise Name'**
   String get exerciseName;
 
-  /// No description provided for @avgHR.
-  ///
-  /// In en, this message translates to:
-  /// **'Average Heart Rate'**
-  String get avgHR;
-
   /// No description provided for @exerciseNow.
   ///
   /// In en, this message translates to:
@@ -426,7 +414,7 @@ abstract class Strings {
   /// No description provided for @failedToStartWorkout.
   ///
   /// In en, this message translates to:
-  /// **'Failed to start training, to start training, complete your profile'**
+  /// **'Failed to start training, make sure your device is connected'**
   String get failedToStartWorkout;
 
   /// No description provided for @february.
@@ -452,6 +440,12 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'First name cannot be empty'**
   String get firstNameCannotBeEmpty;
+
+  /// No description provided for @fiveMinutesPassedWithZeroHeartRate.
+  ///
+  /// In en, this message translates to:
+  /// **'Five minutes passed with zero heart rate'**
+  String get fiveMinutesPassedWithZeroHeartRate;
 
   /// No description provided for @forgotPassword.
   ///
@@ -567,6 +561,12 @@ abstract class Strings {
   /// **'March'**
   String get march;
 
+  /// No description provided for @maxHeartRateReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum heart rate reached, please take a break'**
+  String get maxHeartRateReached;
+
   /// No description provided for @may.
   ///
   /// In en, this message translates to:
@@ -627,6 +627,12 @@ abstract class Strings {
   /// **'November'**
   String get november;
 
+  /// No description provided for @now.
+  ///
+  /// In en, this message translates to:
+  /// **'Now'**
+  String get now;
+
   /// No description provided for @noWorkoutMenuFound.
   ///
   /// In en, this message translates to:
@@ -644,6 +650,12 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'October'**
   String get october;
+
+  /// No description provided for @ofMaxHeartRate.
+  ///
+  /// In en, this message translates to:
+  /// **'of Max Heart Rate'**
+  String get ofMaxHeartRate;
 
   /// No description provided for @orSignInWith.
   ///
@@ -873,12 +885,6 @@ abstract class Strings {
   /// **'Kurus'**
   String get underweight;
 
-  /// No description provided for @maxHeartRateReached.
-  ///
-  /// In en, this message translates to:
-  /// **'Maximum heart rate reached, please take a break'**
-  String get maxHeartRateReached;
-
   /// No description provided for @unknown.
   ///
   /// In en, this message translates to:
@@ -944,6 +950,12 @@ abstract class Strings {
   /// In en, this message translates to:
   /// **'Zone'**
   String get zone;
+
+  /// No description provided for @noCompanyFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No company found'**
+  String get noCompanyFound;
 }
 
 class _StringsDelegate extends LocalizationsDelegate<Strings> {

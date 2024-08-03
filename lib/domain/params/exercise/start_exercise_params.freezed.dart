@@ -20,6 +20,7 @@ mixin _$StartExerciseParams {
   ExerciseEntity? get exercise => throw _privateConstructorUsedError;
   UserEntity get user => throw _privateConstructorUsedError;
   BleEntity? get device => throw _privateConstructorUsedError;
+  String? get companyExerciseId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $StartExerciseParamsCopyWith<StartExerciseParams> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $StartExerciseParamsCopyWith<$Res> {
       {bool isFreeWorkout,
       ExerciseEntity? exercise,
       UserEntity user,
-      BleEntity? device});
+      BleEntity? device,
+      String? companyExerciseId});
 
   $ExerciseEntityCopyWith<$Res>? get exercise;
   $UserEntityCopyWith<$Res> get user;
@@ -60,6 +62,7 @@ class _$StartExerciseParamsCopyWithImpl<$Res, $Val extends StartExerciseParams>
     Object? exercise = freezed,
     Object? user = null,
     Object? device = freezed,
+    Object? companyExerciseId = freezed,
   }) {
     return _then(_value.copyWith(
       isFreeWorkout: null == isFreeWorkout
@@ -78,6 +81,10 @@ class _$StartExerciseParamsCopyWithImpl<$Res, $Val extends StartExerciseParams>
           ? _value.device
           : device // ignore: cast_nullable_to_non_nullable
               as BleEntity?,
+      companyExerciseId: freezed == companyExerciseId
+          ? _value.companyExerciseId
+          : companyExerciseId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -126,7 +133,8 @@ abstract class _$$StartExerciseParamsImplCopyWith<$Res>
       {bool isFreeWorkout,
       ExerciseEntity? exercise,
       UserEntity user,
-      BleEntity? device});
+      BleEntity? device,
+      String? companyExerciseId});
 
   @override
   $ExerciseEntityCopyWith<$Res>? get exercise;
@@ -151,6 +159,7 @@ class __$$StartExerciseParamsImplCopyWithImpl<$Res>
     Object? exercise = freezed,
     Object? user = null,
     Object? device = freezed,
+    Object? companyExerciseId = freezed,
   }) {
     return _then(_$StartExerciseParamsImpl(
       isFreeWorkout: null == isFreeWorkout
@@ -169,6 +178,10 @@ class __$$StartExerciseParamsImplCopyWithImpl<$Res>
           ? _value.device
           : device // ignore: cast_nullable_to_non_nullable
               as BleEntity?,
+      companyExerciseId: freezed == companyExerciseId
+          ? _value.companyExerciseId
+          : companyExerciseId // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -180,7 +193,8 @@ class _$StartExerciseParamsImpl implements _StartExerciseParams {
       {required this.isFreeWorkout,
       required this.exercise,
       required this.user,
-      required this.device});
+      required this.device,
+      required this.companyExerciseId});
 
   @override
   final bool isFreeWorkout;
@@ -190,10 +204,12 @@ class _$StartExerciseParamsImpl implements _StartExerciseParams {
   final UserEntity user;
   @override
   final BleEntity? device;
+  @override
+  final String? companyExerciseId;
 
   @override
   String toString() {
-    return 'StartExerciseParams(isFreeWorkout: $isFreeWorkout, exercise: $exercise, user: $user, device: $device)';
+    return 'StartExerciseParams(isFreeWorkout: $isFreeWorkout, exercise: $exercise, user: $user, device: $device, companyExerciseId: $companyExerciseId)';
   }
 
   @override
@@ -206,12 +222,14 @@ class _$StartExerciseParamsImpl implements _StartExerciseParams {
             (identical(other.exercise, exercise) ||
                 other.exercise == exercise) &&
             (identical(other.user, user) || other.user == user) &&
-            (identical(other.device, device) || other.device == device));
+            (identical(other.device, device) || other.device == device) &&
+            (identical(other.companyExerciseId, companyExerciseId) ||
+                other.companyExerciseId == companyExerciseId));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isFreeWorkout, exercise, user, device);
+  int get hashCode => Object.hash(
+      runtimeType, isFreeWorkout, exercise, user, device, companyExerciseId);
 
   @JsonKey(ignore: true)
   @override
@@ -226,7 +244,8 @@ abstract class _StartExerciseParams implements StartExerciseParams {
       {required final bool isFreeWorkout,
       required final ExerciseEntity? exercise,
       required final UserEntity user,
-      required final BleEntity? device}) = _$StartExerciseParamsImpl;
+      required final BleEntity? device,
+      required final String? companyExerciseId}) = _$StartExerciseParamsImpl;
 
   @override
   bool get isFreeWorkout;
@@ -236,6 +255,8 @@ abstract class _StartExerciseParams implements StartExerciseParams {
   UserEntity get user;
   @override
   BleEntity? get device;
+  @override
+  String? get companyExerciseId;
   @override
   @JsonKey(ignore: true)
   _$$StartExerciseParamsImplCopyWith<_$StartExerciseParamsImpl> get copyWith =>

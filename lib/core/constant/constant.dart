@@ -30,5 +30,10 @@ class Constants {
 
   String placeholderImage =
       "https://untirta.ac.id/wp-content/uploads/2023/08/placeholder-44.png";
- 
+
+  String gymPlaceholderImage =
+      'https://hatofit.com/_ipx/_/images/scene/risen-wang-20jX9b35r_M-unsplash.jpg';
+
+  String exercisePlaceholderVideo =
+      'https://youtu.be/89yP76HLtjc?si=Ile13chJI4794Db2';
 }

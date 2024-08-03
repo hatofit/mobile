@@ -1,6 +1,13 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hatofit/core/core.dart';
+import 'package:hatofit/domain/domain.dart';
+import 'package:hatofit/ui/ui.dart';
+import 'package:hatofit/utils/utils.dart';
 
 extension ContextExtensions on BuildContext {
   bool isMobile() {
@@ -135,6 +142,94 @@ extension ContextExtensions on BuildContext {
           ),
         ),
       ),
+    );
+  }
+
+  finishWorkout({
+    bool isFreeWorkout = false,
+    UserEntity? user,
+    BleEntity? device,
+    ExerciseEntity? exercise,
+    String? companyExerciseId,
+  }) {
+    return showDialog<bool>(
+      context: this,
+      builder: (_) {
+        return AlertDialog(
+          title: Text(Strings.of(this)!.endTraining),
+          content: Text(Strings.of(this)!.areYouSureYouWantToEndWorkout),
+          actions: <Widget>[
+            TextButton(
+              style: TextButton.styleFrom(
+                  textStyle: Theme.of(this).textTheme.labelLarge),
+              child: Text(Strings.of(this)!.no),
+              onPressed: () {
+                final navigator = Navigator.of(this, rootNavigator: true);
+                navigator.pop();
+              },
+            ),
+            TextButton(
+              style: TextButton.styleFrom(
+                  textStyle: Theme.of(this).textTheme.labelLarge),
+              child: Text(Strings.of(this)!.yes),
+              onPressed: () async {
+                final navigator = Navigator.of(this, rootNavigator: true);
+                navigator.pop();
+                String mood = 'neutral';
+                showDialog<String>(
+                    barrierDismissible: false,
+                    context: this,
+                    builder: (_) {
+                      return AlertDialog(
+                        title: Text(
+                          Strings.of(this)!.whatMoodAreYouIn,
+                          style: Theme.of(this).textTheme.titleMedium,
+                        ),
+                        content: EmojiPicker(
+                          onEmojiSelected: (p0) {
+                            mood = p0;
+                            final navigator =
+                                Navigator.of(this, rootNavigator: true);
+                            navigator.pop();
+                          },
+                        ),
+                      );
+                    }).then((_) {
+                  show();
+                  try {
+                    final nCub = read<NavigationCubit>();
+                    final wCub = read<WorkoutCubit>();
+                    wCub.isStarted = false;
+                    wCub
+                        .endWorkout(
+                      isFreeWorkout: isFreeWorkout,
+                      session: wCub.ses,
+                      user: user,
+                      ble: device ?? nCub.state.cDevice!,
+                      mood: mood,
+                      exercise: exercise,
+                      companyExerciseId: companyExerciseId,
+                    )
+                        .then((value) {
+                      final navigator = Navigator.of(this, rootNavigator: true);
+                      navigator.pop();
+                      if (value) {
+                        replaceNamed(Routes.home.name);
+                      } else {
+                        Strings.of(this)!
+                            .somethingWentWrong
+                            .toToastError(this, textAlign: TextAlign.center);
+                      }
+                    });
+                  } catch (e) {
+                    Strings.of(this)!.somethingWentWrong.toToastError(this);
+                  }
+                });
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

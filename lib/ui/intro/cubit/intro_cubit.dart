@@ -138,12 +138,14 @@ class IntroCubit extends Cubit<IntroState> {
             ?.copyWith(metricUnits: UserMetricUnitsEntity(energyUnits: val))));
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase
-          .call(RegisterParams.fromUser(user).copyWith(metricUnits: {
-        "energyUnits": val,
-        "heightUnits": user.metricUnits?.heightUnits ?? "cm",
-        "weightUnits": user.metricUnits?.weightUnits ?? "kg",
-      }));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        metricUnits: {
+          "energyUnits": val,
+          "heightUnits": user.metricUnits?.heightUnits ?? "cm",
+          "weightUnits": user.metricUnits?.weightUnits ?? "kg",
+        },
+        forLocal: true,
+      ));
     }
   }
 
@@ -153,12 +155,14 @@ class IntroCubit extends Cubit<IntroState> {
             ?.copyWith(metricUnits: UserMetricUnitsEntity(heightUnits: val))));
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase
-          .call(RegisterParams.fromUser(user).copyWith(metricUnits: {
-        "energyUnits": user.metricUnits?.energyUnits ?? "kcal",
-        "heightUnits": val,
-        "weightUnits": user.metricUnits?.weightUnits ?? "kg",
-      }));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        metricUnits: {
+          "energyUnits": user.metricUnits?.energyUnits ?? "kcal",
+          "heightUnits": val,
+          "weightUnits": user.metricUnits?.weightUnits ?? "kg",
+        },
+        forLocal: true,
+      ));
     }
   }
 
@@ -168,12 +172,14 @@ class IntroCubit extends Cubit<IntroState> {
             ?.copyWith(metricUnits: UserMetricUnitsEntity(weightUnits: val))));
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase
-          .call(RegisterParams.fromUser(user).copyWith(metricUnits: {
-        "energyUnits": user.metricUnits?.energyUnits ?? "kcal",
-        "heightUnits": user.metricUnits?.heightUnits ?? "cm",
-        "weightUnits": val,
-      }));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        metricUnits: {
+          "energyUnits": user.metricUnits?.energyUnits ?? "kcal",
+          "heightUnits": user.metricUnits?.heightUnits ?? "cm",
+          "weightUnits": val,
+        },
+        forLocal: true,
+      ));
     }
   }
 
@@ -181,8 +187,10 @@ class IntroCubit extends Cubit<IntroState> {
     emit(state.copyWith(user: state.user?.copyWith(gender: gender)));
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase
-          .call(RegisterParams.fromUser(user).copyWith(gender: gender));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        gender: gender,
+        forLocal: true,
+      ));
     }
   }
 
@@ -190,8 +198,10 @@ class IntroCubit extends Cubit<IntroState> {
     emit(state.copyWith(user: state.user?.copyWith(height: height)));
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase
-          .call(RegisterParams.fromUser(user).copyWith(height: height));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        height: height,
+        forLocal: true,
+      ));
     }
   }
 
@@ -199,8 +209,10 @@ class IntroCubit extends Cubit<IntroState> {
     emit(state.copyWith(user: state.user?.copyWith(weight: weight)));
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase
-          .call(RegisterParams.fromUser(user).copyWith(weight: weight));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        weight: weight,
+        forLocal: true,
+      ));
     }
   }
 
@@ -208,15 +220,19 @@ class IntroCubit extends Cubit<IntroState> {
     emit(state.copyWith(user: state.user?.copyWith(dateOfBirth: dateOfBirth)));
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase.call(RegisterParams.fromUser(user)
-          .copyWith(dateOfBirth: dateOfBirth.toString()));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        dateOfBirth: dateOfBirth.toString(),
+        forLocal: true,
+      ));
     }
   }
 
   Future<void> updateAll() async {
     final user = state.user;
     if (user != null) {
-      await _upsertUserUsecase.call(RegisterParams.fromUser(user));
+      await _upsertUserUsecase.call(RegisterParams.fromUser(user).copyWith(
+        forLocal: true,
+      ));
     }
   }
 

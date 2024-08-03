@@ -6,4 +6,3 @@ class WorkoutState with _$WorkoutState {
   const factory WorkoutState.success(List<ExerciseEntity> exercises) = _Success;
   const factory WorkoutState.failure(Failure message) = _Failure;
 }
-

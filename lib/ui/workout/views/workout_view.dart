@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hatofit/core/core.dart';
+import 'package:hatofit/domain/domain.dart';
 import 'package:hatofit/ui/ui.dart';
 import 'package:hatofit/utils/utils.dart';
 
 class WorkoutView extends StatelessWidget {
-  const WorkoutView({super.key});
+  final CompanyEntity company;
+  const WorkoutView({super.key, required this.company});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,9 @@ class WorkoutView extends StatelessWidget {
       },
       child: Parent(
         appBar: AppBar(
-          title: Text(Strings.of(context)!.workout),
+          title: Text(
+            '${company.name ?? ''} ${Strings.of(context)!.workout}',
+          ),
           titleTextStyle: Theme.of(context).textTheme.titleLarge,
         ),
         child: BlocBuilder<WorkoutCubit, WorkoutState>(
@@ -37,52 +41,94 @@ class WorkoutView extends StatelessWidget {
                 itemCount: exercises.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
+                  childAspectRatio: 0.85,
                 ),
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () => context.pushNamed(Routes.workoutDetail.name),
-                  child: Card(
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child: AspectRatio(
-                            aspectRatio: 2 / 1.1,
-                            child: CachedNetworkImage(
-                              fit: BoxFit.cover,
-                              imageUrl: exercises[index].thumbnail ??
-                                  Constants.get.placeholderImage,
-                              colorBlendMode: BlendMode.darken,
-                              color: context.isDarkMode
-                                  ? Colors.black.withOpacity(0.5)
-                                  : Colors.black.withOpacity(0.25),
+                itemBuilder: (context, index) {
+                  ExerciseEntity exercise = exercises[index];
+
+                  final thumbnail = (exercise.thumbnail?.isNotEmpty ?? false)
+                      ? exercise.thumbnail ?? Constants.get.placeholderImage
+                      : Constants.get.placeholderImage;
+
+                  exercise = exercise.copyWith(
+                    thumbnail: thumbnail,
+                  );
+
+                  return InkWell(
+                    onTap: () => context.pushNamed(
+                      Routes.workoutDetail.name,
+                      extra: {
+                        'exercise': exercise,
+                      },
+                    ),
+                    child: Card(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: AspectRatio(
+                              aspectRatio: 2 / 1.3,
+                              child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                imageUrl: thumbnail,
+                                colorBlendMode: BlendMode.darken,
+                                color: context.isDarkMode
+                                    ? Colors.black.withOpacity(0.5)
+                                    : Colors.black.withOpacity(0.25),
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                exercises[index].name ?? '',
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
+                          Padding(
+                            padding: const EdgeInsets.all(8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  exercise.name ?? '',
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                exercises[index].description ?? '',
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
+                                const SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.fitness_center,
+                                      size: 16,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      '${exercise.instructions?.length ?? 0} sets',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 4),
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.timer,
+                                      size: 16,
+                                    ),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      '${exercise.duration} sec',
+                                      style:
+                                          Theme.of(context).textTheme.bodySmall,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ),
+                  );
+                },
               );
             },
           ),

@@ -19,21 +19,24 @@ mixin _$ActivityState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<SessionEntity> session) success,
+    required TResult Function(List<SessionEntity> session, ReportEntity? report)
+        success,
     required TResult Function(Failure message) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<SessionEntity> session)? success,
+    TResult? Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult? Function(Failure message)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<SessionEntity> session)? success,
+    TResult Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult Function(Failure message)? failure,
     required TResult orElse(),
   }) =>
@@ -119,7 +122,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<SessionEntity> session) success,
+    required TResult Function(List<SessionEntity> session, ReportEntity? report)
+        success,
     required TResult Function(Failure message) failure,
   }) {
     return loading();
@@ -129,7 +133,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<SessionEntity> session)? success,
+    TResult? Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult? Function(Failure message)? failure,
   }) {
     return loading?.call();
@@ -139,7 +144,8 @@ class _$LoadingImpl implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<SessionEntity> session)? success,
+    TResult Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult Function(Failure message)? failure,
     required TResult orElse(),
   }) {
@@ -194,7 +200,9 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<SessionEntity> session});
+  $Res call({List<SessionEntity> session, ReportEntity? report});
+
+  $ReportEntityCopyWith<$Res>? get report;
 }
 
 /// @nodoc
@@ -209,23 +217,43 @@ class __$$SuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? session = null,
+    Object? report = freezed,
   }) {
     return _then(_$SuccessImpl(
-      null == session
+      session: null == session
           ? _value._session
           : session // ignore: cast_nullable_to_non_nullable
               as List<SessionEntity>,
+      report: freezed == report
+          ? _value.report
+          : report // ignore: cast_nullable_to_non_nullable
+              as ReportEntity?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ReportEntityCopyWith<$Res>? get report {
+    if (_value.report == null) {
+      return null;
+    }
+
+    return $ReportEntityCopyWith<$Res>(_value.report!, (value) {
+      return _then(_value.copyWith(report: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  const _$SuccessImpl(final List<SessionEntity> session) : _session = session;
+  const _$SuccessImpl(
+      {final List<SessionEntity> session = const [], this.report})
+      : _session = session;
 
   final List<SessionEntity> _session;
   @override
+  @JsonKey()
   List<SessionEntity> get session {
     if (_session is EqualUnmodifiableListView) return _session;
     // ignore: implicit_dynamic_type
@@ -233,8 +261,11 @@ class _$SuccessImpl implements _Success {
   }
 
   @override
+  final ReportEntity? report;
+
+  @override
   String toString() {
-    return 'ActivityState.success(session: $session)';
+    return 'ActivityState.success(session: $session, report: $report)';
   }
 
   @override
@@ -242,12 +273,13 @@ class _$SuccessImpl implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$SuccessImpl &&
-            const DeepCollectionEquality().equals(other._session, _session));
+            const DeepCollectionEquality().equals(other._session, _session) &&
+            (identical(other.report, report) || other.report == report));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_session));
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_session), report);
 
   @JsonKey(ignore: true)
   @override
@@ -259,32 +291,35 @@ class _$SuccessImpl implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<SessionEntity> session) success,
+    required TResult Function(List<SessionEntity> session, ReportEntity? report)
+        success,
     required TResult Function(Failure message) failure,
   }) {
-    return success(session);
+    return success(session, report);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<SessionEntity> session)? success,
+    TResult? Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult? Function(Failure message)? failure,
   }) {
-    return success?.call(session);
+    return success?.call(session, report);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<SessionEntity> session)? success,
+    TResult Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult Function(Failure message)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(session);
+      return success(session, report);
     }
     return orElse();
   }
@@ -325,9 +360,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements ActivityState {
-  const factory _Success(final List<SessionEntity> session) = _$SuccessImpl;
+  const factory _Success(
+      {final List<SessionEntity> session,
+      final ReportEntity? report}) = _$SuccessImpl;
 
   List<SessionEntity> get session;
+  ReportEntity? get report;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -398,7 +436,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<SessionEntity> session) success,
+    required TResult Function(List<SessionEntity> session, ReportEntity? report)
+        success,
     required TResult Function(Failure message) failure,
   }) {
     return failure(message);
@@ -408,7 +447,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loading,
-    TResult? Function(List<SessionEntity> session)? success,
+    TResult? Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult? Function(Failure message)? failure,
   }) {
     return failure?.call(message);
@@ -418,7 +458,8 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<SessionEntity> session)? success,
+    TResult Function(List<SessionEntity> session, ReportEntity? report)?
+        success,
     TResult Function(Failure message)? failure,
     required TResult orElse(),
   }) {

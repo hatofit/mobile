@@ -30,7 +30,7 @@ Future<void> _initHiveBoxes() async {
 
 Future<void> _initNetwork() async {
   // await NetworkInfo.initNetworkInfo();
-  di.registerSingleton<NetworkInfo>(NetworkInfo());
+  // di.registerSingleton<NetworkInfo>(NetworkInfo());
   di.registerSingleton<DioClient>(DioClient(
     di(),
   ));
@@ -54,6 +54,9 @@ void _remoteDataSources() {
   di.registerLazySingleton<ReportRemoteDataSource>(
     () => ReportRemoteDataSourceImpl(di()),
   );
+  di.registerLazySingleton<CompanyRemoteDataSource>(
+    () => CompanyRemoteDataSourceImpl(di()),
+  );
 }
 
 void _localDataSources() {
@@ -75,11 +78,17 @@ void _localDataSources() {
   di.registerLazySingleton<AppConfigLocalDataSource>(
     () => AppConfigLocalDataSourceImpl(di()),
   );
+  di.registerLazySingleton<CompanyLocalDataSource>(
+    () => CompanyLocalDataSourceImpl(di()),
+  );
 }
 
 void _repositories() {
   di.registerLazySingleton<AuthRepo>(
-    () => AuthRepoImpl(di(), di(), di()),
+    () => AuthRepoImpl(
+      di(),
+      di(),
+    ),
   );
   di.registerLazySingleton<PolarBLERepo>(
     () => PolarBLERepoImpl(di()),
@@ -91,13 +100,11 @@ void _repositories() {
     () => ImageRepoImpl(
       di(),
       di(),
-      di(),
     ),
   );
 
   di.registerLazySingleton<ExerciseRepo>(
     () => ExerciseRepoImpl(
-      di(),
       di(),
       di(),
     ),
@@ -106,12 +113,10 @@ void _repositories() {
     () => SessionRepoImpl(
       di(),
       di(),
-      di(),
     ),
   );
   di.registerLazySingleton<UserRepo>(
     () => UserRepoImpl(
-      di(),
       di(),
       di(),
     ),
@@ -120,18 +125,22 @@ void _repositories() {
     () => ReportRepoImpl(
       di(),
       di(),
-      di(),
     ),
   );
   di.registerLazySingleton<FirebaseRemoteConfigRepo>(
     () => FirebaseRemoteConfigRepoImpl(
       di(),
       di(),
-      di(),
     ),
   );
   di.registerLazySingleton<AppConfigRepo>(
     () => AppConfigRepoImpl(
+      di(),
+    ),
+  );
+  di.registerLazySingleton<CompanyRepo>(
+    () => CompanyRepoImpl(
+      di(),
       di(),
     ),
   );
@@ -182,6 +191,7 @@ void _useCase() {
   ///
   di.registerLazySingleton(() => ExerciseByIdUsecase(di()));
   di.registerLazySingleton(() => ExerciseAllUsecase(di()));
+  di.registerLazySingleton(() => ExerciseByCompanyIdUsecase(di()));
 
   /// [Session]
   ///
@@ -220,6 +230,10 @@ void _useCase() {
   di.registerLazySingleton(() => UpdateActiveThemeUsecase(di()));
   di.registerLazySingleton(() => UpesertLanguageUsecase(di()));
   di.registerLazySingleton(() => UpdateOfflineModeUsecase(di()));
+
+  /// [Company]
+  di.registerLazySingleton(() => CompanyAllUsecase(di()));
+  di.registerLazySingleton(() => CompanyByIdUsecase(di()));
 }
 
 void _cubit() {
@@ -273,8 +287,14 @@ void _cubit() {
         di(),
         di(),
         di(),
+        di(),
       ));
   di.registerFactory(() => ActivityCubit(
+        di(),
+        di(),
+      ));
+
+  di.registerFactory(() => CompanyCubit(
         di(),
       ));
   regNavCubit();

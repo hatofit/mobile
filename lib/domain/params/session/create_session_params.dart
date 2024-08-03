@@ -7,12 +7,14 @@ part 'create_session_params.g.dart';
 class CreateSessionParams with _$CreateSessionParams {
   const factory CreateSessionParams({
     @Default("") String userId,
-    @Default("") String exerciseId,
+    String? exerciseId,
     @Default(0) int startTime,
     @Default(0) int endTime,
     @Default("") String mood,
     @Default([]) List<SessionTimelineParams> timelines,
     @Default([]) List<SessionDataItemParams> data,
+    @Default(true) withoutExercise,
+    String? companyExerciseId,
   }) = _CreateSessionParams;
 
   factory CreateSessionParams.fromJson(Map<String, dynamic> json) =>

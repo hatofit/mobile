@@ -69,7 +69,7 @@ _$ReportDataValueModelImpl _$$ReportDataValueModelImplFromJson(
     _$ReportDataValueModelImpl(
       device: json['device'] as String?,
       value: (json['value'] as List<dynamic>?)
-          ?.map((e) => e as List<dynamic>)
+          ?.map((e) => (e as List<dynamic>).map((e) => e as int).toList())
           .toList(),
     );
 

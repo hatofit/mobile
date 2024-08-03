@@ -10,5 +10,6 @@ class StartExerciseParams with _$StartExerciseParams {
     required ExerciseEntity? exercise,
     required UserEntity user,
     required BleEntity? device,
+    required String? companyExerciseId,
   }) = _StartExerciseParams;
 }

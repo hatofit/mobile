@@ -1,6 +1,7 @@
 export 'app_config_repo_impl.dart';
 export 'auth_repo_impl.dart';
 export 'ble/ble_repo.dart';
+export 'company_repo_impl.dart';
 export 'exercise_repo_impl.dart';
 export 'firebase_remote_config_repo_impl.dart';
 export 'image_repo_impl.dart';

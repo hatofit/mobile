@@ -11,6 +11,10 @@ abstract class ExerciseLocalDataSource {
     ByIdParams params,
   );
   Future<Either<Failure, List<ExerciseEntity>>> readExerciseAll();
+
+  Future<Either<Failure, List<ExerciseEntity>>> readExerciseByCompanyId(
+    ByIdParams params,
+  );
 }
 
 class ExerciseLocalDataSourceImpl
@@ -93,6 +97,31 @@ class ExerciseLocalDataSourceImpl
       }
 
       return Right(all.toList());
+    } catch (e, s) {
+      nonFatalError(error: e, stackTrace: s);
+      return Left(CacheFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ExerciseEntity>>> readExerciseByCompanyId(
+    ByIdParams params,
+  ) async {
+    try {
+      final all = _box.exerciseBox.toMap();
+      List<ExerciseEntity> found = [];
+
+      for (var element in all.entries) {
+        if (element.value.id == params.id) {
+          found.add(element.value);
+        }
+      }
+
+      if (found.isEmpty) {
+        return const Left(CacheFailure("Exercises not found"));
+      }
+
+      return Right(found);
     } catch (e, s) {
       nonFatalError(error: e, stackTrace: s);
       return Left(CacheFailure(e.toString()));

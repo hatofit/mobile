@@ -6,8 +6,11 @@ import 'package:syncfusion_flutter_gauges/gauges.dart';
 class HrPercentGauge extends StatelessWidget {
   final int percent;
   final HrZoneType zoneType;
-  const HrPercentGauge(
-      {super.key, required this.percent, required this.zoneType});
+  const HrPercentGauge({
+    super.key,
+    required this.percent,
+    required this.zoneType,
+  });
 
   @override
   Widget build(BuildContext context) {

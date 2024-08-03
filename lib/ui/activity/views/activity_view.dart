@@ -30,7 +30,8 @@ class ActivityView extends StatelessWidget {
               }
               return Center(child: Text(message.toString()));
             },
-            success: (session) {
+            success: (session, _) {
+              log.e('session: $session');
               return ListView.builder(
                 itemCount: session.length,
                 itemBuilder: (context, index) => GestureDetector(

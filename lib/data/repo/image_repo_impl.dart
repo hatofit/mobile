@@ -9,11 +9,10 @@ import 'package:hatofit/domain/domain.dart';
 class ImageRepoImpl implements ImageRepo {
   final ImageLocalDataSource _local;
   final ImageRemoteDataSource _remote;
-  final NetworkInfo _info;
+
   ImageRepoImpl(
     this._local,
     this._remote,
-    this._info,
   );
 
   @override
@@ -32,16 +31,12 @@ class ImageRepoImpl implements ImageRepo {
   Future<Either<Failure, File>> downloadImage(
     DownloadImageParams params,
   ) async {
-    if (await _info.isGlobalConnected) {
-      final res = await _remote.downloadImage(params);
-      return res.fold((l) => Left(l), (r) {
-        CachedNetworkImage(
-          imageUrl: params.url,
-        );
-        return Right(r);
-      });
-    } else {
-      return const Left(NoInternetFailure());
-    }
+    final res = await _remote.downloadImage(params);
+    return res.fold((l) => Left(l), (r) {
+      CachedNetworkImage(
+        imageUrl: params.url,
+      );
+      return Right(r);
+    });
   }
 }

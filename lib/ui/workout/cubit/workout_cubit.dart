@@ -13,17 +13,24 @@ part 'workout_state.dart';
 
 class WorkoutCubit extends Cubit<WorkoutState> with VibratorMixin {
   final ExerciseAllUsecase _exercisesAllUsecase;
+  final ExerciseByCompanyIdUsecase _exercisesByCompanyIdUsecase;
   final ReadUserUsecase _readUserUsecase;
   final CreateSessionUsecase _createSessionUsecase;
+
   WorkoutCubit(
     this._exercisesAllUsecase,
     this._readUserUsecase,
     this._createSessionUsecase,
+    this._exercisesByCompanyIdUsecase,
   ) : super(const _Loading());
 
-  Future<void> init() async {
-    await getExercises();
+  Future<void> init({int? companyId}) async {
     await getUser();
+    if (companyId != null) {
+      await getExercisesByCompanyId(companyId);
+    } else {
+      await getExercises();
+    }
   }
 
   UserEntity? user;
@@ -34,7 +41,9 @@ class WorkoutCubit extends Cubit<WorkoutState> with VibratorMixin {
       (l) {
         user = null;
       },
-      (r) => user = r,
+      (r) {
+        user = r;
+      },
     );
   }
 
@@ -48,6 +57,22 @@ class WorkoutCubit extends Cubit<WorkoutState> with VibratorMixin {
         emit(_Failure(l));
       },
       (r) => emit(_Success(r)),
+    );
+  }
+
+  Future<void> getExercisesByCompanyId(int companyId) async {
+    emit(const _Loading());
+    final res = await _exercisesByCompanyIdUsecase
+        .call(ByIdParams(id: companyId.toString()));
+    res.fold(
+      (l) {
+        emit(_Failure(l));
+      },
+      (r) {
+        if (!isClosed) {
+          emit(_Success(r));
+        }
+      },
     );
   }
 
@@ -81,11 +106,19 @@ class WorkoutCubit extends Cubit<WorkoutState> with VibratorMixin {
     required UserEntity? user,
     required BleEntity ble,
     required String mood,
-    ExerciseEntity? exercise,
+    required ExerciseEntity? exercise,
+    required String? companyExerciseId,
   }) async {
     isStarted = false;
     if (user != null && exercise != null) {
-      final params = await session.createParams(user, exercise, mood, ble);
+      final params = await session.createParams(
+        user,
+        exercise,
+        mood,
+        ble,
+        companyExerciseId,
+        isFreeWorkout,
+      );
       final res = await _createSessionUsecase.call(params);
       return res.fold(
         (l) {

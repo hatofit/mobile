@@ -10,7 +10,7 @@ _$CreateSessionParamsImpl _$$CreateSessionParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateSessionParamsImpl(
       userId: json['userId'] as String? ?? "",
-      exerciseId: json['exerciseId'] as String? ?? "",
+      exerciseId: json['exerciseId'] as String?,
       startTime: json['startTime'] as int? ?? 0,
       endTime: json['endTime'] as int? ?? 0,
       mood: json['mood'] as String? ?? "",
@@ -24,6 +24,8 @@ _$CreateSessionParamsImpl _$$CreateSessionParamsImplFromJson(
                   SessionDataItemParams.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      withoutExercise: json['withoutExercise'] ?? true,
+      companyExerciseId: json['companyExerciseId'] as String?,
     );
 
 Map<String, dynamic> _$$CreateSessionParamsImplToJson(
@@ -36,6 +38,8 @@ Map<String, dynamic> _$$CreateSessionParamsImplToJson(
       'mood': instance.mood,
       'timelines': instance.timelines.map((e) => e.toJson()).toList(),
       'data': instance.data.map((e) => e.toJson()).toList(),
+      'withoutExercise': instance.withoutExercise,
+      'companyExerciseId': instance.companyExerciseId,
     };
 
 _$SessionTimelineParamsImpl _$$SessionTimelineParamsImplFromJson(

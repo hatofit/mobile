@@ -31,6 +31,7 @@ class ReportDeviceEntity with _$ReportDeviceEntity {
   const factory ReportDeviceEntity({
     @HiveField(0) String? name,
     @HiveField(1) String? identifier,
+    @HiveField(3) String? brand,
   }) = _ReportDeviceEntity;
 }
 
@@ -54,11 +55,11 @@ class ReportDataValueEntity with _$ReportDataValueEntity {
   )
   const factory ReportDataValueEntity({
     @HiveField(0) String? device,
-    @HiveField(1) List<List<dynamic>>? value,
+    @HiveField(1) List<List<int>>? value,
   }) = _ReportDataValueEntity;
 }
 
-void regisReport(){
+void regisReport() {
   if (!Hive.isAdapterRegistered(BoxTypeId.reportEntityIndex)) {
     Hive.registerAdapter(ReportEntityAdapter());
   }

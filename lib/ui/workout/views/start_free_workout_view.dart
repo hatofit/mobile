@@ -3,18 +3,17 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hatofit/core/core.dart';
 import 'package:hatofit/domain/domain.dart';
 import 'package:hatofit/ui/ui.dart';
 import 'package:hatofit/utils/utils.dart';
 
-class StartWorkoutView extends StatefulWidget {
+class StartFreeWorkoutView extends StatefulWidget {
   final bool isFreeWorkout;
   final UserEntity user;
   final BleEntity? device;
   final ExerciseEntity? exercise;
-  const StartWorkoutView({
+  const StartFreeWorkoutView({
     super.key,
     required this.isFreeWorkout,
     required this.user,
@@ -23,10 +22,10 @@ class StartWorkoutView extends StatefulWidget {
   });
 
   @override
-  State<StartWorkoutView> createState() => _StartWorkoutViewState();
+  State<StartFreeWorkoutView> createState() => _StartFreeWorkoutViewState();
 }
 
-class _StartWorkoutViewState extends State<StartWorkoutView> {
+class _StartFreeWorkoutViewState extends State<StartFreeWorkoutView> {
   int second = 0;
   BleEntity? device;
   Timer? timer;
@@ -59,103 +58,24 @@ class _StartWorkoutViewState extends State<StartWorkoutView> {
     super.dispose();
   }
 
-  _finishWorkout(BuildContext ctx) {
-    return showDialog<bool>(
-      context: ctx,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(Strings.of(context)!.endTraining),
-          content: Text(Strings.of(context)!.areYouSureYouWantToEndWorkout),
-          actions: <Widget>[
-            TextButton(
-              style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge),
-              child: Text(Strings.of(context)!.no),
-              onPressed: () {
-                final navigator = Navigator.of(context, rootNavigator: true);
-                navigator.pop();
-              },
-            ),
-            TextButton(
-              style: TextButton.styleFrom(
-                  textStyle: Theme.of(context).textTheme.labelLarge),
-              child: Text(Strings.of(context)!.yes),
-              onPressed: () async {
-                final navigator = Navigator.of(context, rootNavigator: true);
-                navigator.pop();
-                _showEmojiPicker(ctx);
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  String mood = 'neutral';
-  _showEmojiPicker(BuildContext ctx) {
-    showDialog<String>(
-        barrierDismissible: false,
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text(
-              Strings.of(context)!.whatMoodAreYouIn,
-              style: Theme.of(context).textTheme.titleMedium,
-            ),
-            content: EmojiPicker(
-              onEmojiSelected: (p0) {
-                mood = p0;
-                final navigator = Navigator.of(context, rootNavigator: true);
-                navigator.pop();
-              },
-            ),
-          );
-        }).then((_) {
-      ctx.show();
-      try {
-        final nCub = ctx.read<NavigationCubit>();
-        final wCub = ctx.read<WorkoutCubit>();
-        wCub.isStarted = false;
-        wCub
-            .endWorkout(
-          isFreeWorkout: widget.isFreeWorkout,
-          session: wCub.ses,
-          user: widget.user,
-          ble: widget.device ?? nCub.state.cDevice!,
-          mood: mood,
-          exercise: widget.exercise,
-        )
-            .then((value) {
-          final navigator = Navigator.of(context, rootNavigator: true);
-          navigator.pop();
-          if (value) {
-            ctx.replaceNamed(Routes.home.name);
-          } else {
-            Strings.of(ctx)!
-                .somethingWentWrong
-                .toToastError(ctx, textAlign: TextAlign.center);
-          }
-        });
-      } catch (e) {
-        Strings.of(ctx)!.somethingWentWrong.toToastError(ctx);
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       onPopInvoked: (didPop) {
         if (!didPop) return;
-        _finishWorkout(context);
+        context.finishWorkout();
       },
       child: Parent(
         floatingButton: FloatingActionButton.extended(
           backgroundColor: Theme.of(context).primaryColor,
           onPressed: () {
-            _finishWorkout(context);
+            context.finishWorkout(
+              isFreeWorkout: widget.isFreeWorkout,
+              user: widget.user,
+              device: device,
+              exercise: widget.exercise,
+            );
           },
           label: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -182,7 +102,12 @@ class _StartWorkoutViewState extends State<StartWorkoutView> {
               if (state.conState == BluetoothConnectionState.disconnected) {
                 Strings.of(context)!.deviceDisconnected.toToastError(context);
                 Future.delayed(const Duration(seconds: 1), () {
-                  _finishWorkout(context);
+                  context.finishWorkout(
+                    isFreeWorkout: widget.isFreeWorkout,
+                    user: widget.user,
+                    device: device,
+                    exercise: widget.exercise,
+                  );
                 });
               }
               if (state.hrSample?.hr == 0) {
@@ -192,7 +117,12 @@ class _StartWorkoutViewState extends State<StartWorkoutView> {
                       .fiveMinutesPassedWithZeroHeartRate
                       .toToastError(context);
                   Future.delayed(const Duration(seconds: 1), () {
-                    _finishWorkout(context);
+                    context.finishWorkout(
+                      isFreeWorkout: widget.isFreeWorkout,
+                      user: widget.user,
+                      device: device,
+                      exercise: widget.exercise,
+                    );
                   });
                 }
               } else {

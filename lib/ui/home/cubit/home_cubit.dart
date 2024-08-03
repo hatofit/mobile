@@ -56,7 +56,8 @@ class HomeCubit extends Cubit<HomeState> {
       int calories = 0;
       final nDate = formatter.format(DateTime.now());
       for (final i in r) {
-        final sTime = DateTime.fromMicrosecondsSinceEpoch(i.startTime!);
+        final sTime = DateTime.fromMicrosecondsSinceEpoch(
+            i.startTime ?? DateTime.now().microsecondsSinceEpoch);
         final sDate = formatter.format(sTime);
         if (sDate == nDate) {
           final report = await i.generateHrData(state.user);

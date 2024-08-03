@@ -9,4 +9,7 @@ abstract class ExerciseRepo {
   Future<Either<Failure, List<ExerciseEntity>>> readExerciseAll(
     ByLimitParams params,
   );
+  Future<Either<Failure, List<ExerciseEntity>>> readExerciseByCompanyId(
+    ByIdParams params,
+  );
 }

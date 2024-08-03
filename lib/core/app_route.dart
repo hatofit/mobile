@@ -2,8 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hatofit/dependecy_injection.dart';
 import 'package:hatofit/domain/domain.dart';
+import 'package:hatofit/service_locator.dart';
 import 'package:hatofit/ui/ui.dart';
 import 'package:hatofit/utils/utils.dart';
 
@@ -23,11 +23,8 @@ enum Routes {
   /// Home Page
   home("/home"),
 
-  // Workout Page
-  workout("/workout"),
-  workoutDetail("/workout/detail"),
-  freeWorkout("/workout/free"),
-  startWorkout("/workout/start"),
+  /// Company Page
+  company("/company"),
 
   // Activity Page
   activity("/activity"),
@@ -36,7 +33,15 @@ enum Routes {
   // Settings Page
   settings("/settings"),
   settingsProfile("/settings/profile"),
-  settingsDeviceIntegration("/settings/device-integration");
+  settingsDeviceIntegration("/settings/device-integration"),
+
+  // Workout Page
+  workout("/company/workout"),
+  workoutDetail("/workout/detail"),
+  freeWorkout("/workout/free"),
+  startFreeWorkout("/workout/free/start"),
+  startCompanyWorkout("/workout/company/start"),
+  ;
 
   const Routes(this.path);
 
@@ -50,6 +55,7 @@ class AppRoute {
   static final _workoutShellNavKey = GlobalKey<NavigatorState>();
   static final _activityShellNavKey = GlobalKey<NavigatorState>();
   static final _settingShellNavKey = GlobalKey<NavigatorState>();
+
   AppRoute.setStream(BuildContext ctx) {
     context = ctx;
   }
@@ -143,20 +149,44 @@ class AppRoute {
             navigatorKey: _workoutShellNavKey,
             routes: [
               GoRoute(
+                path: Routes.company.path,
+                name: Routes.company.name,
+                builder: (_, __) => BlocProvider(
+                  create: (_) => di<CompanyCubit>()..init(),
+                  child: const CompanyView(),
+                ),
+              ),
+              GoRoute(
                 path: Routes.workout.path,
                 name: Routes.workout.name,
-                builder: (_, __) => BlocProvider(
-                  create: (_) => di<WorkoutCubit>()..init(),
-                  child: const WorkoutView(),
-                ),
+                builder: (_, state) {
+                  final extra = state.extra as Map<String, dynamic>;
+                  final company = extra['company'] as CompanyEntity;
+
+                  return BlocProvider(
+                    create: (_) => di<WorkoutCubit>()
+                      ..init(
+                        companyId: company.id ?? 0,
+                      ),
+                    child: WorkoutView(company: company),
+                  );
+                },
               ),
               GoRoute(
                 path: Routes.workoutDetail.path,
                 name: Routes.workoutDetail.name,
-                builder: (_, __) => BlocProvider(
-                  create: (_) => di<WorkoutCubit>()..init(),
-                  child: const WorkoutDetailView(),
-                ),
+                builder: (_, state) {
+                  final extra = state.extra as Map<String, dynamic>;
+                  final exercise = extra['exercise'] as ExerciseEntity;
+                  log.f('EXERCISE: $exercise');
+                  return BlocProvider(
+                    create: (_) => di<WorkoutCubit>()..init(),
+                    child: WorkoutDetailView(
+                      exercise: exercise,
+                      companyExerciseId: exercise.id ?? '',
+                    ),
+                  );
+                },
               ),
               GoRoute(
                 path: Routes.freeWorkout.path,
@@ -167,20 +197,38 @@ class AppRoute {
                 ),
               ),
               GoRoute(
-                  path: Routes.startWorkout.path,
-                  name: Routes.startWorkout.name,
-                  builder: (_, state) {
-                    final extra = state.extra as StartExerciseParams;
-                    return BlocProvider(
-                      create: (_) => di<WorkoutCubit>(),
-                      child: StartWorkoutView(
-                        isFreeWorkout: extra.isFreeWorkout,
-                        exercise: extra.exercise,
-                        user: extra.user,
-                        device: extra.device,
-                      ),
-                    );
-                  }),
+                path: Routes.startFreeWorkout.path,
+                name: Routes.startFreeWorkout.name,
+                builder: (_, state) {
+                  final extra = state.extra as StartExerciseParams;
+                  return BlocProvider(
+                    create: (_) => di<WorkoutCubit>()..init(),
+                    child: StartFreeWorkoutView(
+                      isFreeWorkout: true,
+                      exercise: extra.exercise,
+                      user: extra.user,
+                      device: extra.device,
+                    ),
+                  );
+                },
+              ),
+              GoRoute(
+                path: Routes.startCompanyWorkout.path,
+                name: Routes.startCompanyWorkout.name,
+                builder: (_, state) {
+                  final extra = state.extra as StartExerciseParams;
+                  return BlocProvider(
+                    create: (_) => di<WorkoutCubit>()..init(),
+                    child: StartCompanyWorkoutView(
+                      isFreeWorkout: false,
+                      exercise: extra.exercise,
+                      user: extra.user,
+                      device: extra.device,
+                      companyExerciseId: extra.companyExerciseId ?? '',
+                    ),
+                  );
+                },
+              ),
             ],
           ),
           StatefulShellBranch(
@@ -199,8 +247,10 @@ class AppRoute {
                   name: Routes.activityDetail.name,
                   builder: (_, state) {
                     final extra = state.extra as SessionEntity;
+
                     return BlocProvider(
-                      create: (_) => di<ActivityCubit>()..init(),
+                      create: (_) =>
+                          di<ActivityCubit>()..getReportById(extra.id ?? ''),
                       child: ActivityDetailView(
                         session: extra,
                       ),

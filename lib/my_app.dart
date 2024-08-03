@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hatofit/core/core.dart';
-import 'package:hatofit/dependecy_injection.dart';
+import 'package:hatofit/service_locator.dart';
 import 'package:hatofit/ui/ui.dart';
 import 'package:hatofit/utils/utils.dart';
 import 'package:oktoast/oktoast.dart';
@@ -42,14 +42,14 @@ class MyApp extends StatelessWidget {
                   GlobalCupertinoLocalizations.delegate,
                 ],
                 debugShowCheckedModeBanner: false,
-                builder: (BuildContext context, Widget? child) {
-                  final MediaQueryData data = MediaQuery.of(context);
+                builder: (c, child) {
                   return MediaQuery(
-                    data: data.copyWith(
-                      textScaler: const TextScaler.linear(1.0),
+                    data: MediaQuery.of(c).copyWith(
+                      textScaler: const TextScaler.linear(1),
                       alwaysUse24HourFormat: true,
                     ),
-                    child: child!,
+                    child: child ??
+                        const Center(child: CircularProgressIndicator()),
                   );
                 },
                 title: Constants.get.appName,

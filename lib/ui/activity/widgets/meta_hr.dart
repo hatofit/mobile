@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hatofit/core/core.dart';
-import 'package:hatofit/data/models/report/report_model.dart';
 import 'package:hatofit/utils/utils.dart';
-import 'package:intl/intl.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class MetaHrWidget extends StatefulWidget {
   final MetaHr? metaHr;
-  final List<HrChartModel> hrChart;
+  final List<List<int>> hrChart;
   const MetaHrWidget({super.key, this.metaHr, required this.hrChart});
 
   @override
@@ -94,29 +92,26 @@ class _MetaHrWidgetState extends State<MetaHrWidget> {
                   ],
                 ),
                 SizedBox(height: Dimens.height8),
-                widget.hrChart.isNotEmpty
-                    ? SfCartesianChart(
-                        zoomPanBehavior: _zoomPanBehavior,
-                        primaryXAxis: DateTimeAxis(
-                          dateFormat: DateFormat.ms(),
-                          interval: 1,
-                        ),
-                        primaryYAxis: const NumericAxis(
-                          minimum: 0,
-                          maximum: 220,
-                          interval: 20,
-                        ),
-                        series: <LineSeries<HrChartModel, DateTime>>[
-                          LineSeries<HrChartModel, DateTime>(
-                            color: thm.primaryColor,
-                            dataSource: widget.hrChart,
-                            xValueMapper: (HrChartModel data, _) =>
-                                data.timeStamp,
-                            yValueMapper: (HrChartModel data, _) => data.hr,
-                          ),
-                        ],
-                      )
-                    : Container()
+                SfCartesianChart(
+                  zoomPanBehavior: _zoomPanBehavior,
+                  // primaryXAxis: DateTimeAxis(
+                  //   dateFormat: DateFormat.ms(),
+                  //   interval: 1,
+                  // ),
+                  // primaryYAxis: const NumericAxis(
+                  //   minimum: 0,
+                  //   maximum: 220,
+                  //   interval: 20,
+                  // ),
+                  series: [
+                    LineSeries(
+                      color: thm.primaryColor,
+                      dataSource: widget.hrChart,
+                      xValueMapper: (data, x) => data[0],
+                      yValueMapper: (data, y) => data[1],
+                    ),
+                  ],
+                )
               ],
             ),
           );

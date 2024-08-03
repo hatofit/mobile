@@ -25,7 +25,7 @@ class WorkoutSession {
     this.gyroSamples,
     this.magnetometerSamples,
     this.ppgSamples,
-    this.hrChart ,
+    this.hrChart,
     required this.avgHr,
     this.maxHr,
     this.minHr,
@@ -69,8 +69,14 @@ class WorkoutSession {
     );
   }
 
-  Future<CreateSessionParams> createParams(UserEntity user,
-      ExerciseEntity exercise, String mood, BleEntity ble) async {
+  Future<CreateSessionParams> createParams(
+    UserEntity user,
+    ExerciseEntity exercise,
+    String mood,
+    BleEntity ble,
+    String? companyExerciseId,
+    bool withoutExercise,
+  ) async {
     final Tuple7<
         List<HrSample>,
         List<EcgSample>,
@@ -221,12 +227,14 @@ class WorkoutSession {
     final res = await parser.parseInBackground();
     return CreateSessionParams(
       userId: user.id ?? '',
-      exerciseId: exercise.id ?? '',
+      exerciseId: withoutExercise == true ? (exercise.id ?? '') : null,
       startTime: hrSamples?.first.timeStamp.microsecondsSinceEpoch ?? 0,
       endTime: hrSamples?.last.timeStamp.microsecondsSinceEpoch ?? 0,
       mood: mood,
       timelines: [],
       data: res,
+      withoutExercise: withoutExercise,
+      companyExerciseId: companyExerciseId,
     );
   }
 }

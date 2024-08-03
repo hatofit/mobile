@@ -1,7 +1,9 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:hatofit/core/core.dart';
 import 'package:hatofit/utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
@@ -18,6 +20,16 @@ class DioClient with FirebaseCrashLogger {
       _auth = _boxClient.userBox.get(UserBoxKeys.token.name);
       _dio = _createDio();
       // _dio.interceptors.add(DioInterceptor());
+      _dio.interceptors.add(RetryInterceptor(
+        dio: _dio,
+        logPrint: print,
+        retries: 3,
+        retryDelays: const [
+          Duration(seconds: 1),
+          Duration(seconds: 3),
+          Duration(seconds: 5),
+        ],
+      ));
     } catch (error, stackTrace) {
       nonFatalError(error: error, stackTrace: stackTrace);
     }
@@ -28,6 +40,16 @@ class DioClient with FirebaseCrashLogger {
       _auth = _boxClient.userBox.get(UserBoxKeys.token.name);
       _dio = _createDio();
       // _dio.interceptors.add(DioInterceptor());
+      _dio.interceptors.add(RetryInterceptor(
+        dio: _dio,
+        logPrint: print,
+        retries: 3,
+        retryDelays: const [
+          Duration(seconds: 1),
+          Duration(seconds: 3),
+          Duration(seconds: 5),
+        ],
+      ));
     } catch (error, stackTrace) {
       nonFatalError(error: error, stackTrace: stackTrace);
     }
@@ -44,8 +66,8 @@ class DioClient with FirebaseCrashLogger {
               'Authorization': "Bearer $_auth",
             },
           },
-          receiveTimeout: const Duration(minutes: 1),
-          connectTimeout: const Duration(minutes: 1),
+          receiveTimeout: const Duration(minutes: 10),
+          connectTimeout: const Duration(minutes: 10),
           validateStatus: (int? status) {
             return status! > 0;
           },
@@ -79,24 +101,7 @@ class DioClient with FirebaseCrashLogger {
 
       return Right(result);
     } on DioException catch (e, stackTrace) {
-      nonFatalError(error: e, stackTrace: stackTrace);
-
-      if (e.response?.statusCode == 404) {
-        return const Left(
-          ServerFailure(
-            message: "Internal Server Error",
-          ),
-        );
-      }
-      return Left(
-        ServerFailure(
-          message: e.response == null
-              ? e.message
-              : e.response?.data['message'] as String? ??
-                  "Internal Server Error",
-          exception: e,
-        ),
-      );
+      return handleException(e, stackTrace);
     }
   }
 
@@ -133,16 +138,7 @@ class DioClient with FirebaseCrashLogger {
         return Right(result);
       }
     } on DioException catch (e, stackTrace) {
-      nonFatalError(error: e, stackTrace: stackTrace);
-      return Left(
-        ServerFailure(
-          message: e.response == null
-              ? e.message
-              : e.response?.data['message'] as String? ??
-                  "Internal Server Error",
-          exception: e,
-        ),
-      );
+      return handleException(e, stackTrace);
     }
   }
 
@@ -180,16 +176,7 @@ class DioClient with FirebaseCrashLogger {
         return Right(result);
       }
     } on DioException catch (e, stackTrace) {
-      nonFatalError(error: e, stackTrace: stackTrace);
-      return Left(
-        ServerFailure(
-          message: e.response == null
-              ? e.message
-              : e.response?.data['message'] as String? ??
-                  "Internal Server Error",
-          exception: e,
-        ),
-      );
+      return handleException(e, stackTrace);
     }
   }
 
@@ -221,16 +208,7 @@ class DioClient with FirebaseCrashLogger {
         return Right(result);
       }
     } on DioException catch (e, stackTrace) {
-      nonFatalError(error: e, stackTrace: stackTrace);
-      return Left(
-        ServerFailure(
-          message: e.response == null
-              ? e.message
-              : e.response?.data['message'] as String? ??
-                  "Internal Server Error",
-          exception: e,
-        ),
-      );
+      return handleException(e, stackTrace);
     }
   }
 
@@ -257,16 +235,47 @@ class DioClient with FirebaseCrashLogger {
       }
       return Right(File(savePath));
     } on DioException catch (e, stackTrace) {
-      nonFatalError(error: e, stackTrace: stackTrace);
+      return handleException(e, stackTrace);
+    }
+  }
+
+  FutureOr<Either<Failure, T>> handleException<T>(
+      DioException e, StackTrace stackTrace) {
+    if (e.type == DioExceptionType.connectionTimeout) {
       return Left(
         ServerFailure(
-          message: e.response == null
-              ? e.message
-              : e.response?.data['message'] as String? ??
-                  "Internal Server Error",
+          message: 'Connection Timeout',
           exception: e,
         ),
       );
     }
+
+    if (e.response?.data is String) {
+      return Left(
+        ServerFailure(
+          message: 'Internal Server Error',
+          exception: e,
+        ),
+      );
+    }
+
+    final res = e.response?.data as Map<String, dynamic>?;
+    if (res == null) {
+      return Left(
+        ServerFailure(
+          message: "Internal Server Error",
+          exception: e,
+        ),
+      );
+    }
+    nonFatalError(error: e, stackTrace: stackTrace);
+    return Left(
+      ServerFailure(
+        message: e.response == null
+            ? e.message ?? "Internal Server Error"
+            : res['message'] as String? ?? "Internal Server Error",
+        exception: e,
+      ),
+    );
   }
 }

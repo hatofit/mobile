@@ -18,6 +18,7 @@ class BoxTypeId {
   static const int reportDataEntityIndex = 11;
   static const int reportDataValueEntityIndex = 12;
   static const int activeThemeIndex = 13;
+  static const int companyEntityIndex = 14;
 
   static const String userEntityAdapterName = 'UserEntityAdapter';
   static const String metricUnitsEntityAdapterName =
@@ -44,4 +45,5 @@ class BoxTypeId {
   static const String reportDataValueEntityAdapterName =
       'ReportDataValueEntityAdapter';
   static const String activeThemeAdapterName = 'ActiveThemeAdapter';
+  static const String companyEntityAdapterName = 'CompanyEntityAdapter';
 }

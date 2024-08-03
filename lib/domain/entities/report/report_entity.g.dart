@@ -71,17 +71,20 @@ class ReportDeviceEntityAdapter extends TypeAdapter<_$ReportDeviceEntityImpl> {
     return _$ReportDeviceEntityImpl(
       name: fields[0] as String?,
       identifier: fields[1] as String?,
+      brand: fields[3] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$ReportDeviceEntityImpl obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
-      ..write(obj.identifier);
+      ..write(obj.identifier)
+      ..writeByte(3)
+      ..write(obj.brand);
   }
 
   @override
@@ -146,7 +149,7 @@ class ReportDataValueEntityAdapter
     return _$ReportDataValueEntityImpl(
       device: fields[0] as String?,
       value: (fields[1] as List?)
-          ?.map((dynamic e) => (e as List).cast<dynamic>())
+          ?.map((dynamic e) => (e as List).cast<int>())
           ?.toList(),
     );
   }

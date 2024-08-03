@@ -32,6 +32,9 @@ class StringsId extends Strings {
   String get august => 'Agustus';
 
   @override
+  String get avgHR => 'Rata-rata Denyut Jantung';
+
+  @override
   String get awful => 'Mengerikan 😞';
 
   @override
@@ -42,15 +45,6 @@ class StringsId extends Strings {
 
   @override
   String get brand => 'Merk';
-
-  @override
-  String get ofMaxHeartRate => 'dari detak jantung maksimal';
-
-  @override
-  String get now => 'Sekarang';
-
-  @override
-  String get fiveMinutesPassedWithZeroHeartRate => 'Lima menit berlalu tanpa detak jantung';
 
   @override
   String get caloriesBurn => 'Kalori Terbakar';
@@ -68,13 +62,13 @@ class StringsId extends Strings {
   String get chooseLanguage => 'Pilih bahasa';
 
   @override
-  String get deviceDisconnected => 'Perangkat terputus';
-
-  @override
   String get chooseTheme => 'Pilih tema';
 
   @override
   String get chooseYourProfilePhoto => 'Pilih foto profil anda';
+
+  @override
+  String get company => 'Perusahaan';
 
   @override
   String get confirmPassword => 'Konfirmasi kata sandi';
@@ -99,6 +93,9 @@ class StringsId extends Strings {
 
   @override
   String get device => 'Perangkat';
+
+  @override
+  String get deviceDisconnected => 'Perangkat terputus';
 
   @override
   String get deviceIntegration => 'Integrasi perangkat';
@@ -155,9 +152,6 @@ class StringsId extends Strings {
   String get exerciseName => 'Nama latihan';
 
   @override
-  String get avgHR => 'Rata-rata Denyut Jantung';
-
-  @override
   String get exerciseNow => 'Olahraga sekarang';
 
   @override
@@ -170,7 +164,7 @@ class StringsId extends Strings {
   String get failedConnectToServer => 'Gagal terhubung ke server. Menggunakan mode luring';
 
   @override
-  String get failedToStartWorkout => 'Gagal memulai pelatihan, untuk memulai pelatihan, lengkapi profil anda';
+  String get failedToStartWorkout => 'Gagal memulai pelatihan, pastikan perangkat anda terhubung';
 
   @override
   String get february => 'Februari';
@@ -183,6 +177,9 @@ class StringsId extends Strings {
 
   @override
   String get firstNameCannotBeEmpty => 'Nama depan tidak boleh kosong';
+
+  @override
+  String get fiveMinutesPassedWithZeroHeartRate => 'Lima menit berlalu tanpa detak jantung';
 
   @override
   String get forgotPassword => 'Lupa kata sandi';
@@ -242,6 +239,9 @@ class StringsId extends Strings {
   String get march => 'Maret';
 
   @override
+  String get maxHeartRateReached => 'Detak jantung maksimal tercapai, istirahat sejenak';
+
+  @override
   String get may => 'Mei';
 
   @override
@@ -272,6 +272,9 @@ class StringsId extends Strings {
   String get november => 'November';
 
   @override
+  String get now => 'Sekarang';
+
+  @override
   String get noWorkoutMenuFound => 'Tidak ada menu pelatihan yang ditemukan';
 
   @override
@@ -279,6 +282,9 @@ class StringsId extends Strings {
 
   @override
   String get october => 'Oktober';
+
+  @override
+  String get ofMaxHeartRate => 'dari detak jantung maksimal';
 
   @override
   String get orSignInWith => 'atau masuk dengan';
@@ -395,9 +401,6 @@ class StringsId extends Strings {
   String get underweight => 'Kurus';
 
   @override
-  String get maxHeartRateReached => 'Detak jantung maksimal tercapai, istirahat sejenak';
-
-  @override
   String get unknown => 'Tidak diketahui';
 
   @override
@@ -429,4 +432,7 @@ class StringsId extends Strings {
 
   @override
   String get zone => 'Zona';
+
+  @override
+  String get noCompanyFound => 'Tidak ada perusahaan yang ditemukan';
 }

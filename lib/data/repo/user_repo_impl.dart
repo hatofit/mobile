@@ -6,59 +6,53 @@ import 'package:hatofit/domain/domain.dart';
 class UserRepoImpl implements UserRepo {
   final AuthRemoteDataSource _remote;
   final UserLocalDataSource _local;
-  final NetworkInfo _info;
 
   const UserRepoImpl(
     this._remote,
     this._local,
-    this._info,
   );
 
   @override
   Future<Either<Failure, UserEntity>> readUser(ByLimitParams params) async {
-    if (params.showFromLocal ?? false) {
+    if (params.showFromLocal == true) {
       return _local.readUser();
     }
-    if (await _info.isHatofitConnected) {
-      final res = await _remote.me();
-      return res.fold(
-        (failure) {
+    final res = await _remote.me();
+    return res.fold(
+      (failure) {
+        return _local.readUser();
+      },
+      (auth) async {
+        final entity = auth.toEntity();
+        if (entity.user != null) {
+          await _local.upsertUser(entity.user!);
+          return Right(entity.user!);
+        } else {
           return _local.readUser();
-        },
-        (auth) async {
-          final entity = auth.toEntity();
-          if (entity.user != null) {
-            await _local.upsertUser(entity.user!);
-            return Right(entity.user!);
-          } else {
-            return _local.readUser();
-          }
-        },
-      );
-    } else {
-      return _local.readUser();
-    }
+        }
+      },
+    );
   }
 
   @override
   Future<Either<Failure, UserEntity>> upsertUser(
     RegisterParams params,
+    bool forLocal,
   ) async {
-    if (params.forLocal) {
-      return await _local.upsertUser(params.toUserEntity());
-    } else if (await _info.isHatofitConnected) {
-      final res = await _remote.update(params);
-      return res.fold(
-        (failure) => Left(failure),
-        (res) async {
-          final entity = res?.toEntity();
-          await _local.upsertUser(entity ?? const UserEntity());
-          return Right(entity ?? const UserEntity());
-        },
-      );
-    } else {
-      return await _local.upsertUser(params.toUserEntity());
+    if (forLocal) {
+      await _local.upsertUser(params.toUserEntity());
+      return Right(params.toUserEntity());
     }
+
+    final res = await _remote.update(params);
+    return res.fold(
+      (failure) => Left(failure),
+      (res) async {
+        final entity = res?.toEntity();
+        await _local.upsertUser(entity ?? const UserEntity());
+        return Right(entity ?? const UserEntity());
+      },
+    );
   }
 
   @override

@@ -23,7 +23,8 @@ class ReportRemoteDataSourceImpl implements ReportRemoteDataSource {
   ) async {
     final res = await _client.getRequest(
       "${APIConstant.get.report}/${params.id}",
-      converter: (res) => ReportModel.fromJson(res as Map<String, dynamic>),
+      converter: (res) =>
+          ReportModel.fromJson(res['report'] as Map<String, dynamic>),
     );
 
     return res;

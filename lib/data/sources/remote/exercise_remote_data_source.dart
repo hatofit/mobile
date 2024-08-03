@@ -7,6 +7,9 @@ abstract class ExerciseRemoteDataSource {
   Future<Either<Failure, ExerciseModel>> readExerciseById(
     ByIdParams params,
   );
+  Future<Either<Failure, List<ExerciseModel>>> readExerciseByCompanyId(
+    ByIdParams params,
+  );
   Future<Either<Failure, List<ExerciseModel>>> readExerciseAll(
     ByLimitParams params,
   );
@@ -36,6 +39,25 @@ class ExerciseRemoteDataSourceImpl implements ExerciseRemoteDataSource {
     final res = await _client.getRequest(
       APIConstant.get.exercise,
       queryParameters: params.toJson(),
+      converter: (res) {
+        List<ExerciseModel> exercises = [];
+        for (var element in res['exercises']) {
+          exercises
+              .add(ExerciseModel.fromJson(element as Map<String, dynamic>));
+        }
+        return exercises;
+      },
+    );
+
+    return res;
+  }
+
+  @override
+  Future<Either<Failure, List<ExerciseModel>>> readExerciseByCompanyId(
+    ByIdParams params,
+  ) async {
+    final res = await _client.getRequest(
+      "${APIConstant.get.company}/${params.id}/exercise",
       converter: (res) {
         List<ExerciseModel> exercises = [];
         for (var element in res['exercises']) {
