@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
                         const Center(child: CircularProgressIndicator()),
                   );
                 },
-                title: Constants.get.appName,
+                title: Constants.appName,
                 theme: themeLight(context),
                 darkTheme: themeDark(context),
                 locale: Locale(data.type ?? "en"),

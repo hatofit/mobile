@@ -47,8 +47,8 @@ class WorkoutView extends StatelessWidget {
                   ExerciseEntity exercise = exercises[index];
 
                   final thumbnail = (exercise.thumbnail?.isNotEmpty ?? false)
-                      ? exercise.thumbnail ?? Constants.get.placeholderImage
-                      : Constants.get.placeholderImage;
+                      ? exercise.thumbnail ?? Constants.placeholderImage
+                      : Constants.placeholderImage;
 
                   exercise = exercise.copyWith(
                     thumbnail: thumbnail,

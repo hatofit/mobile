@@ -19,7 +19,7 @@ class ExerciseCard extends StatelessWidget {
         ),
         image: DecorationImage(
           image: CachedNetworkImageProvider(
-            exercise!.thumbnail ?? Constants.get.placeholderImage,
+            exercise!.thumbnail ?? Constants.placeholderImage,
           ),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(

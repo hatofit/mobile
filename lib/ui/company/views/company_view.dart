@@ -39,7 +39,7 @@ class CompanyView extends StatelessWidget {
                     subtitle: Text(company.description ?? ''),
                     leading: CircleAvatar(
                       backgroundImage: CachedNetworkImageProvider(
-                        company.image ?? Constants.get.gymPlaceholderImage,
+                        company.image ?? Constants.gymPlaceholderImage,
                       ),
                     ),
                     onTap: () => context.pushNamed(

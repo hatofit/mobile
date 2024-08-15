@@ -21,41 +21,41 @@ class IntroCubit extends Cubit<IntroState> {
 
   final List<DataHelper> listLanguage = [
     DataHelper(
-        title: Constants.get.english,
+        title: Constants.english,
         type: "en",
         iconPath: 'assets/images/icons/united-kingdom.png'),
     DataHelper(
-        title: Constants.get.bahasa,
+        title: Constants.bahasa,
         type: "id",
         iconPath: 'assets/images/icons/indonesia.png'),
   ];
   final List<DataHelper> listEnergyUnit = [
     DataHelper(
-      title: Constants.get.kilocalorie,
+      title: Constants.kilocalorie,
       type: "kcal",
     ),
     DataHelper(
-      title: Constants.get.kilojoule,
+      title: Constants.kilojoule,
       type: "kj",
     ),
   ];
   final List<DataHelper> listHeightUnit = [
     DataHelper(
-      title: Constants.get.centimeter,
+      title: Constants.centimeter,
       type: "cm",
     ),
     DataHelper(
-      title: Constants.get.inch,
+      title: Constants.inch,
       type: "in",
     ),
   ];
   final List<DataHelper> listWeightUnit = [
     DataHelper(
-      title: Constants.get.kilogram,
+      title: Constants.kilogram,
       type: "kg",
     ),
     DataHelper(
-      title: Constants.get.pound,
+      title: Constants.pound,
       type: "lb",
     ),
   ];

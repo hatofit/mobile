@@ -1,23 +1,19 @@
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 
-class GuidConstant {
-  GuidConstant._();
-
-  static GuidConstant get = GuidConstant._();
-
+final class GuidConstant {
   // heart rate service
-  Guid hrS = Guid("180D");
+  static final Guid hrS = Guid("180D");
   // device information service
-  Guid diS = Guid("180A");
+  static final Guid diS = Guid("180A");
   // battery service
-  Guid bsS = Guid("180F");
+  static final Guid bsS = Guid("180F");
 
   // heart rate measurement characteristic
-  Guid hrmC = Guid("2A37");
+  static final Guid hrmC = Guid("2A37");
   // body sensor location characteristic
-  Guid bslC = Guid("2A38");
+  static final Guid bslC = Guid("2A38");
   // manufacturer name string characteristic
-  Guid mnsC = Guid("2A29");
+  static final Guid mnsC = Guid("2A29");
   // battery level characteristic
-  Guid blC = Guid("2A19");
+  static final Guid blC = Guid("2A19");
 }

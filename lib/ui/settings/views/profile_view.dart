@@ -312,7 +312,7 @@ class _ProfileViewState extends State<ProfileView> {
             keyboardType: TextInputType.emailAddress,
             prefixIcon: const Icon(Icons.email),
             hintText: "john@gmail.com",
-            hint: Constants.get.email,
+            hint: Constants.email,
             validator: (String? value) => value != null
                 ? (!value.isValidEmail()
                     ? Strings.of(context)?.errorInvalidEmail

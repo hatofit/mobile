@@ -62,7 +62,7 @@ class SignWitGoogle extends StatelessWidget {
                   width: Dimens.width16,
                 ),
                 Text(
-                  Constants.get.google,
+                  Constants.google,
                   style: Theme.of(context).textTheme.bodyLarge!,
                 ),
               ],

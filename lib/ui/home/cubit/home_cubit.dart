@@ -29,7 +29,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> _heroImage() async {
     final getUrl =
-        await _getStringFirebaseUsecase.call(FirebaseConstant.get.homeHeroKey);
+        await _getStringFirebaseUsecase.call(FirebaseConstant.homeHeroKey);
 
     return getUrl.fold(
       (l) => null,

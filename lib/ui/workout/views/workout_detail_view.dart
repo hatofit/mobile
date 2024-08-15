@@ -231,7 +231,7 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView>
                         colorBlendMode: BlendMode.darken,
                         color: Colors.black.withOpacity(0.5),
                         imageUrl: widget.exercise.thumbnail ??
-                            Constants.get.placeholderImage,
+                            Constants.placeholderImage,
                         fit: BoxFit.cover,
                       ),
                       stretchModes: const [
@@ -327,7 +327,7 @@ class _WorkoutDetailViewState extends State<WorkoutDetailView>
                                       height: 100,
                                       child: CachedNetworkImage(
                                         imageUrl: instruction.content?.image ??
-                                            Constants.get.placeholderImage,
+                                            Constants.placeholderImage,
                                         width: 100,
                                         height: 100,
                                         fit: BoxFit.cover,

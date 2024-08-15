@@ -1,28 +1,25 @@
-class APIConstant {
-  APIConstant._();
+final class APIConstant {
+  static const String baseUrl = "https://api.hatofit.com";
+  // static const String baseUrl = "http://192.168.38.13:3001";
 
-  static APIConstant get = APIConstant._();
+  static const String authRegister = "/auth/register";
+  static const String authLogin = "/auth/login";
+  static const String authMe = "/auth/me";
+  static const String forgotPassword = "/auth/forgot-password";
+  static const String resetPassword = "/auth/reset-password";
+  static const String verifyCode = "/auth/verify-code";
 
-  String baseUrl = "https://api.hatofit.com";
-  // String baseUrl = "http://192.168.38.13:3001";
+  static const String exercise = "/exercise";
 
-  String authRegister = "/api/auth/register";
-  String authLogin = "/api/auth/login";
-  String authMe = "/api/auth/me";
-  String authUpdate = "/api/auth/update";
-  String forgotPassword = "/api/auth/forgot-password";
-  String resetPassword = "/api/auth/reset-password";
-  String verifyCode = "/api/auth/verify-code";
+  static const String report = "/report";
+  static const String reportShare = "/report/share";
 
-  String exercise = "/api/exercise";
+  static const String session = "/session";
+  static const String sessionShared = "/session/shared";
 
-  String report = "/api/report";
-  String reportShare = "/api/report/share";
+  static const String image = "/image";
 
-  String session = "/api/session";
-  String sessionShared = "/api/session/shared";
+  static const String company = "/company";
 
-  String image = "/api/image";
-
-  String company = "/api/company";
+  static const String userUpdate = "/user/update";
 }

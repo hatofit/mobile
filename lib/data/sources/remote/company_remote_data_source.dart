@@ -22,7 +22,7 @@ class CompanyRemoteDataSourceImpl implements CompanyRemoteDataSource {
     ByIdParams params,
   ) async {
     final res = await _client.getRequest(
-      "${APIConstant.get.company}/${params.id}",
+      "${APIConstant.company}/${params.id}",
       converter: (res) => CompanyModel.fromJson(res as Map<String, dynamic>),
     );
 
@@ -34,7 +34,7 @@ class CompanyRemoteDataSourceImpl implements CompanyRemoteDataSource {
     ByLimitParams params,
   ) async {
     final res = await _client.getRequest(
-      APIConstant.get.company,
+      APIConstant.company,
       queryParameters: params.toJson(),
       converter: (res) {
         List<CompanyModel> companies = [];

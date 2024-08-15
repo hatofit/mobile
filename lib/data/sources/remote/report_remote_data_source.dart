@@ -22,7 +22,7 @@ class ReportRemoteDataSourceImpl implements ReportRemoteDataSource {
     ByIdParams params,
   ) async {
     final res = await _client.getRequest(
-      "${APIConstant.get.report}/${params.id}",
+      "${APIConstant.report}/${params.id}",
       converter: (res) =>
           ReportModel.fromJson(res['report'] as Map<String, dynamic>),
     );
@@ -35,7 +35,7 @@ class ReportRemoteDataSourceImpl implements ReportRemoteDataSource {
     ByLimitParams params,
   ) async {
     final res = await _client.getRequest(
-      APIConstant.get.report,
+      APIConstant.report,
       queryParameters: params.toJson(),
       converter: (res) {
         List<ReportModel> reports = [];

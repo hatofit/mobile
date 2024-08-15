@@ -179,7 +179,7 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
   Future<void> startScan() async {
     await _scanCommonBLEUsecase.call(
       StartScanCommonParams(
-        serviceIds: [GuidConstant.get.hrS],
+        serviceIds: [GuidConstant.hrS],
         timeout: const Duration(minutes: 3),
       ),
     );
@@ -372,11 +372,11 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
           cDevice: nD,
           fDevices: nDL.isNotEmpty ? nDL : state.fDevices,
         ));
-        final manu = r.any((e) => e.uuid == GuidConstant.get.diS);
+        final manu = r.any((e) => e.uuid == GuidConstant.diS);
         if (manu) {
-          final diSc = r.firstWhere((e) => e.uuid == GuidConstant.get.diS);
+          final diSc = r.firstWhere((e) => e.uuid == GuidConstant.diS);
           final manuC = diSc.characteristics
-              .firstWhere((e) => e.characteristicUuid == GuidConstant.get.mnsC);
+              .firstWhere((e) => e.characteristicUuid == GuidConstant.mnsC);
           _readCommonBLEUsecase
               .call(ReadCommonParams(
             characteristic: manuC,
@@ -522,9 +522,9 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
     List<BluetoothService> services,
   ) async {
     emit(state.copyWith(isLoading: false));
-    final hrSc = services.firstWhere((e) => e.uuid == GuidConstant.get.hrS);
+    final hrSc = services.firstWhere((e) => e.uuid == GuidConstant.hrS);
     final hrmCr = hrSc.characteristics
-        .firstWhere((e) => e.characteristicUuid == GuidConstant.get.hrmC);
+        .firstWhere((e) => e.characteristicUuid == GuidConstant.hrmC);
     _hrCommonStream ??= _streamCommonBLEUsecase
         .call(StreamCommonParams(
       characteristic: hrmCr,

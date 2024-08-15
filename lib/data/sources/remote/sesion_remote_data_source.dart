@@ -25,7 +25,7 @@ class SessionRemoteDataSourceImpl implements SessionRemoteDataSource {
     CreateSessionParams params,
   ) async {
     final res = await _client.postRequest(
-      APIConstant.get.session,
+      APIConstant.session,
       data: params.toJson(),
       converter: (res) =>
           SessionModel.fromJson(res['session'] as Map<String, dynamic>),
@@ -38,7 +38,7 @@ class SessionRemoteDataSourceImpl implements SessionRemoteDataSource {
     ByIdParams params,
   ) async {
     final res = await _client.getRequest(
-      "${APIConstant.get.session}/${params.id}",
+      "${APIConstant.session}/${params.id}",
       converter: (res) =>
           SessionModel.fromJson(res['session'] as Map<String, dynamic>),
     );
@@ -51,7 +51,7 @@ class SessionRemoteDataSourceImpl implements SessionRemoteDataSource {
     ByLimitParams params,
   ) async {
     final res = await _client.getRequest(
-      APIConstant.get.session,
+      APIConstant.session,
       queryParameters: params.toJson(),
       converter: (res) {
         List<SessionModel> sessions = [];

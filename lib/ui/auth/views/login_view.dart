@@ -144,7 +144,7 @@ class _LoginViewState extends State<LoginView> {
                             color: Theme.of(context).textTheme.bodyLarge?.color,
                           ),
                           hintText: "john@gmail.com",
-                          hint: Constants.get.email,
+                          hint: Constants.email,
                           validator: (String? value) => value != null
                               ? (!value.isValidEmail()
                                   ? Strings.of(context)?.errorInvalidEmail

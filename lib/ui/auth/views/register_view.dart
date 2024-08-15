@@ -102,11 +102,15 @@ class _RegisterViewState extends State<RegisterView> {
                       AvataPicker(
                         onTap: () => context.pickImage(
                           gallery: () {
-                            context.read<AuthCubit>().getImageFromGallery(context);
+                            context
+                                .read<AuthCubit>()
+                                .getImageFromGallery(context);
                             context.pop();
                           },
                           camera: () {
-                            context.read<AuthCubit>().getImageFromCamera(context);
+                            context
+                                .read<AuthCubit>()
+                                .getImageFromCamera(context);
                             context.pop();
                           },
                         ),
@@ -181,7 +185,7 @@ class _RegisterViewState extends State<RegisterView> {
                         keyboardType: TextInputType.emailAddress,
                         prefixIcon: const Icon(Icons.email),
                         hintText: "john@gmail.com",
-                        hint: Constants.get.email,
+                        hint: Constants.email,
                         validator: (String? value) => value != null
                             ? (!value.isValidEmail()
                                 ? Strings.of(context)?.errorInvalidEmail

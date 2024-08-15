@@ -45,7 +45,7 @@ class AuthCubit extends Cubit<AuthState> {
 
   void checkGoogleOauthAvailability() async {
     final res = await _getBoolFirebaseUsecase
-        .call(FirebaseConstant.get.isGoogleFitAvailable);
+        .call(FirebaseConstant.isGoogleFitAvailable);
     res.fold((l) {
       if (l is ServerFailure) {
         isGoogleOauthAvailable = false;

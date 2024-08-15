@@ -58,7 +58,7 @@ class DioClient with FirebaseCrashLogger {
 
   Dio _createDio() => Dio(
         BaseOptions(
-          baseUrl: APIConstant.get.baseUrl,
+          baseUrl: APIConstant.baseUrl,
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',

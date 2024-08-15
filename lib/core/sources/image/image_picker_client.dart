@@ -34,8 +34,7 @@ class ImagePickerClient with FirebaseCrashLogger {
     try {
       final res = await _imageCropper.cropImage(
         sourcePath: image.path,
-        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
-        cropStyle: CropStyle.circle,
+        aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1), 
         compressQuality: 10,
         uiSettings: [
           AndroidUiSettings(

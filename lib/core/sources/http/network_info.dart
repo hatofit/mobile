@@ -47,7 +47,7 @@
 //       useDefaultOptions: false,
 //       customCheckOptions: [
 //         InternetCheckOption(
-//           uri: Uri.parse("${APIConstant.get.baseUrl}/api"),
+//           uri: Uri.parse("${APIConstant.baseUrl}/api"),
 //         ),
 //       ],
 //     );

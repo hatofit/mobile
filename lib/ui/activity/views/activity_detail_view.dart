@@ -110,7 +110,7 @@ class _ActivityDetailViewState extends State<ActivityDetailView> {
                                 BlendMode.darken),
                             image: CachedNetworkImageProvider(
                                 widget.session.exercise?.thumbnail ??
-                                    Constants.get.placeholderImage),
+                                    Constants.placeholderImage),
                           ),
                         ),
                         padding: EdgeInsets.all(Dimens.width16),

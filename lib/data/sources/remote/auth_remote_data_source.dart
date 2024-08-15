@@ -35,7 +35,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     LoginParams params,
   ) async {
     final res = await _client.postRequest(
-      APIConstant.get.authLogin,
+      APIConstant.authLogin,
       data: params.toJson(),
       converter: (res) =>
           AuthResponseModel.fromJson(res as Map<String, dynamic>),
@@ -49,7 +49,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     RegisterParams params,
   ) async {
     final res = await _client.postRequest(
-      APIConstant.get.authRegister,
+      APIConstant.authRegister,
       formData: params.toFormData(),
       converter: (res) =>
           AuthResponseModel.fromJson(res as Map<String, dynamic>),
@@ -63,7 +63,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     RegisterParams params,
   ) async {
     final res = await _client.postRequest(
-      APIConstant.get.authUpdate,
+      APIConstant.userUpdate,
       formData: params.toFormData(),
       converter: (res) {
         if (res['success']) {
@@ -80,7 +80,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<Either<Failure, AuthResponseModel>> me() async {
     final res = await _client.getRequest(
-      APIConstant.get.authMe,
+      APIConstant.authMe,
       converter: (res) =>
           AuthResponseModel.fromJson(res["auth"] as Map<String, dynamic>),
     );
@@ -93,7 +93,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     ForgotPasswordParams params,
   ) {
     final res = _client.getRequest(
-      "${APIConstant.get.forgotPassword}/${params.email}",
+      "${APIConstant.forgotPassword}/${params.email}",
       converter: (res) =>
           BaseResponseModel.fromJson(res as Map<String, dynamic>, (res) => res),
     );
@@ -106,7 +106,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     ResetPasswordParams params,
   ) {
     final res = _client.putRequest(
-      APIConstant.get.resetPassword,
+      APIConstant.resetPassword,
       data: params.toJson(),
       converter: (res) =>
           AuthResponseModel.fromJson(res as Map<String, dynamic>),
@@ -120,7 +120,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     ResetPasswordParams params,
   ) {
     final res = _client.postRequest(
-      APIConstant.get.verifyCode,
+      APIConstant.verifyCode,
       data: params.toJson(),
       converter: (res) =>
           BaseResponseModel.fromJson(res as Map<String, dynamic>, (res) => res),

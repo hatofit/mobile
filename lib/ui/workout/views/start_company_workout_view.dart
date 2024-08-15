@@ -166,7 +166,7 @@ class _StartCompanyWorkoutViewState extends State<StartCompanyWorkoutView> {
                         onPressed: () async {
                           final videoUrl =
                               instructions[instructionIndex].content?.video ??
-                                  Constants.get.exercisePlaceholderVideo;
+                                  Constants.exercisePlaceholderVideo;
                           final detail = await videoUrl.videoURL();
                           _showVideoModal(
                               instructions[instructionIndex], detail);
@@ -182,7 +182,7 @@ class _StartCompanyWorkoutViewState extends State<StartCompanyWorkoutView> {
                   height: 300.w,
                   width: 300.w,
                   imageUrl: instructions[instructionIndex].content?.image ??
-                      Constants.get.placeholderImage,
+                      Constants.placeholderImage,
                   fit: BoxFit.cover,
                 ),
                 const SizedBox(height: 16),

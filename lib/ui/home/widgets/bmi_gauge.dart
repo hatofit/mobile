@@ -21,7 +21,7 @@ class BMIGauge extends StatelessWidget {
               ),
               SizedBox(width: Dimens.width8),
               Text(
-                Constants.get.bmi,
+                Constants.bmi,
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ],

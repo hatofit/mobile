@@ -63,7 +63,7 @@ class ActivityView extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   image: CachedNetworkImageProvider(
                                     session[index].exercise?.thumbnail ??
-                                        Constants.get.placeholderImage,
+                                        Constants.placeholderImage,
                                   ),
                                 ),
                               ),

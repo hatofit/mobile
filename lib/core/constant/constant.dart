@@ -5,35 +5,31 @@ export 'guid_constant.dart';
 export 'hr_zone.dart';
 export 'keys.dart';
 
-class Constants {
-  Constants._();
+final class Constants {
+  static String appName = "Hatofit";
+  static String english = "English";
+  static String bahasa = "Bahasa";
 
-  static Constants get = Constants._();
+  static String centimeter = "Centimeter";
+  static String inch = "Inch";
 
-  String appName = "Hatofit";
-  String english = "English";
-  String bahasa = "Bahasa";
+  static String kilocalorie = "Kilocalorie";
+  static String kilojoule = "Kilojoule";
 
-  String centimeter = "Centimeter";
-  String inch = "Inch";
+  static String kilogram = "Kilogram";
+  static String pound = "Pound";
 
-  String kilocalorie = "Kilocalorie";
-  String kilojoule = "Kilojoule";
+  static String google = "Google";
+  static String email = "Email";
 
-  String kilogram = "Kilogram";
-  String pound = "Pound";
+  static String bmi = "BMI";
 
-  String google = "Google";
-  String email = "Email";
-
-  String bmi = "BMI";
-
-  String placeholderImage =
+  static String placeholderImage =
       "https://untirta.ac.id/wp-content/uploads/2023/08/placeholder-44.png";
 
-  String gymPlaceholderImage =
+  static String gymPlaceholderImage =
       'https://hatofit.com/_ipx/_/images/scene/risen-wang-20jX9b35r_M-unsplash.jpg';
 
-  String exercisePlaceholderVideo =
+  static String exercisePlaceholderVideo =
       'https://youtu.be/89yP76HLtjc?si=Ile13chJI4794Db2';
 }

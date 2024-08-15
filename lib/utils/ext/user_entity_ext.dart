@@ -16,9 +16,8 @@ extension UserEntExt on UserEntity {
             height: h,
           );
         }
-        final api = APIConstant.get;
         return CachedNetworkImage(
-          imageUrl: "${api.baseUrl}${api.image}/$photo",
+          imageUrl: "${APIConstant.baseUrl}${APIConstant.image}/$photo",
           height: h,
           imageBuilder: (context, imageProvider) => Container(
             width: h,

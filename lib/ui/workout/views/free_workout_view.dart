@@ -74,8 +74,7 @@ class FreeWorkoutView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 image: DecorationImage(
                   image: CachedNetworkImageProvider(
-                    exercises[index].thumbnail ??
-                        Constants.get.placeholderImage,
+                    exercises[index].thumbnail ?? Constants.placeholderImage,
                   ),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
