@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hatofit/core/core.dart';
@@ -40,47 +39,23 @@ class SplashCubit extends Cubit<SplashState> {
   }
 
   Future<void> checkAuth() async {
-    final token = _readTokenUsecase.call();
-    token.fold((l) {
-      safeEmit(
-        const _Unauthorized("Unauthorized"),
-        emit: emit,
-        isClosed: isClosed,
-      );
-      return null;
-    }, (r) => null);
     final res = await _meUseCase.call();
     res.fold(
       (l) async {
-        if (l is NoInternetFailure) {
-          final u = await fetchUser();
-          if (u != null) {
-            safeEmit(
-              const _Authorized("Authorized"),
-              isClosed: isClosed,
-              emit: emit,
-            );
-          } else {
-            safeEmit(
-              const _Offline(),
-              emit: emit,
-              isClosed: isClosed,
-            );
-          }
-        } else if (l is ServerFailure) {
-          if (l.exception?.type == DioExceptionType.connectionTimeout) {
-            safeEmit(
-              const _Offline(),
-              emit: emit,
-              isClosed: isClosed,
-            );
-          } else {
-            safeEmit(
-              const _Unauthorized("Unauthorized"),
-              isClosed: isClosed,
-              emit: emit,
-            );
-          }
+        log.e(l);
+        if (l is ServerFailure) {
+          safeEmit(
+            _Unauthorized(l.message ?? "Unauthorized"),
+            isClosed: isClosed,
+            emit: emit,
+          );
+        }
+        if (l is ConnectionTimeoutFailure) {
+          safeEmit(
+            _Unauthorized(l.message ?? "Unauthorized"),
+            isClosed: isClosed,
+            emit: emit,
+          );
         }
       },
       (r) {

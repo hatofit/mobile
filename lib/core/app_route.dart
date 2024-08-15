@@ -76,17 +76,22 @@ class AppRoute {
         name: Routes.root.name,
         redirect: (_, __) => Routes.home.path,
       ),
+      GoRoute(
+        path: Routes.greeting.path,
+        name: Routes.greeting.name,
+        builder: (_, __) => const GreetingView(),
+      ),
+      GoRoute(
+        path: Routes.login.path,
+        name: Routes.login.name,
+        builder: (_, __) => const LoginView(),
+      ),
       ShellRoute(
         builder: (_, __, child) => BlocProvider<IntroCubit>(
           create: (_) => di<IntroCubit>()..init(),
           child: child,
         ),
         routes: [
-          GoRoute(
-            path: Routes.greeting.path,
-            name: Routes.greeting.name,
-            builder: (_, __) => const GreetingView(),
-          ),
           GoRoute(
             path: Routes.preference.path,
             name: Routes.preference.name,
@@ -97,17 +102,12 @@ class AppRoute {
             name: Routes.userInfo.name,
             builder: (_, __) => const UserInfoView(),
           ),
+          GoRoute(
+            path: Routes.register.path,
+            name: Routes.register.name,
+            builder: (_, __) => const RegisterView(),
+          ),
         ],
-      ),
-      GoRoute(
-        path: Routes.login.path,
-        name: Routes.login.name,
-        builder: (_, __) => const LoginView(),
-      ),
-      GoRoute(
-        path: Routes.register.path,
-        name: Routes.register.name,
-        builder: (_, __) => const RegisterView(),
       ),
       GoRoute(
         path: Routes.forgotPassword.path,

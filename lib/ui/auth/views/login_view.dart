@@ -280,7 +280,7 @@ class _LoginViewState extends State<LoginView> {
                             ),
                             TextButton(
                               onPressed: () =>
-                                  context.pushNamed(Routes.register.name),
+                                  context.pushNamed(Routes.preference.name),
                               child: Text(
                                 Strings.of(context)!.signUp,
                                 style: Theme.of(context)

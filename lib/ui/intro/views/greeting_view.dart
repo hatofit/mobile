@@ -95,7 +95,7 @@ class GreetingView extends StatelessWidget {
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: OutlinedButton(
-                  onPressed: () => context.goNamed(Routes.preference.name),
+                  onPressed: () => context.goNamed(Routes.login.name),
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(vertical: 16),

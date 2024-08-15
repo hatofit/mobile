@@ -49,7 +49,8 @@ class _SplashScreenPageState extends State<SplashView> {
             },
             unauthorized: (message) {
               if (context.read<SplashCubit>().isInitialized) {
-                Strings.of(context)!.sessionExpired.toToastError(context);
+                message.toToastError(context);
+                // Strings.of(context)!.sessionExpired.toToastError(context);
               }
               context.read<SplashCubit>().upsertOfflineMode(false);
               final user = context.read<SplashCubit>().user;

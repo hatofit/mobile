@@ -196,11 +196,7 @@ class _UserInfoViewState extends State<UserInfoView> {
                               .read<IntroCubit>()
                               .isOfflineMode()
                               .then((value) {
-                            if (value) {
-                              context.goNamed(Routes.home.name);
-                            } else {
-                              context.pushNamed(Routes.login.name);
-                            }
+                            context.pushNamed(Routes.register.name);
                           });
                         }
                       }

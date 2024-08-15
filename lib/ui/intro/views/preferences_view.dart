@@ -60,6 +60,12 @@ class _PreferenceViewState extends State<PreferenceView> {
     final intrCub = context.watch<IntroCubit>();
     return Parent(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
+          onPressed: () {
+            context.pop();
+          },
+        ),
         title: Column(
           children: [
             Text(
@@ -197,7 +203,9 @@ class _PreferenceViewState extends State<PreferenceView> {
                           state.sEUnit = value ?? intrCub.listEnergyUnit[0];
 
                           if (!mounted) return;
-                          context.read<IntroCubit>().uEUnit(value?.type ?? "kcal");
+                          context
+                              .read<IntroCubit>()
+                              .uEUnit(value?.type ?? "kcal");
                         },
                       ),
                       SizedBox(height: Dimens.height16),
