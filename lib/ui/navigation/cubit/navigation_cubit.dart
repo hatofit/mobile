@@ -23,7 +23,7 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
   final GetServicesPolarBLEUsecase _getPolarServicesUsecase;
   final GetServicesCommonBLEUsecase _getCommonServicesUsecase;
   final StreamCommonBLEUsecase _streamCommonBLEUsecase;
-  // final StopScanBLEUsecase _stopScanBLEUsecase;
+  final StopScanBLEUsecase _stopScanBLEUsecase;
   final StatePolarBleUsecase _statePolarBleUsecase;
   final ReadCommonBLEUsecase _readCommonBLEUsecase;
 
@@ -47,7 +47,7 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
     this._getCommonServicesUsecase,
     this._streamHrPolarBLEUsecase,
     this._streamCommonBLEUsecase,
-    // this._stopScanBLEUsecase,
+    this._stopScanBLEUsecase,
     this._statePolarBleUsecase,
     this._streamEcgPolarBLEUsecase,
     this._streamAccPolarBLEUsecase,
@@ -146,6 +146,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
             }
           },
           (device) {
+            if (device.isEmpty) {
+              _disposer();
+              _bleAdapterListener();
+            }
             if (device.isNotEmpty) emit(state.copyWith(fDevices: device));
           },
         );

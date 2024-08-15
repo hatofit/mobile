@@ -321,6 +321,6 @@ void regNavCubit() {
         di(),
         di(),
         di(),
-        // di(),
+        di(),
       ));
 }
