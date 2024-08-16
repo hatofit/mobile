@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:hatofit/core/core.dart';
 import 'package:hatofit/utils/utils.dart';
 import 'package:path_provider/path_provider.dart';
@@ -13,22 +14,25 @@ class DioClient with FirebaseCrashLogger {
   String? _auth;
   late Dio _dio;
   final BoxClient _boxClient;
+  RetryInterceptor retryInterceptor() {
+    return RetryInterceptor(
+      dio: _dio,
+      logPrint: log.e,
+      retries: 2,
+      retryDelays: const [
+        Duration(seconds: 1),
+        Duration(seconds: 2),
+        Duration(seconds: 1),
+      ],
+    );
+  }
 
   DioClient(this._boxClient) {
     try {
       _auth = _boxClient.userBox.get(UserBoxKeys.token.name);
       _dio = _createDio();
       _dio.interceptors.add(DioInterceptor());
-      // _dio.interceptors.add(RetryInterceptor(
-      //   dio: _dio,
-      //   logPrint: print,
-      //   retries: 3,
-      //   retryDelays: const [
-      //     Duration(seconds: 1),
-      //     Duration(seconds: 3),
-      //     Duration(seconds: 5),
-      //   ],
-      // ));
+      _dio.interceptors.add(retryInterceptor());
     } catch (error, stackTrace) {
       nonFatalError(error: error, stackTrace: stackTrace);
     }
@@ -39,16 +43,7 @@ class DioClient with FirebaseCrashLogger {
       _auth = _boxClient.userBox.get(UserBoxKeys.token.name);
       _dio = _createDio();
       _dio.interceptors.add(DioInterceptor());
-      // _dio.interceptors.add(RetryInterceptor(
-      //   dio: _dio,
-      //   logPrint: log.e,
-      //   retries: 3,
-      //   retryDelays: const [
-      //     Duration(seconds: 1),
-      //     Duration(seconds: 3),
-      //     Duration(seconds: 5),
-      //   ],
-      // ));
+      _dio.interceptors.add(retryInterceptor());
     } catch (error, stackTrace) {
       nonFatalError(error: error, stackTrace: stackTrace);
     }
@@ -78,8 +73,16 @@ class DioClient with FirebaseCrashLogger {
     Map<String, dynamic>? queryParameters,
     required JSONIConv<T> converter,
     ProgressCallback? onReceiveProgress,
+    bool withoutAutoRetry = false,
   }) async {
     try {
+      if (withoutAutoRetry) {
+        _dio.interceptors.removeWhere((element) => element is RetryInterceptor);
+      } else {
+        if (!_dio.interceptors.any((element) => element is RetryInterceptor)) {
+          _dio.interceptors.add(retryInterceptor());
+        }
+      }
       final response = await dio.get(
         url,
         queryParameters: queryParameters,
@@ -243,37 +246,37 @@ class DioClient with FirebaseCrashLogger {
     StackTrace stackTrace,
   ) {
     if (e.type == DioExceptionType.connectionTimeout) {
-      return Left(ServerFailure());
+      return const Left(ServerFailure());
     }
 
     // known errors
     final code = e.response?.statusCode;
     if (code == 204) {
-      return Left(NoContentFailure());
+      return const Left(NoContentFailure());
     }
     if (code == 400) {
-      return Left(BadRequestFailure());
+      return const Left(BadRequestFailure());
     }
     if (code == 401) {
-      return Left(UnauthorizedFailure());
+      return const Left(UnauthorizedFailure());
     }
     if (code == 404) {
-      return Left(NotFoundFailure());
+      return const Left(NotFoundFailure());
     }
     if (code == 408) {
-      return Left(ConnectionTimeoutFailure());
+      return const Left(ConnectionTimeoutFailure());
     }
     if (code == 403) {
-      return Left(ForbiddenFailure());
+      return const Left(ForbiddenFailure());
     }
 
     if (e.response?.data is String) {
-      return Left(ServerFailure());
+      return const Left(ServerFailure());
     }
 
     final res = e.response?.data as Map<String, dynamic>?;
     if (res == null) {
-      return Left(
+      return const Left(
         ServerFailure(),
       );
     }

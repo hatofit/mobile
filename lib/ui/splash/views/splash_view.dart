@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hatofit/core/core.dart';
 import 'package:hatofit/ui/ui.dart';
-import 'package:hatofit/utils/ext/ext.dart';
+import 'package:hatofit/utils/utils.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -40,6 +40,7 @@ class _SplashScreenPageState extends State<SplashView> {
     return Parent(
       child: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
+          log.e("STATE: ${state}");
           state.whenOrNull(
             initial: () async =>
                 await context.read<SplashCubit>().requestPermissions(),

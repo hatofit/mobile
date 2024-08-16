@@ -11,8 +11,8 @@ class ItemWidget extends StatefulWidget {
     this.curItem,
     this.backgroundColor,
     this.suffix, {
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _ItemWidgetState createState() => _ItemWidgetState();

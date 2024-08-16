@@ -105,13 +105,13 @@ class _RegisterViewState extends State<RegisterView> {
                             context
                                 .read<AuthCubit>()
                                 .getImageFromGallery(context);
-                            context.pop();
+                            // context.pop();
                           },
                           camera: () {
                             context
                                 .read<AuthCubit>()
                                 .getImageFromCamera(context);
-                            context.pop();
+                            // context.pop();
                           },
                         ),
                         firstChild: BlocBuilder<AuthCubit, AuthState>(

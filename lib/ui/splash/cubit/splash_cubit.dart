@@ -28,41 +28,56 @@ class SplashCubit extends Cubit<SplashState> {
   ) : super(const _Initial());
 
   Future<void> init() async {
+    log.e("STATE SPLASH CUBIT: ${state}");
     await fetchUser();
     await requestPermissions();
-    await checkAuth();
+    checkAuth();
     checkMood();
+    log.e("STATE SPLASH CUBIT: ${state}");
   }
 
   Future<void> requestPermissions() async {
     await _reqBLEPermUsecase.call();
   }
 
-  Future<void> checkAuth() async {
-    final res = await _meUseCase.call();
-    res.fold(
-      (l) async {
-        log.e(l);
-        if (l is ServerFailure) {
-          safeEmit(
-            _Unauthorized(l.message ?? "Unauthorized"),
-            isClosed: isClosed,
-            emit: emit,
-          );
-        }
-        if (l is ConnectionTimeoutFailure) {
-          safeEmit(
-            _Unauthorized(l.message ?? "Unauthorized"),
-            isClosed: isClosed,
-            emit: emit,
-          );
-        }
-      },
-      (r) {
+  void checkAuth() {
+    final token = _readTokenUsecase.call();
+    log.e("TOKEN: ${token}");
+    token.fold(
+      (l) {
         safeEmit(
-          const _Authorized("Authorized"),
+          _Unauthorized("Unauthorized"),
           isClosed: isClosed,
           emit: emit,
+        );
+      },
+      (r) async {
+        final res = await _meUseCase.call();
+        res.fold(
+          (l) async {
+            log.e(l);
+            if (l is ServerFailure) {
+              safeEmit(
+                _Unauthorized(l.message ?? "Unauthorized"),
+                isClosed: isClosed,
+                emit: emit,
+              );
+            }
+            if (l is ConnectionTimeoutFailure) {
+              safeEmit(
+                _Unauthorized(l.message ?? "Unauthorized"),
+                isClosed: isClosed,
+                emit: emit,
+              );
+            }
+          },
+          (r) {
+            safeEmit(
+              const _Authorized("Authorized"),
+              isClosed: isClosed,
+              emit: emit,
+            );
+          },
         );
       },
     );
@@ -74,7 +89,7 @@ class SplashCubit extends Cubit<SplashState> {
   bool get isInitialized => _isInitialized;
   UserEntity? get user => _user;
 
-  Future<void> checkMood() async {
+  void checkMood() {
     final res = _getMoodUsecase.call();
     res.fold((l) async => await _clearMoodUsecase.call(), (r) {
       if (r.isNotEmpty) {
@@ -88,7 +103,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<UserEntity?> fetchUser() async {
     final res =
-        await _readUserUsecase.call(const ByLimitParams(showFromLocal: false));
+        await _readUserUsecase.call(const ByLimitParams(showFromLocal: true));
     return res.fold((l) {
       _isInitialized = false;
       _user = null;

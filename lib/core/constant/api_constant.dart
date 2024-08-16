@@ -1,6 +1,6 @@
 final class APIConstant {
-  // static const String baseUrl = "https://api.hatofit.com";
-  static const String baseUrl = "http://192.168.53.169:3001";
+  static const String baseUrl = "https://api.hatofit.com";
+  // static const String baseUrl = "http://192.168.53.169:3001";
 
   static const String authRegister = "/auth/register";
   static const String authLogin = "/auth/login";

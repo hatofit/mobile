@@ -4,8 +4,8 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import 'package:hatofit/service_locator.dart';
 import 'package:hatofit/my_app.dart';
+import 'package:hatofit/service_locator.dart';
 import 'package:hatofit/utils/utils.dart';
 
 void main() {

@@ -6,86 +6,60 @@ class HrSample extends PolarHrSample {
   HrSample({
     required this.timeStamp,
     required this.second,
-    required int hr,
-    required List<int> rrsMs,
-    required bool contactStatus,
-    required bool contactStatusSupported,
-  }) : super(
-          hr: hr,
-          rrsMs: rrsMs,
-          contactStatus: contactStatus,
-          contactStatusSupported: contactStatusSupported,
-        );
+    required super.hr,
+    required super.rrsMs,
+    required super.contactStatus,
+    required super.contactStatusSupported,
+  });
 }
 
 class EcgSample extends PolarEcgSample {
   final int second;
   EcgSample({
     required this.second,
-    required DateTime timeStamp,
-    required int voltage,
-  }) : super(
-          timeStamp: timeStamp,
-          voltage: voltage,
-        );
+    required super.timeStamp,
+    required super.voltage,
+  });
 }
 
 class AccSample extends PolarAccSample {
   final int second;
   AccSample({
     required this.second,
-    required DateTime timeStamp,
-    required int x,
-    required int y,
-    required int z,
-  }) : super(
-          timeStamp: timeStamp,
-          x: x,
-          y: y,
-          z: z,
-        );
+    required super.timeStamp,
+    required super.x,
+    required super.y,
+    required super.z,
+  });
 }
 
 class GyroSample extends PolarGyroSample {
   final int second;
   GyroSample({
     required this.second,
-    required DateTime timeStamp,
-    required double x,
-    required double y,
-    required double z,
-  }) : super(
-          timeStamp: timeStamp,
-          x: x,
-          y: y,
-          z: z,
-        );
+    required super.timeStamp,
+    required super.x,
+    required super.y,
+    required super.z,
+  });
 }
 
 class MagnetometerSample extends PolarMagnetometerSample {
   final int second;
   MagnetometerSample({
     required this.second,
-    required DateTime timeStamp,
-    required double x,
-    required double y,
-    required double z,
-  }) : super(
-          timeStamp: timeStamp,
-          x: x,
-          y: y,
-          z: z,
-        );
+    required super.timeStamp,
+    required super.x,
+    required super.y,
+    required super.z,
+  });
 }
 
 class PpgSample extends PolarPpgSample {
   final int second;
   PpgSample({
     required this.second,
-    required DateTime timeStamp,
-    required List<int> channelSamples,
-  }) : super(
-          timeStamp: timeStamp,
-          channelSamples: channelSamples,
-        );
+    required super.timeStamp,
+    required super.channelSamples,
+  });
 }
