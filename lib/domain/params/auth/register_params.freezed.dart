@@ -17,8 +17,6 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$RegisterParams {
   bool get forLocal => throw _privateConstructorUsedError;
-  @JsonKey(name: '_id')
-  String? get id => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get gender => throw _privateConstructorUsedError;
@@ -46,7 +44,6 @@ abstract class $RegisterParamsCopyWith<$Res> {
   @useResult
   $Res call(
       {bool forLocal,
-      @JsonKey(name: '_id') String? id,
       String firstName,
       String lastName,
       String gender,
@@ -76,7 +73,6 @@ class _$RegisterParamsCopyWithImpl<$Res, $Val extends RegisterParams>
   @override
   $Res call({
     Object? forLocal = null,
-    Object? id = freezed,
     Object? firstName = null,
     Object? lastName = null,
     Object? gender = null,
@@ -94,10 +90,6 @@ class _$RegisterParamsCopyWithImpl<$Res, $Val extends RegisterParams>
           ? _value.forLocal
           : forLocal // ignore: cast_nullable_to_non_nullable
               as bool,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -156,7 +148,6 @@ abstract class _$$RegisterParamsImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool forLocal,
-      @JsonKey(name: '_id') String? id,
       String firstName,
       String lastName,
       String gender,
@@ -184,7 +175,6 @@ class __$$RegisterParamsImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? forLocal = null,
-    Object? id = freezed,
     Object? firstName = null,
     Object? lastName = null,
     Object? gender = null,
@@ -202,10 +192,6 @@ class __$$RegisterParamsImplCopyWithImpl<$Res>
           ? _value.forLocal
           : forLocal // ignore: cast_nullable_to_non_nullable
               as bool,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -259,7 +245,6 @@ class __$$RegisterParamsImplCopyWithImpl<$Res>
 class _$RegisterParamsImpl extends _RegisterParams {
   const _$RegisterParamsImpl(
       {this.forLocal = true,
-      @JsonKey(name: '_id') this.id,
       this.firstName = "",
       this.lastName = "",
       this.gender = "",
@@ -277,9 +262,6 @@ class _$RegisterParamsImpl extends _RegisterParams {
   @override
   @JsonKey()
   final bool forLocal;
-  @override
-  @JsonKey(name: '_id')
-  final String? id;
   @override
   @JsonKey()
   final String firstName;
@@ -323,7 +305,7 @@ class _$RegisterParamsImpl extends _RegisterParams {
 
   @override
   String toString() {
-    return 'RegisterParams(forLocal: $forLocal, id: $id, firstName: $firstName, lastName: $lastName, gender: $gender, email: $email, password: $password, confirmPassword: $confirmPassword, dateOfBirth: $dateOfBirth, photo: $photo, height: $height, weight: $weight, metricUnits: $metricUnits)';
+    return 'RegisterParams(forLocal: $forLocal, firstName: $firstName, lastName: $lastName, gender: $gender, email: $email, password: $password, confirmPassword: $confirmPassword, dateOfBirth: $dateOfBirth, photo: $photo, height: $height, weight: $weight, metricUnits: $metricUnits)';
   }
 
   @override
@@ -333,7 +315,6 @@ class _$RegisterParamsImpl extends _RegisterParams {
             other is _$RegisterParamsImpl &&
             (identical(other.forLocal, forLocal) ||
                 other.forLocal == forLocal) &&
-            (identical(other.id, id) || other.id == id) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -357,7 +338,6 @@ class _$RegisterParamsImpl extends _RegisterParams {
   int get hashCode => Object.hash(
       runtimeType,
       forLocal,
-      id,
       firstName,
       lastName,
       gender,
@@ -383,7 +363,6 @@ class _$RegisterParamsImpl extends _RegisterParams {
 abstract class _RegisterParams extends RegisterParams {
   const factory _RegisterParams(
       {final bool forLocal,
-      @JsonKey(name: '_id') final String? id,
       final String firstName,
       final String lastName,
       final String gender,
@@ -399,9 +378,6 @@ abstract class _RegisterParams extends RegisterParams {
 
   @override
   bool get forLocal;
-  @override
-  @JsonKey(name: '_id')
-  String? get id;
   @override
   String get firstName;
   @override

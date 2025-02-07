@@ -10,7 +10,6 @@ part 'register_params.freezed.dart';
 class RegisterParams with _$RegisterParams {
   const factory RegisterParams({
     @Default(true) bool forLocal,
-    @JsonKey(name: '_id') String? id,
     @Default("") String firstName,
     @Default("") String lastName,
     @Default("") String gender,
@@ -27,7 +26,6 @@ class RegisterParams with _$RegisterParams {
   const RegisterParams._();
 
   factory RegisterParams.fromUser(UserEntity user) => RegisterParams(
-        id: user.id,
         firstName: user.firstName ?? "",
         lastName: user.lastName ?? "",
         gender: user.gender ?? "",
@@ -44,7 +42,6 @@ class RegisterParams with _$RegisterParams {
       );
 
   FormData toFormData() => FormData.fromMap({
-        "_id": id,
         "firstName": firstName,
         "lastName": lastName,
         "gender": gender,
@@ -59,7 +56,6 @@ class RegisterParams with _$RegisterParams {
       });
 
   UserEntity toUserEntity() => UserEntity(
-        id: id,
         firstName: firstName,
         lastName: lastName,
         gender: gender,
