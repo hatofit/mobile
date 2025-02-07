@@ -12,7 +12,7 @@ part of 'intro_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$IntroState {
@@ -27,7 +27,9 @@ mixin _$IntroState {
   DataHelper? get sWUnit => throw _privateConstructorUsedError;
   set sWUnit(DataHelper? value) => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IntroStateCopyWith<IntroState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$IntroStateCopyWithImpl<$Res, $Val extends IntroState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +99,8 @@ class _$IntroStateCopyWithImpl<$Res, $Val extends IntroState>
     ) as $Val);
   }
 
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserEntityCopyWith<$Res>? get user {
@@ -107,6 +113,8 @@ class _$IntroStateCopyWithImpl<$Res, $Val extends IntroState>
     });
   }
 
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sLang {
@@ -119,6 +127,8 @@ class _$IntroStateCopyWithImpl<$Res, $Val extends IntroState>
     });
   }
 
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sEUnit {
@@ -131,6 +141,8 @@ class _$IntroStateCopyWithImpl<$Res, $Val extends IntroState>
     });
   }
 
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sHUnit {
@@ -143,6 +155,8 @@ class _$IntroStateCopyWithImpl<$Res, $Val extends IntroState>
     });
   }
 
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sWUnit {
@@ -191,6 +205,8 @@ class __$$IntroStateImplCopyWithImpl<$Res>
       _$IntroStateImpl _value, $Res Function(_$IntroStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -247,7 +263,9 @@ class _$IntroStateImpl implements _IntroState {
     return 'IntroState(user: $user, sLang: $sLang, sEUnit: $sEUnit, sHUnit: $sHUnit, sWUnit: $sWUnit)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IntroStateImplCopyWith<_$IntroStateImpl> get copyWith =>
@@ -277,8 +295,11 @@ abstract class _IntroState implements IntroState {
   @override
   DataHelper? get sWUnit;
   set sWUnit(DataHelper? value);
+
+  /// Create a copy of IntroState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IntroStateImplCopyWith<_$IntroStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

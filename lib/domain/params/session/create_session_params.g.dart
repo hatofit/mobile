@@ -11,8 +11,8 @@ _$CreateSessionParamsImpl _$$CreateSessionParamsImplFromJson(
     _$CreateSessionParamsImpl(
       userId: json['userId'] as String? ?? "",
       exerciseId: json['exerciseId'] as String?,
-      startTime: json['startTime'] as int? ?? 0,
-      endTime: json['endTime'] as int? ?? 0,
+      startTime: (json['startTime'] as num?)?.toInt() ?? 0,
+      endTime: (json['endTime'] as num?)?.toInt() ?? 0,
       mood: json['mood'] as String? ?? "",
       timelines: (json['timelines'] as List<dynamic>?)
               ?.map((e) =>
@@ -36,8 +36,8 @@ Map<String, dynamic> _$$CreateSessionParamsImplToJson(
       'startTime': instance.startTime,
       'endTime': instance.endTime,
       'mood': instance.mood,
-      'timelines': instance.timelines.map((e) => e.toJson()).toList(),
-      'data': instance.data.map((e) => e.toJson()).toList(),
+      'timelines': instance.timelines,
+      'data': instance.data,
       'withoutExercise': instance.withoutExercise,
       'companyExerciseId': instance.companyExerciseId,
     };
@@ -46,7 +46,7 @@ _$SessionTimelineParamsImpl _$$SessionTimelineParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$SessionTimelineParamsImpl(
       name: json['name'] as String? ?? "",
-      startTime: json['startTime'] as int? ?? 0,
+      startTime: (json['startTime'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$SessionTimelineParamsImplToJson(
@@ -59,8 +59,8 @@ Map<String, dynamic> _$$SessionTimelineParamsImplToJson(
 _$SessionDataItemParamsImpl _$$SessionDataItemParamsImplFromJson(
         Map<String, dynamic> json) =>
     _$SessionDataItemParamsImpl(
-      second: json['second'] as int? ?? 0,
-      timeStamp: json['timeStamp'] as int? ?? 0,
+      second: (json['second'] as num?)?.toInt() ?? 0,
+      timeStamp: (json['timeStamp'] as num?)?.toInt() ?? 0,
       devices: (json['devices'] as List<dynamic>?)
               ?.map((e) => SessionDataItemDeviceParams.fromJson(
                   e as Map<String, dynamic>))
@@ -73,7 +73,7 @@ Map<String, dynamic> _$$SessionDataItemParamsImplToJson(
     <String, dynamic>{
       'second': instance.second,
       'timeStamp': instance.timeStamp,
-      'devices': instance.devices.map((e) => e.toJson()).toList(),
+      'devices': instance.devices,
     };
 
 _$SessionDataItemDeviceParamsImpl _$$SessionDataItemDeviceParamsImplFromJson(

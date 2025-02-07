@@ -12,7 +12,7 @@ part of 'user_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$UserEntity {
@@ -41,7 +41,9 @@ mixin _$UserEntity {
   @HiveField(11)
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserEntityCopyWith<UserEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -79,6 +81,8 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,6 +151,8 @@ class _$UserEntityCopyWithImpl<$Res, $Val extends UserEntity>
     ) as $Val);
   }
 
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserMetricUnitsEntityCopyWith<$Res>? get metricUnits {
@@ -194,6 +200,8 @@ class __$$UserEntityImplCopyWithImpl<$Res>
       _$UserEntityImpl _value, $Res Function(_$UserEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -366,7 +374,9 @@ class _$UserEntityImpl implements _UserEntity {
       createdAt,
       updatedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>
@@ -424,8 +434,11 @@ abstract class _UserEntity implements UserEntity {
   @override
   @HiveField(11)
   DateTime? get updatedAt;
+
+  /// Create a copy of UserEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserEntityImplCopyWith<_$UserEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -439,7 +452,9 @@ mixin _$UserMetricUnitsEntity {
   @HiveField(2)
   String? get weightUnits => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserMetricUnitsEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UserMetricUnitsEntityCopyWith<UserMetricUnitsEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -467,6 +482,8 @@ class _$UserMetricUnitsEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UserMetricUnitsEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -515,6 +532,8 @@ class __$$UserMetricUnitsEntityImplCopyWithImpl<$Res>
       $Res Function(_$UserMetricUnitsEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UserMetricUnitsEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -582,7 +601,9 @@ class _$UserMetricUnitsEntityImpl implements _UserMetricUnitsEntity {
   int get hashCode =>
       Object.hash(runtimeType, energyUnits, heightUnits, weightUnits);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UserMetricUnitsEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UserMetricUnitsEntityImplCopyWith<_$UserMetricUnitsEntityImpl>
@@ -605,8 +626,11 @@ abstract class _UserMetricUnitsEntity implements UserMetricUnitsEntity {
   @override
   @HiveField(2)
   String? get weightUnits;
+
+  /// Create a copy of UserMetricUnitsEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UserMetricUnitsEntityImplCopyWith<_$UserMetricUnitsEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

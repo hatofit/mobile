@@ -12,14 +12,16 @@ part of 'get_polar_services_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$GetPolarServicesParams {
   String get deviceId => throw _privateConstructorUsedError;
   PolarSdkFeature get feature => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetPolarServicesParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GetPolarServicesParamsCopyWith<GetPolarServicesParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$GetPolarServicesParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GetPolarServicesParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -85,6 +89,8 @@ class __$$GetPolarServicesParamsImplCopyWithImpl<$Res>
       $Res Function(_$GetPolarServicesParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GetPolarServicesParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -133,7 +139,9 @@ class _$GetPolarServicesParamsImpl implements _GetPolarServicesParams {
   @override
   int get hashCode => Object.hash(runtimeType, deviceId, feature);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GetPolarServicesParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GetPolarServicesParamsImplCopyWith<_$GetPolarServicesParamsImpl>
@@ -150,8 +158,11 @@ abstract class _GetPolarServicesParams implements GetPolarServicesParams {
   String get deviceId;
   @override
   PolarSdkFeature get feature;
+
+  /// Create a copy of GetPolarServicesParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GetPolarServicesParamsImplCopyWith<_$GetPolarServicesParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

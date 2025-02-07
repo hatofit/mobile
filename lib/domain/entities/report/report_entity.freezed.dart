@@ -12,7 +12,7 @@ part of 'report_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ReportEntity {
@@ -31,7 +31,9 @@ mixin _$ReportEntity {
   @HiveField(6)
   List<ReportDataEntity>? get reports => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportEntityCopyWith<ReportEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +64,8 @@ class _$ReportEntityCopyWithImpl<$Res, $Val extends ReportEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -132,6 +136,8 @@ class __$$ReportEntityImplCopyWithImpl<$Res>
       _$ReportEntityImpl _value, $Res Function(_$ReportEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -263,7 +269,9 @@ class _$ReportEntityImpl implements _ReportEntity {
       const DeepCollectionEquality().hash(_devices),
       const DeepCollectionEquality().hash(_reports));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportEntityImplCopyWith<_$ReportEntityImpl> get copyWith =>
@@ -302,8 +310,11 @@ abstract class _ReportEntity implements ReportEntity {
   @override
   @HiveField(6)
   List<ReportDataEntity>? get reports;
+
+  /// Create a copy of ReportEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportEntityImplCopyWith<_$ReportEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -317,7 +328,9 @@ mixin _$ReportDeviceEntity {
   @HiveField(3)
   String? get brand => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportDeviceEntityCopyWith<ReportDeviceEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -344,6 +357,8 @@ class _$ReportDeviceEntityCopyWithImpl<$Res, $Val extends ReportDeviceEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -390,6 +405,8 @@ class __$$ReportDeviceEntityImplCopyWithImpl<$Res>
       $Res Function(_$ReportDeviceEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -454,7 +471,9 @@ class _$ReportDeviceEntityImpl implements _ReportDeviceEntity {
   @override
   int get hashCode => Object.hash(runtimeType, name, identifier, brand);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportDeviceEntityImplCopyWith<_$ReportDeviceEntityImpl> get copyWith =>
@@ -477,8 +496,11 @@ abstract class _ReportDeviceEntity implements ReportDeviceEntity {
   @override
   @HiveField(3)
   String? get brand;
+
+  /// Create a copy of ReportDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportDeviceEntityImplCopyWith<_$ReportDeviceEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -490,7 +512,9 @@ mixin _$ReportDataEntity {
   @HiveField(1)
   List<ReportDataValueEntity>? get data => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDataEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportDataEntityCopyWith<ReportDataEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -516,6 +540,8 @@ class _$ReportDataEntityCopyWithImpl<$Res, $Val extends ReportDataEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportDataEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -556,6 +582,8 @@ class __$$ReportDataEntityImplCopyWithImpl<$Res>
       $Res Function(_$ReportDataEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportDataEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -618,7 +646,9 @@ class _$ReportDataEntityImpl implements _ReportDataEntity {
   int get hashCode => Object.hash(
       runtimeType, type, const DeepCollectionEquality().hash(_data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDataEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportDataEntityImplCopyWith<_$ReportDataEntityImpl> get copyWith =>
@@ -638,8 +668,11 @@ abstract class _ReportDataEntity implements ReportDataEntity {
   @override
   @HiveField(1)
   List<ReportDataValueEntity>? get data;
+
+  /// Create a copy of ReportDataEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportDataEntityImplCopyWith<_$ReportDataEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -651,7 +684,9 @@ mixin _$ReportDataValueEntity {
   @HiveField(1)
   List<List<int>>? get value => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDataValueEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportDataValueEntityCopyWith<ReportDataValueEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -677,6 +712,8 @@ class _$ReportDataValueEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportDataValueEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -718,6 +755,8 @@ class __$$ReportDataValueEntityImplCopyWithImpl<$Res>
       $Res Function(_$ReportDataValueEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportDataValueEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -779,7 +818,9 @@ class _$ReportDataValueEntityImpl implements _ReportDataValueEntity {
   int get hashCode => Object.hash(
       runtimeType, device, const DeepCollectionEquality().hash(_value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDataValueEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportDataValueEntityImplCopyWith<_$ReportDataValueEntityImpl>
@@ -799,8 +840,11 @@ abstract class _ReportDataValueEntity implements ReportDataValueEntity {
   @override
   @HiveField(1)
   List<List<int>>? get value;
+
+  /// Create a copy of ReportDataValueEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportDataValueEntityImplCopyWith<_$ReportDataValueEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

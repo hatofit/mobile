@@ -28,12 +28,12 @@ class SplashCubit extends Cubit<SplashState> {
   ) : super(const _Initial());
 
   Future<void> init() async {
-    log.e("STATE SPLASH CUBIT: ${state}");
+    log.e("STATE SPLASH CUBIT: $state");
     await fetchUser();
     await requestPermissions();
     checkAuth();
     checkMood();
-    log.e("STATE SPLASH CUBIT: ${state}");
+    log.e("STATE SPLASH CUBIT: $state");
   }
 
   Future<void> requestPermissions() async {
@@ -42,11 +42,11 @@ class SplashCubit extends Cubit<SplashState> {
 
   void checkAuth() {
     final token = _readTokenUsecase.call();
-    log.e("TOKEN: ${token}");
+    log.e("TOKEN: $token");
     token.fold(
       (l) {
         safeEmit(
-          _Unauthorized("Unauthorized"),
+          const _Unauthorized("Unauthorized"),
           isClosed: isClosed,
           emit: emit,
         );

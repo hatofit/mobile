@@ -10,8 +10,8 @@ _$ByLimitParamsImpl _$$ByLimitParamsImplFromJson(Map<String, dynamic> json) =>
     _$ByLimitParamsImpl(
       showFromCompany: json['showFromCompany'] as bool?,
       showFromLocal: json['showFromLocal'] as bool?,
-      page: json['page'] as int? ?? 0,
-      limit: json['limit'] as int? ?? 10,
+      page: (json['page'] as num?)?.toInt() ?? 0,
+      limit: (json['limit'] as num?)?.toInt() ?? 10,
     );
 
 Map<String, dynamic> _$$ByLimitParamsImplToJson(_$ByLimitParamsImpl instance) =>

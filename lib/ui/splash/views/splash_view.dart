@@ -40,7 +40,7 @@ class _SplashScreenPageState extends State<SplashView> {
     return Parent(
       child: BlocListener<SplashCubit, SplashState>(
         listener: (context, state) {
-          log.e("STATE: ${state}");
+          log.e("STATE: $state");
           state.whenOrNull(
             initial: () async =>
                 await context.read<SplashCubit>().requestPermissions(),

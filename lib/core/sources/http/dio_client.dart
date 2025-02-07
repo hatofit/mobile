@@ -14,25 +14,12 @@ class DioClient with FirebaseCrashLogger {
   String? _auth;
   late Dio _dio;
   final BoxClient _boxClient;
-  RetryInterceptor retryInterceptor() {
-    return RetryInterceptor(
-      dio: _dio,
-      logPrint: log.e,
-      retries: 2,
-      retryDelays: const [
-        Duration(seconds: 1),
-        Duration(seconds: 2),
-        Duration(seconds: 1),
-      ],
-    );
-  }
 
   DioClient(this._boxClient) {
     try {
       _auth = _boxClient.userBox.get(UserBoxKeys.token.name);
       _dio = _createDio();
       _dio.interceptors.add(DioInterceptor());
-      _dio.interceptors.add(retryInterceptor());
     } catch (error, stackTrace) {
       nonFatalError(error: error, stackTrace: stackTrace);
     }
@@ -43,7 +30,6 @@ class DioClient with FirebaseCrashLogger {
       _auth = _boxClient.userBox.get(UserBoxKeys.token.name);
       _dio = _createDio();
       _dio.interceptors.add(DioInterceptor());
-      _dio.interceptors.add(retryInterceptor());
     } catch (error, stackTrace) {
       nonFatalError(error: error, stackTrace: stackTrace);
     }
@@ -75,14 +61,7 @@ class DioClient with FirebaseCrashLogger {
     ProgressCallback? onReceiveProgress,
     bool withoutAutoRetry = false,
   }) async {
-    try {
-      if (withoutAutoRetry) {
-        _dio.interceptors.removeWhere((element) => element is RetryInterceptor);
-      } else {
-        if (!_dio.interceptors.any((element) => element is RetryInterceptor)) {
-          _dio.interceptors.add(retryInterceptor());
-        }
-      }
+    try { 
       final response = await dio.get(
         url,
         queryParameters: queryParameters,
@@ -115,10 +94,17 @@ class DioClient with FirebaseCrashLogger {
     Function(int, int)? onSendProgress,
     Function(int, int)? onReceiveProgress,
   }) async {
+    bool isFormData = false;
+    if (data == null && formData != null) {
+      isFormData = true;
+    }
     try {
       final response = await dio.post(
         url,
         data: data ?? formData,
+        options: Options(
+          contentType: isFormData ? "multipart/form-data" : "application/json",
+        ),
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );

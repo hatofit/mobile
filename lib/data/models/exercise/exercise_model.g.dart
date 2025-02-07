@@ -14,7 +14,7 @@ _$ExerciseModelImpl _$$ExerciseModelImplFromJson(Map<String, dynamic> json) =>
       difficulty: json['difficulty'] as String?,
       type: json['type'] as String?,
       thumbnail: json['thumbnail'] as String?,
-      duration: json['duration'] as int?,
+      duration: (json['duration'] as num?)?.toInt(),
       instructions: (json['instructions'] as List<dynamic>?)
           ?.map((e) => InstructionModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -35,7 +35,7 @@ Map<String, dynamic> _$$ExerciseModelImplToJson(_$ExerciseModelImpl instance) =>
       'type': instance.type,
       'thumbnail': instance.thumbnail,
       'duration': instance.duration,
-      'instructions': instance.instructions?.map((e) => e.toJson()).toList(),
+      'instructions': instance.instructions,
       'createdAt': instance.createdAt?.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
     };
@@ -45,7 +45,7 @@ _$InstructionModelImpl _$$InstructionModelImplFromJson(
     _$InstructionModelImpl(
       id: json['_id'] as String?,
       type: json['type'] as String?,
-      duration: json['duration'] as int?,
+      duration: (json['duration'] as num?)?.toInt(),
       name: json['name'] as String?,
       description: json['description'] as String?,
       content: json['content'] == null
@@ -62,7 +62,7 @@ Map<String, dynamic> _$$InstructionModelImplToJson(
       'duration': instance.duration,
       'name': instance.name,
       'description': instance.description,
-      'content': instance.content?.toJson(),
+      'content': instance.content,
     };
 
 _$ExerciseContentModelImpl _$$ExerciseContentModelImplFromJson(

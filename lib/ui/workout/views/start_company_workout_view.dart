@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:better_player/better_player.dart';
+import 'package:better_player_plus/better_player_plus.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:circular_countdown_timer/circular_countdown_timer.dart';
 import 'package:flutter/material.dart';

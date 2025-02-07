@@ -12,7 +12,7 @@ part of 'company_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CompanyModel _$CompanyModelFromJson(Map<String, dynamic> json) {
   return _CompanyModel.fromJson(json);
@@ -30,8 +30,12 @@ mixin _$CompanyModel {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
+  /// Serializes this CompanyModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CompanyModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CompanyModelCopyWith<CompanyModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -63,6 +67,8 @@ class _$CompanyModelCopyWithImpl<$Res, $Val extends CompanyModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CompanyModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -139,6 +145,8 @@ class __$$CompanyModelImplCopyWithImpl<$Res>
       _$CompanyModelImpl _value, $Res Function(_$CompanyModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CompanyModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -248,12 +256,14 @@ class _$CompanyModelImpl extends _CompanyModel {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, uuid, name, description,
       address, image, createdAt, updatedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CompanyModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CompanyModelImplCopyWith<_$CompanyModelImpl> get copyWith =>
@@ -299,8 +309,11 @@ abstract class _CompanyModel extends CompanyModel {
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
+
+  /// Create a copy of CompanyModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CompanyModelImplCopyWith<_$CompanyModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

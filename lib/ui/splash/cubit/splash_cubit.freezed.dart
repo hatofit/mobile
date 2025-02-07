@@ -12,7 +12,7 @@ part of 'splash_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SplashState {
@@ -84,6 +84,9 @@ class _$SplashStateCopyWithImpl<$Res, $Val extends SplashState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -100,6 +103,9 @@ class __$$InitialImplCopyWithImpl<$Res>
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -217,6 +223,8 @@ class __$$AuthorizedImplCopyWithImpl<$Res>
       _$AuthorizedImpl _value, $Res Function(_$AuthorizedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -255,7 +263,9 @@ class _$AuthorizedImpl implements _Authorized {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AuthorizedImplCopyWith<_$AuthorizedImpl> get copyWith =>
@@ -340,7 +350,10 @@ abstract class _Authorized implements SplashState {
   const factory _Authorized(final String? message) = _$AuthorizedImpl;
 
   String? get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AuthorizedImplCopyWith<_$AuthorizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -362,6 +375,8 @@ class __$$UnauthorizedImplCopyWithImpl<$Res>
       _$UnauthorizedImpl _value, $Res Function(_$UnauthorizedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -400,7 +415,9 @@ class _$UnauthorizedImpl implements _Unauthorized {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UnauthorizedImplCopyWith<_$UnauthorizedImpl> get copyWith =>
@@ -485,7 +502,10 @@ abstract class _Unauthorized implements SplashState {
   const factory _Unauthorized(final String message) = _$UnauthorizedImpl;
 
   String get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UnauthorizedImplCopyWith<_$UnauthorizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -504,6 +524,9 @@ class __$$OfflineImplCopyWithImpl<$Res>
   __$$OfflineImplCopyWithImpl(
       _$OfflineImpl _value, $Res Function(_$OfflineImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of SplashState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

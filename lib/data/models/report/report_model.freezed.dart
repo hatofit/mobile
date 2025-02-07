@@ -12,7 +12,7 @@ part of 'report_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ReportModel _$ReportModelFromJson(Map<String, dynamic> json) {
   return _ReportModel.fromJson(json);
@@ -29,8 +29,12 @@ mixin _$ReportModel {
   List<ReportDeviceModel>? get devices => throw _privateConstructorUsedError;
   List<ReportDataModel>? get reports => throw _privateConstructorUsedError;
 
+  /// Serializes this ReportModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportModelCopyWith<ReportModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -61,6 +65,8 @@ class _$ReportModelCopyWithImpl<$Res, $Val extends ReportModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,6 +137,8 @@ class __$$ReportModelImplCopyWithImpl<$Res>
       _$ReportModelImpl _value, $Res Function(_$ReportModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -246,7 +254,7 @@ class _$ReportModelImpl extends _ReportModel {
             const DeepCollectionEquality().equals(other._reports, _reports));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -258,7 +266,9 @@ class _$ReportModelImpl extends _ReportModel {
       const DeepCollectionEquality().hash(_devices),
       const DeepCollectionEquality().hash(_reports));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportModelImplCopyWith<_$ReportModelImpl> get copyWith =>
@@ -301,8 +311,11 @@ abstract class _ReportModel extends ReportModel {
   List<ReportDeviceModel>? get devices;
   @override
   List<ReportDataModel>? get reports;
+
+  /// Create a copy of ReportModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportModelImplCopyWith<_$ReportModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -317,8 +330,12 @@ mixin _$ReportDeviceModel {
   String? get brand => throw _privateConstructorUsedError;
   String? get identifier => throw _privateConstructorUsedError;
 
+  /// Serializes this ReportDeviceModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReportDeviceModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportDeviceModelCopyWith<ReportDeviceModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -342,6 +359,8 @@ class _$ReportDeviceModelCopyWithImpl<$Res, $Val extends ReportDeviceModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportDeviceModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -385,6 +404,8 @@ class __$$ReportDeviceModelImplCopyWithImpl<$Res>
       $Res Function(_$ReportDeviceModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportDeviceModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -441,11 +462,13 @@ class _$ReportDeviceModelImpl extends _ReportDeviceModel {
                 other.identifier == identifier));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, brand, identifier);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDeviceModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportDeviceModelImplCopyWith<_$ReportDeviceModelImpl> get copyWith =>
@@ -476,8 +499,11 @@ abstract class _ReportDeviceModel extends ReportDeviceModel {
   String? get brand;
   @override
   String? get identifier;
+
+  /// Create a copy of ReportDeviceModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportDeviceModelImplCopyWith<_$ReportDeviceModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -491,8 +517,12 @@ mixin _$ReportDataModel {
   String? get type => throw _privateConstructorUsedError;
   List<ReportDataValueModel>? get data => throw _privateConstructorUsedError;
 
+  /// Serializes this ReportDataModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReportDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportDataModelCopyWith<ReportDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -516,6 +546,8 @@ class _$ReportDataModelCopyWithImpl<$Res, $Val extends ReportDataModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -554,6 +586,8 @@ class __$$ReportDataModelImplCopyWithImpl<$Res>
       _$ReportDataModelImpl _value, $Res Function(_$ReportDataModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -600,12 +634,14 @@ class _$ReportDataModelImpl extends _ReportDataModel {
             const DeepCollectionEquality().equals(other.data, data));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, type, const DeepCollectionEquality().hash(data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDataModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportDataModelImplCopyWith<_$ReportDataModelImpl> get copyWith =>
@@ -633,8 +669,11 @@ abstract class _ReportDataModel extends ReportDataModel {
   String? get type;
   @override
   List<ReportDataValueModel>? get data;
+
+  /// Create a copy of ReportDataModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportDataModelImplCopyWith<_$ReportDataModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -648,8 +687,12 @@ mixin _$ReportDataValueModel {
   String? get device => throw _privateConstructorUsedError;
   List<List<int>>? get value => throw _privateConstructorUsedError;
 
+  /// Serializes this ReportDataValueModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ReportDataValueModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReportDataValueModelCopyWith<ReportDataValueModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -674,6 +717,8 @@ class _$ReportDataValueModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReportDataValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -712,6 +757,8 @@ class __$$ReportDataValueModelImplCopyWithImpl<$Res>
       $Res Function(_$ReportDataValueModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReportDataValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -758,12 +805,14 @@ class _$ReportDataValueModelImpl extends _ReportDataValueModel {
             const DeepCollectionEquality().equals(other.value, value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, device, const DeepCollectionEquality().hash(value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReportDataValueModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReportDataValueModelImplCopyWith<_$ReportDataValueModelImpl>
@@ -792,8 +841,11 @@ abstract class _ReportDataValueModel extends ReportDataValueModel {
   String? get device;
   @override
   List<List<int>>? get value;
+
+  /// Create a copy of ReportDataValueModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReportDataValueModelImplCopyWith<_$ReportDataValueModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

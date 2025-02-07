@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    
-    <uses-permission android:name="android.permission.INTERNET" />  
+
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- required for API 18 - 30 -->
     <uses-permission
             android:name="android.permission.BLUETOOTH"
@@ -28,37 +28,25 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
-    <!-- Steps -->
-    <!-- <uses-permission android:name="android.permission.health.READ_STEPS"/>
-    <uses-permission android:name="android.permission.health.WRITE_STEPS"/> -->
 
-    <!-- Weught -->
-    <!-- <uses-permission android:name="android.permission.health.READ_WEIGHT"/>
-    <uses-permission android:name="android.permission.health.WRITE_WEIGHT"/> -->
-
-    <!-- Height -->
-    <!-- <uses-permission android:name="android.permission.health.READ_HEIGHT"/>
-    <uses-permission android:name="android.permission.health.WRITE_HEIGHT"/> -->
-
-    <!-- Heart Rate -->
-    <!-- <uses-permission android:name="android.permission.health.READ_HEART_RATE"/>
-    <uses-permission android:name="android.permission.health.WRITE_HEART_RATE"/> -->
-
-    <!-- Sleep -->
-    <!-- <uses-permission android:name="android.permission.health.READ_SLEEP"/>
-    <uses-permission android:name="android.permission.health.WRITE_SLEEP"/> -->
     <application
         android:label="Hatofit"
         android:name="${applicationName}"
-        android:icon="@mipmap/launcher_icon">
+        android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
+            android:taskAffinity=""
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
-            android:windowSoftInputMode="adjustResize"> 
+            android:enableOnBackInvokedCallback="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
             <meta-data
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
@@ -67,7 +55,11 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity> 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
         <activity
                 android:name="com.yalantis.ucrop.UCropActivity"
                 android:screenOrientation="portrait"
@@ -76,4 +68,10 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
 </manifest>

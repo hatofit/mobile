@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "123499973842",
     "project_id": "hatofit-0001",
-    "storage_bucket": "hatofit-0001.appspot.com"
+    "storage_bucket": "hatofit-0001.firebasestorage.app"
   },
   "client": [
     {

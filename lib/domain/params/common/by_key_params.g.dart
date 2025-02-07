@@ -8,7 +8,7 @@ part of 'by_key_params.dart';
 
 _$ByKeyParamsImpl _$$ByKeyParamsImplFromJson(Map<String, dynamic> json) =>
     _$ByKeyParamsImpl(
-      key: json['key'] as int? ?? 0,
+      key: (json['key'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$$ByKeyParamsImplToJson(_$ByKeyParamsImpl instance) =>

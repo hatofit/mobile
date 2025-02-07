@@ -12,14 +12,16 @@ part of 'start_scan_common_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StartScanCommonParams {
   List<Guid> get serviceIds => throw _privateConstructorUsedError;
   Duration? get timeout => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StartScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StartScanCommonParamsCopyWith<StartScanCommonParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$StartScanCommonParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StartScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -84,6 +88,8 @@ class __$$StartScanCommonParamsImplCopyWithImpl<$Res>
       $Res Function(_$StartScanCommonParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StartScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +148,9 @@ class _$StartScanCommonParamsImpl implements _StartScanCommonParams {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_serviceIds), timeout);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StartScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StartScanCommonParamsImplCopyWith<_$StartScanCommonParamsImpl>
@@ -159,8 +167,11 @@ abstract class _StartScanCommonParams implements StartScanCommonParams {
   List<Guid> get serviceIds;
   @override
   Duration? get timeout;
+
+  /// Create a copy of StartScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StartScanCommonParamsImplCopyWith<_$StartScanCommonParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

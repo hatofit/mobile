@@ -12,7 +12,7 @@ part of 'read_common_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ReadCommonParams {
@@ -20,7 +20,9 @@ mixin _$ReadCommonParams {
       throw _privateConstructorUsedError;
   int get timeout => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReadCommonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ReadCommonParamsCopyWith<ReadCommonParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$ReadCommonParamsCopyWithImpl<$Res, $Val extends ReadCommonParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ReadCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -82,6 +86,8 @@ class __$$ReadCommonParamsImplCopyWithImpl<$Res>
       $Res Function(_$ReadCommonParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ReadCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,7 +137,9 @@ class _$ReadCommonParamsImpl implements _ReadCommonParams {
   @override
   int get hashCode => Object.hash(runtimeType, characteristic, timeout);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ReadCommonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ReadCommonParamsImplCopyWith<_$ReadCommonParamsImpl> get copyWith =>
@@ -148,8 +156,11 @@ abstract class _ReadCommonParams implements ReadCommonParams {
   BluetoothCharacteristic get characteristic;
   @override
   int get timeout;
+
+  /// Create a copy of ReadCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReadCommonParamsImplCopyWith<_$ReadCommonParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'create_session_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 CreateSessionParams _$CreateSessionParamsFromJson(Map<String, dynamic> json) {
   return _CreateSessionParams.fromJson(json);
@@ -31,8 +31,12 @@ mixin _$CreateSessionParams {
   dynamic get withoutExercise => throw _privateConstructorUsedError;
   String? get companyExerciseId => throw _privateConstructorUsedError;
 
+  /// Serializes this CreateSessionParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CreateSessionParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $CreateSessionParamsCopyWith<CreateSessionParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -65,6 +69,8 @@ class _$CreateSessionParamsCopyWithImpl<$Res, $Val extends CreateSessionParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of CreateSessionParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -147,6 +153,8 @@ class __$$CreateSessionParamsImplCopyWithImpl<$Res>
       $Res Function(_$CreateSessionParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CreateSessionParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -283,7 +291,7 @@ class _$CreateSessionParamsImpl implements _CreateSessionParams {
                 other.companyExerciseId == companyExerciseId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -297,7 +305,9 @@ class _$CreateSessionParamsImpl implements _CreateSessionParams {
       const DeepCollectionEquality().hash(withoutExercise),
       companyExerciseId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CreateSessionParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$CreateSessionParamsImplCopyWith<_$CreateSessionParamsImpl> get copyWith =>
@@ -345,8 +355,11 @@ abstract class _CreateSessionParams implements CreateSessionParams {
   dynamic get withoutExercise;
   @override
   String? get companyExerciseId;
+
+  /// Create a copy of CreateSessionParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$CreateSessionParamsImplCopyWith<_$CreateSessionParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -361,8 +374,12 @@ mixin _$SessionTimelineParams {
   String get name => throw _privateConstructorUsedError;
   int get startTime => throw _privateConstructorUsedError;
 
+  /// Serializes this SessionTimelineParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SessionTimelineParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionTimelineParamsCopyWith<SessionTimelineParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -387,6 +404,8 @@ class _$SessionTimelineParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionTimelineParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -427,6 +446,8 @@ class __$$SessionTimelineParamsImplCopyWithImpl<$Res>
       $Res Function(_$SessionTimelineParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionTimelineParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -476,11 +497,13 @@ class _$SessionTimelineParamsImpl implements _SessionTimelineParams {
                 other.startTime == startTime));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, name, startTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionTimelineParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionTimelineParamsImplCopyWith<_$SessionTimelineParamsImpl>
@@ -506,8 +529,11 @@ abstract class _SessionTimelineParams implements SessionTimelineParams {
   String get name;
   @override
   int get startTime;
+
+  /// Create a copy of SessionTimelineParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionTimelineParamsImplCopyWith<_$SessionTimelineParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -524,8 +550,12 @@ mixin _$SessionDataItemParams {
   List<SessionDataItemDeviceParams> get devices =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this SessionDataItemParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SessionDataItemParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionDataItemParamsCopyWith<SessionDataItemParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -551,6 +581,8 @@ class _$SessionDataItemParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionDataItemParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -597,6 +629,8 @@ class __$$SessionDataItemParamsImplCopyWithImpl<$Res>
       $Res Function(_$SessionDataItemParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionDataItemParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -664,12 +698,14 @@ class _$SessionDataItemParamsImpl implements _SessionDataItemParams {
             const DeepCollectionEquality().equals(other._devices, _devices));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, second, timeStamp,
       const DeepCollectionEquality().hash(_devices));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionDataItemParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionDataItemParamsImplCopyWith<_$SessionDataItemParamsImpl>
@@ -700,8 +736,11 @@ abstract class _SessionDataItemParams implements SessionDataItemParams {
   int get timeStamp;
   @override
   List<SessionDataItemDeviceParams> get devices;
+
+  /// Create a copy of SessionDataItemParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionDataItemParamsImplCopyWith<_$SessionDataItemParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -719,8 +758,12 @@ mixin _$SessionDataItemDeviceParams {
   String get model => throw _privateConstructorUsedError;
   List<Map<String, dynamic>> get value => throw _privateConstructorUsedError;
 
+  /// Serializes this SessionDataItemDeviceParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SessionDataItemDeviceParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionDataItemDeviceParamsCopyWith<SessionDataItemDeviceParams>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -752,6 +795,8 @@ class _$SessionDataItemDeviceParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionDataItemDeviceParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -813,6 +858,8 @@ class __$$SessionDataItemDeviceParamsImplCopyWithImpl<$Res>
       $Res Function(_$SessionDataItemDeviceParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionDataItemDeviceParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -902,12 +949,14 @@ class _$SessionDataItemDeviceParamsImpl
             const DeepCollectionEquality().equals(other._value, _value));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, type, identifier, brand, model,
       const DeepCollectionEquality().hash(_value));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionDataItemDeviceParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionDataItemDeviceParamsImplCopyWith<_$SessionDataItemDeviceParamsImpl>
@@ -945,8 +994,11 @@ abstract class _SessionDataItemDeviceParams
   String get model;
   @override
   List<Map<String, dynamic>> get value;
+
+  /// Create a copy of SessionDataItemDeviceParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionDataItemDeviceParamsImplCopyWith<_$SessionDataItemDeviceParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -94,18 +94,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(const _Initial());
       }
     } catch (e, stackTrace) {
-      FirebaseCrashlytics.instance.recordError(e, stackTrace);
-    }
-  }
-
-  void signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? res = await _googleSignIn.signIn();
-
-      if (res != null) {
-        emit(_Success(res.displayName));
-      }
-    } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
       FirebaseCrashlytics.instance.recordError(e, stackTrace);
     }
   }
@@ -118,12 +107,15 @@ class AuthCubit extends Cubit<AuthState> {
 
       res.fold((l) {
         if (l is ServerFailure) {
-          emit(_Failure(l.message ?? ""));
+          emit(_Failure(l.message ?? "An error occured"));
+        } else {
+          emit(_Failure("An error occured : ${l.toString()}"));
         }
       }, (r) {
         emit(_Success(r.user?.firstName));
       });
     } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
       FirebaseCrashlytics.instance.recordError(e, stackTrace);
     }
   }
@@ -132,7 +124,8 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const _Loading());
     final user =
         await _readUserUsecase.call(const ByLimitParams(showFromLocal: true));
-    user.fold((l) => null, (r) async {
+    user.fold((l) => {emit(_Failure("An error occured: ${l.toString()}"))},
+        (r) async {
       try {
         final res = await _registerUsecase.call(RegisterParams(
           firstName: params.firstName,
@@ -154,7 +147,11 @@ class AuthCubit extends Cubit<AuthState> {
 
         res.fold((l) {
           if (l is ServerFailure) {
-            emit(_Failure(l.message ?? ""));
+            emit(_Failure(l.message ?? "An error occured"));
+          } else if (l is BadRequestFailure) {
+            emit(_Failure(l.message ?? "An error occured"));
+          } else {
+            emit(_Failure("An error occured: ${l.toString()}"));
           }
         }, (r) {
           _readUserUsecase
@@ -180,7 +177,7 @@ class AuthCubit extends Cubit<AuthState> {
           gender: r.gender ?? "male",
           email: params.email,
           password: params.password,
-          confirmPassword: params.confirmPassword,
+          confirmPassword: params.password,
           photo: pickedImage,
           dateOfBirth: r.dateOfBirth.toString(),
           height: r.height ?? 150,
@@ -194,7 +191,9 @@ class AuthCubit extends Cubit<AuthState> {
 
         res.fold((l) {
           if (l is ServerFailure) {
-            emit(_Failure(l.message ?? ""));
+            emit(_Failure(l.message ?? "An error occured"));
+          } else {
+            emit(const _Failure("An error occured"));
           }
         }, (r) {
           _readUserUsecase
@@ -202,6 +201,7 @@ class AuthCubit extends Cubit<AuthState> {
               .then((_) => emit(_Success(r.firstName)));
         });
       } catch (e, stackTrace) {
+        emit(const _Failure("An error occured"));
         FirebaseCrashlytics.instance.recordError(e, stackTrace);
       }
     });
@@ -214,12 +214,15 @@ class AuthCubit extends Cubit<AuthState> {
 
       res.fold((l) {
         if (l is ServerFailure) {
-          emit(_Failure(l.message ?? ""));
+          emit(_Failure(l.message ?? "An error occured"));
+        } else {
+          emit(_Failure("An error occured : ${l.toString()}"));
         }
       }, (r) {
-        emit(_Success(r.message ?? ""));
+        emit(_Success(r.message ?? "An error occured"));
       });
     } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
       FirebaseCrashlytics.instance.recordError(e, stackTrace);
     }
   }
@@ -232,13 +235,31 @@ class AuthCubit extends Cubit<AuthState> {
 
       res.fold((l) {
         if (l is ServerFailure) {
-          emit(_Failure(l.message ?? ""));
+          emit(_Failure(l.message ?? "An error occured"));
+        } else {
+          emit(_Failure("An error occured : ${l.toString()}"));
         }
       }, (r) {
         isCodeVerified = true;
         emit(const _Initial());
       });
     } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
+      FirebaseCrashlytics.instance.recordError(e, stackTrace);
+    }
+  }
+
+  void signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? res = await _googleSignIn.signIn();
+
+      if (res != null) {
+        emit(_Success(res.displayName));
+      } else {
+        emit(const _Failure("An error occured"));
+      }
+    } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
       FirebaseCrashlytics.instance.recordError(e, stackTrace);
     }
   }
@@ -250,12 +271,15 @@ class AuthCubit extends Cubit<AuthState> {
 
       res.fold((l) {
         if (l is ServerFailure) {
-          emit(_Failure(l.message ?? ""));
+          emit(_Failure(l.message ?? "An error occured"));
+        } else {
+          emit(_Failure("An error occured : ${l.toString()}"));
         }
       }, (r) {
         emit(_Success(r.user?.firstName));
       });
     } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
       FirebaseCrashlytics.instance.recordError(e, stackTrace);
     }
   }
@@ -270,13 +294,14 @@ class AuthCubit extends Cubit<AuthState> {
 
       res.fold((l) {
         if (l is ServerFailure) {
-          emit(_Failure(l.message ?? ""));
+          emit(_Failure(l.message ?? "An error occured"));
         }
       }, (r) async {
         pickedImage = r;
         emit(ImagePicked(r));
       });
     } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
       FirebaseCrashlytics.instance.recordError(e, stackTrace);
     }
   }
@@ -289,13 +314,14 @@ class AuthCubit extends Cubit<AuthState> {
 
       res.fold((l) {
         if (l is ServerFailure) {
-          emit(_Failure(l.message ?? ""));
+          emit(_Failure(l.message ?? "An error occured"));
         }
       }, (r) async {
         pickedImage = r;
         emit(ImagePicked(r));
       });
     } catch (e, stackTrace) {
+      emit(_Failure("An error occured: ${e.toString()}"));
       FirebaseCrashlytics.instance.recordError(e, stackTrace);
     }
   }

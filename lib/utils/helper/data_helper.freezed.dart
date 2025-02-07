@@ -12,7 +12,7 @@ part of 'data_helper.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DataHelper {
@@ -49,7 +49,9 @@ mixin _$DataHelper {
   ActiveTheme get activeTheme => throw _privateConstructorUsedError;
   set activeTheme(ActiveTheme value) => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DataHelperCopyWith<DataHelper> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -95,6 +97,8 @@ class _$DataHelperCopyWithImpl<$Res, $Val extends DataHelper>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -183,6 +187,8 @@ class _$DataHelperCopyWithImpl<$Res, $Val extends DataHelper>
     ) as $Val);
   }
 
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $UserEntityCopyWith<$Res>? get user {
@@ -195,6 +201,8 @@ class _$DataHelperCopyWithImpl<$Res, $Val extends DataHelper>
     });
   }
 
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sLang {
@@ -207,6 +215,8 @@ class _$DataHelperCopyWithImpl<$Res, $Val extends DataHelper>
     });
   }
 
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sEUnit {
@@ -219,6 +229,8 @@ class _$DataHelperCopyWithImpl<$Res, $Val extends DataHelper>
     });
   }
 
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sHUnit {
@@ -231,6 +243,8 @@ class _$DataHelperCopyWithImpl<$Res, $Val extends DataHelper>
     });
   }
 
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DataHelperCopyWith<$Res>? get sWUnit {
@@ -290,6 +304,8 @@ class __$$DataHelperImplCopyWithImpl<$Res>
       _$DataHelperImpl _value, $Res Function(_$DataHelperImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -441,7 +457,9 @@ class _$DataHelperImpl implements _DataHelper {
     return 'DataHelper(title: $title, desc: $desc, iconPath: $iconPath, icon: $icon, url: $url, type: $type, id: $id, color: $color, user: $user, sLang: $sLang, sEUnit: $sEUnit, sHUnit: $sHUnit, sWUnit: $sWUnit, isGoogleFitAvailable: $isGoogleFitAvailable, isSelected: $isSelected, activeTheme: $activeTheme)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DataHelperImplCopyWith<_$DataHelperImpl> get copyWith =>
@@ -515,8 +533,11 @@ abstract class _DataHelper implements DataHelper {
   @override
   ActiveTheme get activeTheme;
   set activeTheme(ActiveTheme value);
+
+  /// Create a copy of DataHelper
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DataHelperImplCopyWith<_$DataHelperImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

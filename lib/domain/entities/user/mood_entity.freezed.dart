@@ -12,14 +12,16 @@ part of 'mood_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$MoodEntity {
   String get mood => throw _privateConstructorUsedError;
   String get date => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MoodEntityCopyWith<MoodEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$MoodEntityCopyWithImpl<$Res, $Val extends MoodEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MoodEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$MoodEntityImplCopyWithImpl<$Res>
       _$MoodEntityImpl _value, $Res Function(_$MoodEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MoodEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -127,7 +133,9 @@ class _$MoodEntityImpl implements _MoodEntity {
   @override
   int get hashCode => Object.hash(runtimeType, mood, date);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MoodEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MoodEntityImplCopyWith<_$MoodEntityImpl> get copyWith =>
@@ -143,8 +151,11 @@ abstract class _MoodEntity implements MoodEntity {
   String get mood;
   @override
   String get date;
+
+  /// Create a copy of MoodEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MoodEntityImplCopyWith<_$MoodEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

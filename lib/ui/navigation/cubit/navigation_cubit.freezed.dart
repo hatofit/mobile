@@ -12,7 +12,7 @@ part of 'navigation_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$NavigationState {
@@ -49,7 +49,9 @@ mixin _$NavigationState {
   PolarPpgSample? get ppgSample => throw _privateConstructorUsedError;
   set ppgSample(PolarPpgSample? value) => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NavigationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $NavigationStateCopyWith<NavigationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -89,6 +91,8 @@ class _$NavigationStateCopyWithImpl<$Res, $Val extends NavigationState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of NavigationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -167,6 +171,8 @@ class _$NavigationStateCopyWithImpl<$Res, $Val extends NavigationState>
     ) as $Val);
   }
 
+  /// Create a copy of NavigationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $BleEntityCopyWith<$Res>? get cDevice {
@@ -216,6 +222,8 @@ class __$$NavigationStateImplCopyWithImpl<$Res>
       _$NavigationStateImpl _value, $Res Function(_$NavigationStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of NavigationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -351,7 +359,9 @@ class _$NavigationStateImpl implements _NavigationState {
     return 'NavigationState(status: $status, isScanning: $isScanning, state: $state, fDevices: $fDevices, cDevice: $cDevice, bleFailure: $bleFailure, conState: $conState, isLoading: $isLoading, hrSample: $hrSample, ecgSample: $ecgSample, accSample: $accSample, gyroSample: $gyroSample, magnetometerSample: $magnetometerSample, ppgSample: $ppgSample)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of NavigationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$NavigationStateImplCopyWith<_$NavigationStateImpl> get copyWith =>
@@ -418,8 +428,11 @@ abstract class _NavigationState implements NavigationState {
   @override
   PolarPpgSample? get ppgSample;
   set ppgSample(PolarPpgSample? value);
+
+  /// Create a copy of NavigationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NavigationStateImplCopyWith<_$NavigationStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

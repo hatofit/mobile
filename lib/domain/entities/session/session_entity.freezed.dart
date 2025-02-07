@@ -12,7 +12,7 @@ part of 'session_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$SessionEntity {
@@ -34,7 +34,9 @@ mixin _$SessionEntity {
   @HiveField(7)
   List<SessionDataItemEntity>? get data => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionEntityCopyWith<SessionEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +70,8 @@ class _$SessionEntityCopyWithImpl<$Res, $Val extends SessionEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,6 +120,8 @@ class _$SessionEntityCopyWithImpl<$Res, $Val extends SessionEntity>
     ) as $Val);
   }
 
+  /// Create a copy of SessionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExerciseEntityCopyWith<$Res>? get exercise {
@@ -159,6 +165,8 @@ class __$$SessionEntityImplCopyWithImpl<$Res>
       _$SessionEntityImpl _value, $Res Function(_$SessionEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -301,7 +309,9 @@ class _$SessionEntityImpl implements _SessionEntity {
       const DeepCollectionEquality().hash(_timelines),
       const DeepCollectionEquality().hash(_data));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionEntityImplCopyWith<_$SessionEntityImpl> get copyWith =>
@@ -344,8 +354,11 @@ abstract class _SessionEntity implements SessionEntity {
   @override
   @HiveField(7)
   List<SessionDataItemEntity>? get data;
+
+  /// Create a copy of SessionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionEntityImplCopyWith<_$SessionEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -357,7 +370,9 @@ mixin _$SessionTimelineEntity {
   @HiveField(1)
   int? get startTime => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionTimelineEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionTimelineEntityCopyWith<SessionTimelineEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -382,6 +397,8 @@ class _$SessionTimelineEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionTimelineEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -422,6 +439,8 @@ class __$$SessionTimelineEntityImplCopyWithImpl<$Res>
       $Res Function(_$SessionTimelineEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionTimelineEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -475,7 +494,9 @@ class _$SessionTimelineEntityImpl implements _SessionTimelineEntity {
   @override
   int get hashCode => Object.hash(runtimeType, name, startTime);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionTimelineEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionTimelineEntityImplCopyWith<_$SessionTimelineEntityImpl>
@@ -494,8 +515,11 @@ abstract class _SessionTimelineEntity implements SessionTimelineEntity {
   @override
   @HiveField(1)
   int? get startTime;
+
+  /// Create a copy of SessionTimelineEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionTimelineEntityImplCopyWith<_$SessionTimelineEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -510,7 +534,9 @@ mixin _$SessionDataItemEntity {
   List<SessionDataItemDeviceEntity>? get devices =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionDataItemEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionDataItemEntityCopyWith<SessionDataItemEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -538,6 +564,8 @@ class _$SessionDataItemEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionDataItemEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -586,6 +614,8 @@ class __$$SessionDataItemEntityImplCopyWithImpl<$Res>
       $Res Function(_$SessionDataItemEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionDataItemEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -659,7 +689,9 @@ class _$SessionDataItemEntityImpl implements _SessionDataItemEntity {
   int get hashCode => Object.hash(runtimeType, second, timeStamp,
       const DeepCollectionEquality().hash(_devices));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionDataItemEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionDataItemEntityImplCopyWith<_$SessionDataItemEntityImpl>
@@ -683,8 +715,11 @@ abstract class _SessionDataItemEntity implements SessionDataItemEntity {
   @override
   @HiveField(2)
   List<SessionDataItemDeviceEntity>? get devices;
+
+  /// Create a copy of SessionDataItemEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionDataItemEntityImplCopyWith<_$SessionDataItemEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -702,7 +737,9 @@ mixin _$SessionDataItemDeviceEntity {
   @HiveField(4)
   String? get model => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionDataItemDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SessionDataItemDeviceEntityCopyWith<SessionDataItemDeviceEntity>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -734,6 +771,8 @@ class _$SessionDataItemDeviceEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SessionDataItemDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -795,6 +834,8 @@ class __$$SessionDataItemDeviceEntityImplCopyWithImpl<$Res>
       $Res Function(_$SessionDataItemDeviceEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SessionDataItemDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -890,7 +931,9 @@ class _$SessionDataItemDeviceEntityImpl
   int get hashCode => Object.hash(runtimeType, type, identifier,
       const DeepCollectionEquality().hash(_value), brand, model);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SessionDataItemDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SessionDataItemDeviceEntityImplCopyWith<_$SessionDataItemDeviceEntityImpl>
@@ -922,8 +965,11 @@ abstract class _SessionDataItemDeviceEntity
   @override
   @HiveField(4)
   String? get model;
+
+  /// Create a copy of SessionDataItemDeviceEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SessionDataItemDeviceEntityImplCopyWith<_$SessionDataItemDeviceEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

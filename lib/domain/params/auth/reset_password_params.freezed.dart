@@ -12,7 +12,7 @@ part of 'reset_password_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ResetPasswordParams _$ResetPasswordParamsFromJson(Map<String, dynamic> json) {
   return _ResetPasswordParams.fromJson(json);
@@ -25,8 +25,12 @@ mixin _$ResetPasswordParams {
   String get confirmPassword => throw _privateConstructorUsedError;
   String get code => throw _privateConstructorUsedError;
 
+  /// Serializes this ResetPasswordParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ResetPasswordParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ResetPasswordParamsCopyWith<ResetPasswordParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -51,6 +55,8 @@ class _$ResetPasswordParamsCopyWithImpl<$Res, $Val extends ResetPasswordParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ResetPasswordParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class __$$ResetPasswordParamsImplCopyWithImpl<$Res>
       $Res Function(_$ResetPasswordParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ResetPasswordParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -172,12 +180,14 @@ class _$ResetPasswordParamsImpl implements _ResetPasswordParams {
             (identical(other.code, code) || other.code == code));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, email, password, confirmPassword, code);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ResetPasswordParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ResetPasswordParamsImplCopyWith<_$ResetPasswordParamsImpl> get copyWith =>
@@ -210,8 +220,11 @@ abstract class _ResetPasswordParams implements ResetPasswordParams {
   String get confirmPassword;
   @override
   String get code;
+
+  /// Create a copy of ResetPasswordParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ResetPasswordParamsImplCopyWith<_$ResetPasswordParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

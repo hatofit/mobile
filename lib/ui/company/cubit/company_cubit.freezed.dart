@@ -12,7 +12,7 @@ part of 'company_cubit.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$CompanyState {
@@ -78,6 +78,9 @@ class _$CompanyStateCopyWithImpl<$Res, $Val extends CompanyState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -94,6 +97,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -205,6 +211,8 @@ class __$$SuccessImplCopyWithImpl<$Res>
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -251,7 +259,9 @@ class _$SuccessImpl implements _Success {
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_companies));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
@@ -330,7 +340,10 @@ abstract class _Success implements CompanyState {
   const factory _Success(final List<CompanyEntity> companies) = _$SuccessImpl;
 
   List<CompanyEntity> get companies;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -352,6 +365,8 @@ class __$$FailureImplCopyWithImpl<$Res>
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -390,7 +405,9 @@ class _$FailureImpl implements _Failure {
   @override
   int get hashCode => Object.hash(runtimeType, message);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
@@ -469,7 +486,10 @@ abstract class _Failure implements CompanyState {
   const factory _Failure(final Failure message) = _$FailureImpl;
 
   Failure get message;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of CompanyState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,13 +12,15 @@ part of 'disconnect_polar_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$DisconnectPolarParams {
   String get deviceId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisconnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DisconnectPolarParamsCopyWith<DisconnectPolarParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$DisconnectPolarParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DisconnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -78,6 +82,8 @@ class __$$DisconnectPolarParamsImplCopyWithImpl<$Res>
       $Res Function(_$DisconnectPolarParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DisconnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,7 +123,9 @@ class _$DisconnectPolarParamsImpl implements _DisconnectPolarParams {
   @override
   int get hashCode => Object.hash(runtimeType, deviceId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DisconnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DisconnectPolarParamsImplCopyWith<_$DisconnectPolarParamsImpl>
@@ -131,8 +139,11 @@ abstract class _DisconnectPolarParams implements DisconnectPolarParams {
 
   @override
   String get deviceId;
+
+  /// Create a copy of DisconnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DisconnectPolarParamsImplCopyWith<_$DisconnectPolarParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

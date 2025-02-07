@@ -12,7 +12,7 @@ part of 'ble_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BleEntity {
@@ -42,7 +42,9 @@ mixin _$BleEntity {
   set polarServices(Set<PolarDataType>? value) =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BleEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BleEntityCopyWith<BleEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -76,6 +78,8 @@ class _$BleEntityCopyWithImpl<$Res, $Val extends BleEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BleEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -170,6 +174,8 @@ class __$$BleEntityImplCopyWithImpl<$Res>
       _$BleEntityImpl _value, $Res Function(_$BleEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of BleEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -278,7 +284,9 @@ class _$BleEntityImpl implements _BleEntity {
     return 'BleEntity(name: $name, address: $address, rssi: $rssi, isConnectable: $isConnectable, timeStamp: $timeStamp, device: $device, brand: $brand, battery: $battery, commonservices: $commonservices, polarId: $polarId, polarServices: $polarServices)';
   }
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BleEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BleEntityImplCopyWith<_$BleEntityImpl> get copyWith =>
@@ -332,8 +340,11 @@ abstract class _BleEntity implements BleEntity {
   @override
   Set<PolarDataType>? get polarServices;
   set polarServices(Set<PolarDataType>? value);
+
+  /// Create a copy of BleEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BleEntityImplCopyWith<_$BleEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

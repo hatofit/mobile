@@ -12,14 +12,16 @@ part of 'stop_scan_common_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StopScanCommonParams {
   StreamSubscription<dynamic> get subscription =>
       throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StopScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StopScanCommonParamsCopyWith<StopScanCommonParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$StopScanCommonParamsCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StopScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -77,6 +81,8 @@ class __$$StopScanCommonParamsImplCopyWithImpl<$Res>
       $Res Function(_$StopScanCommonParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StopScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -116,7 +122,9 @@ class _$StopScanCommonParamsImpl implements _StopScanCommonParams {
   @override
   int get hashCode => Object.hash(runtimeType, subscription);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StopScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StopScanCommonParamsImplCopyWith<_$StopScanCommonParamsImpl>
@@ -132,8 +140,11 @@ abstract class _StopScanCommonParams implements StopScanCommonParams {
 
   @override
   StreamSubscription<dynamic> get subscription;
+
+  /// Create a copy of StopScanCommonParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StopScanCommonParamsImplCopyWith<_$StopScanCommonParamsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

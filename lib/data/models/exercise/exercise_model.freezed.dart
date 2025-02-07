@@ -12,7 +12,7 @@ part of 'exercise_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ExerciseModel _$ExerciseModelFromJson(Map<String, dynamic> json) {
   return _ExerciseModel.fromJson(json);
@@ -33,8 +33,12 @@ mixin _$ExerciseModel {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
+  /// Serializes this ExerciseModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExerciseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExerciseModelCopyWith<ExerciseModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$ExerciseModelCopyWithImpl<$Res, $Val extends ExerciseModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExerciseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -156,6 +162,8 @@ class __$$ExerciseModelImplCopyWithImpl<$Res>
       _$ExerciseModelImpl _value, $Res Function(_$ExerciseModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExerciseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -294,7 +302,7 @@ class _$ExerciseModelImpl extends _ExerciseModel {
                 other.updatedAt == updatedAt));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -309,7 +317,9 @@ class _$ExerciseModelImpl extends _ExerciseModel {
       createdAt,
       updatedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExerciseModelImplCopyWith<_$ExerciseModelImpl> get copyWith =>
@@ -361,8 +371,11 @@ abstract class _ExerciseModel extends ExerciseModel {
   DateTime? get createdAt;
   @override
   DateTime? get updatedAt;
+
+  /// Create a copy of ExerciseModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExerciseModelImplCopyWith<_$ExerciseModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -381,8 +394,12 @@ mixin _$InstructionModel {
   String? get description => throw _privateConstructorUsedError;
   ExerciseContentModel? get content => throw _privateConstructorUsedError;
 
+  /// Serializes this InstructionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of InstructionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $InstructionModelCopyWith<InstructionModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -414,6 +431,8 @@ class _$InstructionModelCopyWithImpl<$Res, $Val extends InstructionModel>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of InstructionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -452,6 +471,8 @@ class _$InstructionModelCopyWithImpl<$Res, $Val extends InstructionModel>
     ) as $Val);
   }
 
+  /// Create a copy of InstructionModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExerciseContentModelCopyWith<$Res>? get content {
@@ -493,6 +514,8 @@ class __$$InstructionModelImplCopyWithImpl<$Res>
       $Res Function(_$InstructionModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of InstructionModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -581,12 +604,14 @@ class _$InstructionModelImpl extends _InstructionModel {
             (identical(other.content, content) || other.content == content));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, id, type, duration, name, description, content);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of InstructionModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$InstructionModelImplCopyWith<_$InstructionModelImpl> get copyWith =>
@@ -627,8 +652,11 @@ abstract class _InstructionModel extends InstructionModel {
   String? get description;
   @override
   ExerciseContentModel? get content;
+
+  /// Create a copy of InstructionModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$InstructionModelImplCopyWith<_$InstructionModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -643,8 +671,12 @@ mixin _$ExerciseContentModel {
   String? get text => throw _privateConstructorUsedError;
   String? get lottie => throw _privateConstructorUsedError;
 
+  /// Serializes this ExerciseContentModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ExerciseContentModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExerciseContentModelCopyWith<ExerciseContentModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -669,6 +701,8 @@ class _$ExerciseContentModelCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExerciseContentModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -712,6 +746,8 @@ class __$$ExerciseContentModelImplCopyWithImpl<$Res>
       $Res Function(_$ExerciseContentModelImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExerciseContentModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -767,11 +803,13 @@ class _$ExerciseContentModelImpl extends _ExerciseContentModel {
             (identical(other.lottie, lottie) || other.lottie == lottie));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, video, text, lottie);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseContentModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExerciseContentModelImplCopyWith<_$ExerciseContentModelImpl>
@@ -803,8 +841,11 @@ abstract class _ExerciseContentModel extends ExerciseContentModel {
   String? get text;
   @override
   String? get lottie;
+
+  /// Create a copy of ExerciseContentModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExerciseContentModelImplCopyWith<_$ExerciseContentModelImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

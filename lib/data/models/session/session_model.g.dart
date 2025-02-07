@@ -14,8 +14,8 @@ _$SessionModelImpl _$$SessionModelImplFromJson(Map<String, dynamic> json) =>
       exercise: json['exercise'] == null
           ? null
           : ExerciseModel.fromJson(json['exercise'] as Map<String, dynamic>),
-      startTime: json['startTime'] as int?,
-      endTime: json['endTime'] as int?,
+      startTime: (json['startTime'] as num?)?.toInt(),
+      endTime: (json['endTime'] as num?)?.toInt(),
       timelines: (json['timelines'] as List<dynamic>?)
           ?.map((e) => SessionTimelineModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -29,18 +29,18 @@ Map<String, dynamic> _$$SessionModelImplToJson(_$SessionModelImpl instance) =>
       '_id': instance.id,
       'userId': instance.userId,
       'mood': instance.mood,
-      'exercise': instance.exercise?.toJson(),
+      'exercise': instance.exercise,
       'startTime': instance.startTime,
       'endTime': instance.endTime,
-      'timelines': instance.timelines?.map((e) => e.toJson()).toList(),
-      'data': instance.data?.map((e) => e.toJson()).toList(),
+      'timelines': instance.timelines,
+      'data': instance.data,
     };
 
 _$SessionTimelineModelImpl _$$SessionTimelineModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SessionTimelineModelImpl(
       name: json['name'] as String?,
-      startTime: json['startTime'] as int?,
+      startTime: (json['startTime'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$SessionTimelineModelImplToJson(
@@ -53,8 +53,8 @@ Map<String, dynamic> _$$SessionTimelineModelImplToJson(
 _$SessionDataItemModelImpl _$$SessionDataItemModelImplFromJson(
         Map<String, dynamic> json) =>
     _$SessionDataItemModelImpl(
-      second: json['second'] as int?,
-      timeStamp: json['timeStamp'] as int?,
+      second: (json['second'] as num?)?.toInt(),
+      timeStamp: (json['timeStamp'] as num?)?.toInt(),
       devices: (json['devices'] as List<dynamic>?)
           ?.map((e) =>
               SessionDataItemDeviceModel.fromJson(e as Map<String, dynamic>))
@@ -66,7 +66,7 @@ Map<String, dynamic> _$$SessionDataItemModelImplToJson(
     <String, dynamic>{
       'second': instance.second,
       'timeStamp': instance.timeStamp,
-      'devices': instance.devices?.map((e) => e.toJson()).toList(),
+      'devices': instance.devices,
     };
 
 _$SessionDataItemDeviceModelImpl _$$SessionDataItemDeviceModelImplFromJson(

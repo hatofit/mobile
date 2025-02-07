@@ -12,7 +12,7 @@ part of 'exercise_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ExerciseEntity {
@@ -38,7 +38,9 @@ mixin _$ExerciseEntity {
   @HiveField(9)
   DateTime? get updatedAt => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExerciseEntityCopyWith<ExerciseEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -72,6 +74,8 @@ class _$ExerciseEntityCopyWithImpl<$Res, $Val extends ExerciseEntity>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExerciseEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -160,6 +164,8 @@ class __$$ExerciseEntityImplCopyWithImpl<$Res>
       _$ExerciseEntityImpl _value, $Res Function(_$ExerciseEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExerciseEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -320,7 +326,9 @@ class _$ExerciseEntityImpl implements _ExerciseEntity {
       createdAt,
       updatedAt);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExerciseEntityImplCopyWith<_$ExerciseEntityImpl> get copyWith =>
@@ -371,8 +379,11 @@ abstract class _ExerciseEntity implements ExerciseEntity {
   @override
   @HiveField(9)
   DateTime? get updatedAt;
+
+  /// Create a copy of ExerciseEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExerciseEntityImplCopyWith<_$ExerciseEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -392,7 +403,9 @@ mixin _$ExerciseInstructionEntity {
   @HiveField(5)
   ExerciseContentEntity? get content => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseInstructionEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExerciseInstructionEntityCopyWith<ExerciseInstructionEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -425,6 +438,8 @@ class _$ExerciseInstructionEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExerciseInstructionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -463,6 +478,8 @@ class _$ExerciseInstructionEntityCopyWithImpl<$Res,
     ) as $Val);
   }
 
+  /// Create a copy of ExerciseInstructionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $ExerciseContentEntityCopyWith<$Res>? get content {
@@ -507,6 +524,8 @@ class __$$ExerciseInstructionEntityImplCopyWithImpl<$Res>
       $Res Function(_$ExerciseInstructionEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExerciseInstructionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -603,7 +622,9 @@ class _$ExerciseInstructionEntityImpl implements _ExerciseInstructionEntity {
   int get hashCode =>
       Object.hash(runtimeType, id, type, duration, name, description, content);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseInstructionEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExerciseInstructionEntityImplCopyWith<_$ExerciseInstructionEntityImpl>
@@ -639,8 +660,11 @@ abstract class _ExerciseInstructionEntity implements ExerciseInstructionEntity {
   @override
   @HiveField(5)
   ExerciseContentEntity? get content;
+
+  /// Create a copy of ExerciseInstructionEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExerciseInstructionEntityImplCopyWith<_$ExerciseInstructionEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -656,7 +680,9 @@ mixin _$ExerciseContentEntity {
   @HiveField(3)
   String? get lottie => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseContentEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ExerciseContentEntityCopyWith<ExerciseContentEntity> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -685,6 +711,8 @@ class _$ExerciseContentEntityCopyWithImpl<$Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ExerciseContentEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -739,6 +767,8 @@ class __$$ExerciseContentEntityImplCopyWithImpl<$Res>
       $Res Function(_$ExerciseContentEntityImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ExerciseContentEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -812,7 +842,9 @@ class _$ExerciseContentEntityImpl implements _ExerciseContentEntity {
   @override
   int get hashCode => Object.hash(runtimeType, video, image, text, lottie);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ExerciseContentEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ExerciseContentEntityImplCopyWith<_$ExerciseContentEntityImpl>
@@ -839,8 +871,11 @@ abstract class _ExerciseContentEntity implements ExerciseContentEntity {
   @override
   @HiveField(3)
   String? get lottie;
+
+  /// Create a copy of ExerciseContentEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ExerciseContentEntityImplCopyWith<_$ExerciseContentEntityImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -12,7 +12,7 @@ part of 'base_response_entity.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$BaseResponseEntity<T> {
@@ -20,7 +20,9 @@ mixin _$BaseResponseEntity<T> {
   String? get message => throw _privateConstructorUsedError;
   bool? get success => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseResponseEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BaseResponseEntityCopyWith<T, BaseResponseEntity<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -45,6 +47,8 @@ class _$BaseResponseEntityCopyWithImpl<T, $Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BaseResponseEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -89,6 +93,8 @@ class __$$BaseResponseEntityImplCopyWithImpl<T, $Res>
       $Res Function(_$BaseResponseEntityImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of BaseResponseEntity
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -144,7 +150,9 @@ class _$BaseResponseEntityImpl<T> implements _BaseResponseEntity<T> {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(data), message, success);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseResponseEntity
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BaseResponseEntityImplCopyWith<T, _$BaseResponseEntityImpl<T>>
@@ -164,8 +172,11 @@ abstract class _BaseResponseEntity<T> implements BaseResponseEntity<T> {
   String? get message;
   @override
   bool? get success;
+
+  /// Create a copy of BaseResponseEntity
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BaseResponseEntityImplCopyWith<T, _$BaseResponseEntityImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

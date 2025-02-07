@@ -12,7 +12,7 @@ part of 'by_key_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ByKeyParams _$ByKeyParamsFromJson(Map<String, dynamic> json) {
   return _ByKeyParams.fromJson(json);
@@ -22,8 +22,12 @@ ByKeyParams _$ByKeyParamsFromJson(Map<String, dynamic> json) {
 mixin _$ByKeyParams {
   int get key => throw _privateConstructorUsedError;
 
+  /// Serializes this ByKeyParams to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ByKeyParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ByKeyParamsCopyWith<ByKeyParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$ByKeyParamsCopyWithImpl<$Res, $Val extends ByKeyParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ByKeyParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$ByKeyParamsImplCopyWithImpl<$Res>
       _$ByKeyParamsImpl _value, $Res Function(_$ByKeyParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ByKeyParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,11 +127,13 @@ class _$ByKeyParamsImpl implements _ByKeyParams {
             (identical(other.key, key) || other.key == key));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, key);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ByKeyParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ByKeyParamsImplCopyWith<_$ByKeyParamsImpl> get copyWith =>
@@ -145,8 +155,11 @@ abstract class _ByKeyParams implements ByKeyParams {
 
   @override
   int get key;
+
+  /// Create a copy of ByKeyParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ByKeyParamsImplCopyWith<_$ByKeyParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

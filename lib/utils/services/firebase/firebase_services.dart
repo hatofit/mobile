@@ -7,9 +7,13 @@ import 'firebase_options.dart';
 
 mixin FirebaseServices {
   static Future<void> init() async {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    final isInitialized = Firebase.apps.isNotEmpty;
+    if (!isInitialized) {
+      await Firebase.initializeApp(
+        name: 'hatofit',
+        options: DefaultFirebaseOptions.currentPlatform,
+      );
+    }
     await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
 
     Isolate.current.addErrorListener(

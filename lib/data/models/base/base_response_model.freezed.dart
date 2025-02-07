@@ -12,7 +12,7 @@ part of 'base_response_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 BaseResponseModel<T> _$BaseResponseModelFromJson<T>(
     Map<String, dynamic> json, T Function(Object?) fromJsonT) {
@@ -25,9 +25,13 @@ mixin _$BaseResponseModel<T> {
   String? get message => throw _privateConstructorUsedError;
   bool? get success => throw _privateConstructorUsedError;
 
+  /// Serializes this BaseResponseModel to a JSON map.
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of BaseResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $BaseResponseModelCopyWith<T, BaseResponseModel<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -52,6 +56,8 @@ class _$BaseResponseModelCopyWithImpl<T, $Res,
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of BaseResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -95,6 +101,8 @@ class __$$BaseResponseModelImplCopyWithImpl<T, $Res>
       $Res Function(_$BaseResponseModelImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of BaseResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -151,12 +159,14 @@ class _$BaseResponseModelImpl<T> extends _BaseResponseModel<T> {
             (identical(other.success, success) || other.success == success));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(data), message, success);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of BaseResponseModel
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$BaseResponseModelImplCopyWith<T, _$BaseResponseModelImpl<T>>
@@ -187,8 +197,11 @@ abstract class _BaseResponseModel<T> extends BaseResponseModel<T> {
   String? get message;
   @override
   bool? get success;
+
+  /// Create a copy of BaseResponseModel
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$BaseResponseModelImplCopyWith<T, _$BaseResponseModelImpl<T>>
       get copyWith => throw _privateConstructorUsedError;
 }

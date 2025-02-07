@@ -12,13 +12,15 @@ part of 'connect_polar_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ConnectPolarParams {
   String get deviceId => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ConnectPolarParamsCopyWith<ConnectPolarParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -42,6 +44,8 @@ class _$ConnectPolarParamsCopyWithImpl<$Res, $Val extends ConnectPolarParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ConnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,6 +79,8 @@ class __$$ConnectPolarParamsImplCopyWithImpl<$Res>
       $Res Function(_$ConnectPolarParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ConnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -114,7 +120,9 @@ class _$ConnectPolarParamsImpl implements _ConnectPolarParams {
   @override
   int get hashCode => Object.hash(runtimeType, deviceId);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ConnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ConnectPolarParamsImplCopyWith<_$ConnectPolarParamsImpl> get copyWith =>
@@ -128,8 +136,11 @@ abstract class _ConnectPolarParams implements ConnectPolarParams {
 
   @override
   String get deviceId;
+
+  /// Create a copy of ConnectPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ConnectPolarParamsImplCopyWith<_$ConnectPolarParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

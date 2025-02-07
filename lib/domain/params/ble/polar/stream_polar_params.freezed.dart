@@ -12,14 +12,16 @@ part of 'stream_polar_params.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$StreamPolarParams {
   String get deviceId => throw _privateConstructorUsedError;
   Set<PolarDataType> get types => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StreamPolarParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $StreamPolarParamsCopyWith<StreamPolarParams> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$StreamPolarParamsCopyWithImpl<$Res, $Val extends StreamPolarParams>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of StreamPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$StreamPolarParamsImplCopyWithImpl<$Res>
       $Res Function(_$StreamPolarParamsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of StreamPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -137,7 +143,9 @@ class _$StreamPolarParamsImpl implements _StreamPolarParams {
   int get hashCode => Object.hash(
       runtimeType, deviceId, const DeepCollectionEquality().hash(_types));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of StreamPolarParams
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$StreamPolarParamsImplCopyWith<_$StreamPolarParamsImpl> get copyWith =>
@@ -154,8 +162,11 @@ abstract class _StreamPolarParams implements StreamPolarParams {
   String get deviceId;
   @override
   Set<PolarDataType> get types;
+
+  /// Create a copy of StreamPolarParams
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$StreamPolarParamsImplCopyWith<_$StreamPolarParamsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

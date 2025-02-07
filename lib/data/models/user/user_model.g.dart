@@ -21,8 +21,8 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
           ? null
           : UserMetricUnitsModel.fromJson(
               json['metricUnits'] as Map<String, dynamic>),
-      height: json['height'] as int?,
-      weight: json['weight'] as int?,
+      height: (json['height'] as num?)?.toInt(),
+      weight: (json['weight'] as num?)?.toInt(),
       createdAt: json['createdAt'] == null
           ? null
           : DateTime.parse(json['createdAt'] as String),
@@ -40,7 +40,7 @@ Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>
       'email': instance.email,
       'dateOfBirth': instance.dateOfBirth?.toIso8601String(),
       'photo': instance.photo,
-      'metricUnits': instance.metricUnits?.toJson(),
+      'metricUnits': instance.metricUnits,
       'height': instance.height,
       'weight': instance.weight,
       'createdAt': instance.createdAt?.toIso8601String(),

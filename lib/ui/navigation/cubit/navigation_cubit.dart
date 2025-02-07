@@ -143,13 +143,13 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
           (l) {
             if (l is BluetoothFailure) {
               emit(state.copyWith(bleFailure: l));
+            } else {
+              emit(state.copyWith(
+                  bleFailure:
+                      BluetoothFailure("An error occured: ${l.toString()}")));
             }
           },
           (device) {
-            if (device.isEmpty) {
-              _disposer();
-              _bleAdapterListener();
-            }
             if (device.isNotEmpty) emit(state.copyWith(fDevices: device));
           },
         );
@@ -172,6 +172,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
             cDevice: null,
             hrSample: null,
           ));
+        } else {
+          emit(state.copyWith(
+              bleFailure:
+                  BluetoothFailure("An error occured ${l.toString()}")));
         }
       }, (r) {
         emit(state.copyWith(conState: r));
@@ -299,6 +303,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         _disconnectCommonBleUsecase.call(DisconnectCommonParams(
           device: entity.device,
         ));
+      } else {
+        emit(state.copyWith(
+          bleFailure: BluetoothFailure("An error occured ${l.toString()}"),
+        ));
       }
     }, (_) async {
       emit(state.copyWith(
@@ -318,6 +326,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         if (l is BluetoothFailure) {
           clearState(f: l);
           disconnectDevice(entity);
+        } else {
+          emit(state.copyWith(
+            bleFailure: BluetoothFailure("An error occured ${l.toString()}"),
+          ));
         }
       },
       (r) {
@@ -356,6 +368,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
       (l) {
         if (l is BluetoothFailure) {
           emit(state.copyWith(cDevice: null, bleFailure: l, isLoading: false));
+        } else {
+          emit(state.copyWith(
+            bleFailure: BluetoothFailure("An error occured ${l.toString()}"),
+          ));
         }
       },
       (r) {
@@ -411,6 +427,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         (l) {
           if (l is BluetoothFailure) {
             clearState(f: l);
+          } else {
+            clearState(
+              f: BluetoothFailure("An error occured ${l.toString()}"),
+            );
           }
         },
         (r) {
@@ -431,6 +451,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         (l) {
           if (l is BluetoothFailure) {
             clearState(f: l);
+          } else {
+            clearState(
+              f: BluetoothFailure("An error occured ${l.toString()}"),
+            );
           }
         },
         (r) {
@@ -452,6 +476,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         (l) {
           if (l is BluetoothFailure) {
             clearState(f: l);
+          } else {
+            clearState(
+              f: BluetoothFailure("An error occured ${l.toString()}"),
+            );
           }
         },
         (r) {
@@ -472,6 +500,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         (l) {
           if (l is BluetoothFailure) {
             clearState(f: l);
+          } else {
+            clearState(
+              f: BluetoothFailure("An error occured ${l.toString()}"),
+            );
           }
         },
         (r) {
@@ -492,6 +524,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         (l) {
           if (l is BluetoothFailure) {
             clearState(f: l);
+          } else {
+            clearState(
+              f: BluetoothFailure("An error occured ${l.toString()}"),
+            );
           }
         },
         (r) {
@@ -512,6 +548,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         (l) {
           if (l is BluetoothFailure) {
             clearState(f: l);
+          } else {
+            clearState(
+              f: BluetoothFailure("An error occured ${l.toString()}"),
+            );
           }
         },
         (r) {
@@ -538,6 +578,10 @@ class NavigationCubit extends Cubit<NavigationState> with VibratorMixin {
         (l) {
           if (l is BluetoothFailure) {
             clearState(f: l);
+          } else {
+            clearState(
+              f: BluetoothFailure("An error occured ${l.toString()}"),
+            );
           }
         },
         (r) {

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:hatofit/core/core.dart';
 import 'package:hatofit/data/data.dart';
 import 'package:hatofit/domain/domain.dart';
+import 'package:hatofit/utils/utils.dart';
 
 abstract class AuthRemoteDataSource {
   Future<Either<Failure, AuthResponseModel>> login(
@@ -62,10 +63,13 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   Future<Either<Failure, UserModel?>> update(
     RegisterParams params,
   ) async {
+    final formData = params.toFormData();
+    log.d("Update user request: $formData");
     final res = await _client.postRequest(
       APIConstant.userUpdate,
-      formData: params.toFormData(),
+      formData: formData,
       converter: (res) {
+        log.d("Update user response: $res");
         if (res['success']) {
           return UserModel.fromJson(res['user'] as Map<String, dynamic>);
         } else {
