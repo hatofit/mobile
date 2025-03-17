@@ -65,7 +65,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   ) async {
     final formData = params.toFormData();
     log.d("Update user request: $formData");
-    final res = await _client.postRequest(
+    final res = await _client.putRequest(
       APIConstant.userUpdate,
       formData: formData,
       converter: (res) {

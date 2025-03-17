@@ -138,10 +138,17 @@ class DioClient with FirebaseCrashLogger {
     Function(int, int)? onSendProgress,
     Function(int, int)? onReceiveProgress,
   }) async {
+    bool isFormData = false;
+    if (data == null && formData != null) {
+      isFormData = true;
+    }
     try {
       final response = await dio.put(
         url,
         data: data ?? formData,
+        options: Options(
+          contentType: isFormData ? "multipart/form-data" : "application/json",
+        ),
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
       );
