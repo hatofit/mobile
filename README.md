@@ -42,7 +42,7 @@ HatoFit is a mobile fitness tracking application that helps users:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-org/hatofit-mobile.git
+git clone https://github.com/hatofit/mobile.git
 
 # Install dependencies
 flutter pub get
@@ -113,7 +113,7 @@ flutter run
 ## Project Structure
 
 ```
-hatofit-mobile/
+mobile/
 ├── android/                    # Android-specific
 ├── ios/                       # iOS-specific
 ├── lib/                       # Flutter source

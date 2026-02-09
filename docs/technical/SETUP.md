@@ -134,8 +134,8 @@ sudo gem install cocoapods
 
 ```bash
 # Clone the project
-git clone https://github.com/your-org/hatofit-mobile.git
-cd hatofit-mobile
+git clone https://github.com/hatofit/mobile.git
+cd mobile
 
 # Verify you're on the correct branch
 git branch

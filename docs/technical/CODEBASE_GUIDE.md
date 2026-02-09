@@ -11,7 +11,7 @@ Guide for navigating and understanding the HatoFit codebase structure.
 ## Directory Structure
 
 ```
-hatofit-mobile/
+mobile/
 ├── android/                    # Android-specific code
 │   ├── app/
 │   └── build.gradle
